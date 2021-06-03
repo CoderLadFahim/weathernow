@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 
-const WeatherContext = createContext();
+export const WeatherContext = createContext();
 
 function WeatherContextProvider({ children }) {
 	const [localCoords, setLocalCoords] = useState({});
