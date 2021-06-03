@@ -7,6 +7,8 @@ function LocationInput() {
 
 	const handleSubmit = e => {
 		e.preventDefault();
+
+		// setting the coords of the searched location to WeatherContext
 		coordsFetcher(locationQuery);
 	};
 

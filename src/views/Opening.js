@@ -18,6 +18,7 @@ function Opening() {
 	// setting the local coords to WeatherContext
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(position => {
+			// setting the local coords to WeatherContext
 			localCoordsSetter({
 				lat: position.coords.latitude,
 				lon: position.coords.longitude,
