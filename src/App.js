@@ -1,6 +1,8 @@
 import './App.css';
-import WeatherContextProvider from './contexts/WeatherContext';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import WeatherContextProvider from './contexts/WeatherContext';
+import Dashboard from './views/Dashboard';
+import Opening from './views/Opening';
 
 function App() {
 	return (
@@ -8,7 +10,10 @@ function App() {
 			<Router>
 				<Switch>
 					<Route exact path="/">
-						<h1 className="text-green-400 text-5xl">Hello World</h1>
+						<Opening />
+					</Route>
+					<Route exact path="/dashboard">
+						<Dashboard />
 					</Route>
 				</Switch>
 			</Router>
