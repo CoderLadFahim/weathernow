@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom';
+import LocationInput from '../components/LocationInput';
 
 function Dashboard() {
 	const history = useHistory();
@@ -11,7 +12,12 @@ function Dashboard() {
 			if (state !== 'granted') history.push('/');
 		});
 
-	return <h1>This is the dashboard</h1>;
+	return (
+		<section>
+			This is the dashboard
+			<LocationInput />
+		</section>
+	);
 }
 
 export default Dashboard;
