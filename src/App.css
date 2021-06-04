@@ -1,0 +1,16 @@
+.text-font {
+	font-family: 'Quicksand';
+	font-weight: 600;
+}
+.text-font-light {
+	font-family: 'Quicksand';
+	font-weight: 400;
+}
+.text-font-bold {
+	font-family: 'Quicksand';
+	font-weight: 700;
+}
+
+.num-font {
+	font-family: 'Montserrat';
+}

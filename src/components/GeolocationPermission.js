@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 
 function GeolocationPermission() {
@@ -10,11 +12,23 @@ function GeolocationPermission() {
 		});
 
 	return (
-		<h1>
+		<h1 className="text-center text-2xl text-green-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
 			{!permissionStateChanged ? (
-				'Allow Location Access'
+				<span>
+					{' '}
+					<FontAwesomeIcon
+						icon={faMapMarkerAlt}
+						className="text-gray-400 animate-pulse"
+					/>{' '}
+					<br /> Allow Location Access{' '}
+				</span>
 			) : (
-				<button onClick={() => window.location.reload()}>Refresh</button>
+				<button
+					className="bg-blue-500 text-white rounded-lg shadow py-2 px-5 text-2xl font-bold hover:bg-blue-400 outline-none"
+					onClick={() => window.location.reload()}
+				>
+					Refresh
+				</button>
 			)}
 		</h1>
 	);
