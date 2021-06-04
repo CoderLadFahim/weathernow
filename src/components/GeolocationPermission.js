@@ -12,7 +12,7 @@ function GeolocationPermission() {
 		});
 
 	return (
-		<h1 className="text-center text-2xl text-green-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
+		<h1 className="text-center text-3xl text-green-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
 			{!permissionStateChanged ? (
 				<span>
 					{' '}
@@ -24,7 +24,7 @@ function GeolocationPermission() {
 				</span>
 			) : (
 				<button
-					className="bg-blue-500 text-white rounded-lg shadow py-2 px-5 text-2xl font-bold hover:bg-blue-400 outline-none"
+					className="bg-blue-500 text-white rounded-lg shadow py-2 px-5 text-2xl font-bold transition duration-100 hover:bg-blue-400 outline-none 2xl:text-3xl 2xl:py-3 2xl:px-6"
 					onClick={() => window.location.reload()}
 				>
 					Refresh
