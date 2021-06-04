@@ -1,5 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import GeolocationPermission from '../components/GeolocationPermission';
+import AppLogo from '../components/AppLogo';
 import { useContext } from 'react';
 import { WeatherContext } from '../contexts/WeatherContext';
 
@@ -26,7 +27,12 @@ function Opening() {
 		});
 	}
 
-	return <GeolocationPermission />;
+	return (
+		<section className="opening h-screen bg-gray-800 text-white font-bold text-font">
+			<AppLogo />
+			<GeolocationPermission />
+		</section>
+	);
 }
 
 export default Opening;
