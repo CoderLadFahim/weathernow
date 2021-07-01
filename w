@@ -1,0 +1,27 @@
+import { useState } from "react";
+
+function AppNav() {
+	const [currentUnitSystem, setCurrentSystem] = useState("Metric");
+
+	return (
+		<nav className="app-nav">
+			<ul>
+				<li>Local</li>
+				<li>Search Location</li>
+				<li
+					onClick={() =>
+						setCurrentSystem((prevSystem) =>
+							prevSystem === "Metric"
+								? (prevSystem = "Imperial")
+								: (prevSystem = "Metric")
+						)
+					}
+				>
+					{currentUnitSystem}
+				</li>{" "}
+			</ul>{" "}
+		</nav>
+	);
+}
+
+export default AppNav;

@@ -1,7 +1,8 @@
-import { useHistory } from 'react-router-dom';
-import { useContext } from 'react';
-import LocationInput from '../components/LocationInput';
-import { WeatherContext } from '../contexts/WeatherContext';
+import { useHistory } from "react-router-dom";
+import { useContext } from "react";
+import LocationInput from "../components/LocationInput";
+import { WeatherContext } from "../contexts/WeatherContext";
+import AppNav from "../components/AppNav";
 
 function Dashboard() {
 	const history = useHistory();
@@ -9,17 +10,18 @@ function Dashboard() {
 
 	// redirecting to Opening ('/') if user manually visits '/dashboard' and localcoords haven't been fetched
 	navigator.permissions
-		.query({ name: 'geolocation' })
-		.then(permissionStatus => {
+		.query({ name: "geolocation" })
+		.then((permissionStatus) => {
 			const { state } = permissionStatus;
 
-			if (state !== 'granted') history.push('/');
+			if (state !== "granted") history.push("/");
 		});
 
 	return (
 		<section>
 			<LocationInput />
 			{JSON.stringify(weatherData)}
+			<AppNav />
 		</section>
 	);
 }

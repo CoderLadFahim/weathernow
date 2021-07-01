@@ -3,6 +3,9 @@ import { createContext, useState, useEffect } from 'react';
 export const WeatherContext = createContext();
 
 function WeatherContextProvider({ children }) {
+	// setting the unit system as metric by default
+	const [unitSystem, setUnitSystem] = useState("metric");
+
 	const [localCoords, setLocalCoords] = useState({});
 	const [weatherData, setWeatherData] = useState(null);
 
@@ -15,7 +18,7 @@ function WeatherContextProvider({ children }) {
 
 	// this is the main weather data endpoint
 	const weatherDataURL = coords =>
-		`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=alerts,minutely&appid=${apiKey}&units=metric`;
+		`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=alerts,minutely&appid=${apiKey}&units=${'metric'}`;
 
 	// wrapping the main API call in a function (takes in coords)
 	const weatherDataFetcher = coords => {
@@ -54,6 +57,9 @@ function WeatherContextProvider({ children }) {
 				localCoordsSetter: setLocalCoords,
 				// used by LocationInput
 				coordsFetcher: fetchCoords,
+				// used by the AppNav
+				currentUnitSystem: unitSystem,
+				unitSystemSetter: setUnitSystem
 			}}
 		>
 			{children}
