@@ -1,12 +1,12 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import WeatherContextProvider from './contexts/WeatherContext';
+import AppContextProvider from './contexts/AppContext';
 import Dashboard from './views/Dashboard';
 import Opening from './views/Opening';
 
 function App() {
 	return (
-		<WeatherContextProvider>
+		<AppContextProvider>
 			<Router>
 				<Switch>
 					<Route exact path="/">
@@ -17,7 +17,7 @@ function App() {
 					</Route>
 				</Switch>
 			</Router>
-		</WeatherContextProvider>
+		</AppContextProvider>
 	);
 }
 

@@ -1,36 +1,36 @@
 import { useHistory } from 'react-router-dom';
 import GeolocationPermission from '../components/GeolocationPermission';
 import AppLogo from '../components/AppLogo';
-import { useContext } from 'react';
-import { WeatherContext } from '../contexts/WeatherContext';
+import { useContext, useEffect } from 'react';
+import { AppContext } from '../contexts/AppContext';
 
 function Opening() {
-	const { localCoordsSetter } = useContext(WeatherContext);
+	const {
+		AppData: { localCoords },
+		dispatch,
+	} = useContext(AppContext);
 	const history = useHistory();
 
-	// checking if the permission has been set first
-	navigator.permissions.query({ name: 'geolocation' }).then(permissionState => {
-		const { state } = permissionState;
+	useEffect(() => {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(position => {
+				const { latitude, longitude } = position.coords;
 
-		// redirecting to /dashboard if granted
-		if (state === 'granted') return history.push('/dashboard');
-	});
+				// setting the local coords on the AppContext
+				dispatch({
+					type: 'SET_LOCAL_COORDS',
+					payload: { lat: latitude, lon: longitude },
+				});
 
-	// setting the local coords to WeatherContext
-	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(position => {
-			// setting the local coords to WeatherContext
-			localCoordsSetter({
-				lat: position.coords.latitude,
-				lon: position.coords.longitude,
+				history.push('/dashboard');
 			});
-		});
-	}
+		}
+	}, []);
 
 	return (
 		<section className="opening h-screen bg-gray-800 text-white font-bold text-font">
 			<AppLogo />
-			<GeolocationPermission />
+			{!localCoords.lat ? <GeolocationPermission /> : <h1> Loading... </h1>}
 		</section>
 	);
 }

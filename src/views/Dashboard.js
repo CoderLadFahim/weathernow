@@ -1,27 +1,47 @@
-import { useHistory } from "react-router-dom";
-import { useContext } from "react";
-import LocationInput from "../components/LocationInput";
-import { WeatherContext } from "../contexts/WeatherContext";
+import { useContext, useEffect } from "react";
+import LocationSearch from "../components/LocationSearch/LocationSearch";
 import AppNav from "../components/AppNav";
+import { useHistory } from "react-router-dom";
+import { AppContext } from "../contexts/AppContext";
 
 function Dashboard() {
 	const history = useHistory();
-	const weatherData = useContext(WeatherContext);
+	const { AppData, dispatch } = useContext(AppContext);
+
+	const weatherDataURL = (coords) =>
+		`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=alerts,minutely&appid=${AppData.apiKey}&units=${AppData.unitSystem}`;
 
 	// redirecting to Opening ('/') if user manually visits '/dashboard' and localcoords haven't been fetched
 	navigator.permissions
 		.query({ name: "geolocation" })
-		.then((permissionStatus) => {
-			const { state } = permissionStatus;
+		.then((permissionStatus) =>
+			permissionStatus.state !== "granted" || !AppData.localCoords.lat
+				? history.push("/")
+				: null
+		);
 
-			if (state !== "granted") history.push("/");
-		});
+	// fetching the weatherData on first render and everytime user changes the AppData.unitSystem
+	useEffect(() => {
+		fetch(weatherDataURL(AppData.localCoords))
+			.then((res) => res.json())
+			.then((data) =>
+				// dispatching weather data setting action to the AppContext with weather data
+				dispatch({
+					type: "SET_WEATHER_DATA_TO_SHOW",
+					payload: data,
+				})
+			);
+	}, [AppData.unitSystem]);
 
 	return (
-		<section>
-			<LocationInput />
-			{JSON.stringify(weatherData)}
+		<section className="bg-gray-800 text-gray-100 h-screen w-screen">
 			<AppNav />
+			{AppData.userSearchingLocation && <LocationSearch />}
+			{!AppData.weatherDataToShow ? (
+				<h1> Loading... </h1>
+			) : (
+				JSON.stringify(AppData.weatherDataToShow)
+			)}
 		</section>
 	);
 }
