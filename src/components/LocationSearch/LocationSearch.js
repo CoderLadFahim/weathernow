@@ -5,6 +5,8 @@ import LocationResult from "./LocationResult";
 function LocationSearch() {
 	const { AppData, dispatch } = useContext(AppContext);
 
+	const [foundLocations, setFoundLocations] = useState([]);
+
 	const geoCoderURL = (locationToLookFor) =>
 		`http://api.openweathermap.org/geo/1.0/direct?q=${locationToLookFor}&limit=${1}&appid=${
 			AppData.apiKey
@@ -14,11 +16,15 @@ function LocationSearch() {
 		if (e.target.value) {
 			const requestResponse = await fetch(geoCoderURL(e.target.value));
 			const responseData = await requestResponse.json();
-			console.log(responseData);
+
+			setFoundLocations((prevLocations) => [
+				...prevLocations,
+				...responseData,
+			]);
 		}
 	};
 
-	const debounce = (func, timeout = 300) => {
+	const debounce = (func, timeout = 1000) => {
 		let timer;
 		return (...args) => {
 			clearTimeout(timer);
