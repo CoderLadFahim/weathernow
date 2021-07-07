@@ -36,7 +36,7 @@ function Dashboard() {
 	}, [AppData.unitSystem]);
 
 	return (
-		<section className="bg-gray-800 text-gray-100 h-screen w-screen text-font">
+		<section className="bg-gray-800 text-gray-100 h-screen w-screen text-font-light">
 			<AppNav />
 			{AppData.userSearchingLocation && <LocationSearch />}
 			{!AppData.weatherDataToShow ? (

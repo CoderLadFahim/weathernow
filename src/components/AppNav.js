@@ -35,7 +35,7 @@ function AppNav() {
 		});
 
 	return (
-		<nav className="app-nav bg-gray-700 flex items-center content-evenly h-12">
+		<nav className="app-nav text-font-bold capitalize bg-gray-700 flex items-center content-evenly h-12">
 			<ul className="w-full h-full flex items-center justify-around border">
 				<li
 					className={`bg-gray-800 p-2 rounded-2xl ${
@@ -46,7 +46,7 @@ function AppNav() {
 					Local
 				</li>
 				<li onClick={toggleLocationSearch}>Search Location</li>
-				<li onClick={switchUnitSystem}>{AppData.unitSystem}</li>{" "}
+				<li className={`text-${AppData.unitSystem === 'metric' ? 'green' : 'yellow'}-400`} onClick={switchUnitSystem}>{AppData.unitSystem}</li>{" "}
 			</ul>{" "}
 		</nav>
 	);
