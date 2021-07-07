@@ -10,18 +10,30 @@ function LocationSearch() {
 			AppData.apiKey
 		}`;
 
-	const [locationSearchTerm, setLocationSearchTerm] = useState("");
+	const handleSearchTermChange = async (e) => {
+		if (e.target.value) {
+			const requestResponse = await fetch(geoCoderURL(e.target.value));
+			const responseData = await requestResponse.json();
+			console.log(responseData);
+		}
+	};
 
-	const handleSearchTermChange = (e) => {
-		setLocationSearchTerm(e.target.value);
+	const debounce = (func, timeout = 300) => {
+		let timer;
+		return (...args) => {
+			clearTimeout(timer);
+			timer = setTimeout(() => {
+				func.apply(this, args);
+			}, timeout);
+		};
 	};
 
 	return (
 		<section className="location-search bg-green-400">
 			<input
 				type="text"
-				value={locationSearchTerm}
-				onChange={handleSearchTermChange}
+				className="text-center text-gray-500 text-font-bold outline-none rounded-lg py-1"
+				onChange={debounce(handleSearchTermChange)}
 				placeholder="Search Location"
 			/>
 
