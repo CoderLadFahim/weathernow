@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
 
@@ -45,8 +46,18 @@ function AppNav() {
 					<FontAwesomeIcon icon={faMapMarkerAlt} />
 					Local
 				</li>
-				<li onClick={toggleLocationSearch}>Search Location</li>
-				<li className={`text-${AppData.unitSystem === 'metric' ? 'green' : 'yellow'}-400`} onClick={switchUnitSystem}>{AppData.unitSystem}</li>{" "}
+				<li onClick={toggleLocationSearch}>
+					<FontAwesomeIcon icon={faSearch} />
+					Search Location
+				</li>
+				<li
+					className={`text-${
+						AppData.unitSystem === "metric" ? "green" : "yellow"
+					}-400`}
+					onClick={switchUnitSystem}
+				>
+					{AppData.unitSystem}
+				</li>{" "}
 			</ul>{" "}
 		</nav>
 	);
