@@ -6,6 +6,20 @@ import { AppContext } from "../contexts/AppContext";
 function AppNav() {
 	const { AppData, dispatch } = useContext(AppContext);
 
+	const weatherDataIsLocal = (() => {
+		if (AppData.weatherDataToShow.lat) {
+			const localLat = AppData.localCoords.lat.toFixed(0);
+			const localLon = AppData.localCoords.lon.toFixed(0);
+
+			const apiDataLat = AppData.weatherDataToShow.lat.toFixed(0);
+			const apiDataLon = AppData.weatherDataToShow.lon.toFixed(0);
+
+			return localLat === apiDataLat && localLon === apiDataLon;
+		}
+
+		return null;
+	})();
+
 	const switchUnitSystem = () =>
 		// switching the unit system on the application context
 		dispatch({
@@ -23,7 +37,11 @@ function AppNav() {
 	return (
 		<nav className="app-nav bg-gray-700 flex items-center content-evenly h-12">
 			<ul className="w-full h-full flex items-center justify-around border">
-				<li className={`bg-gray-800 p-2 rounded-2xl`}>
+				<li
+					className={`bg-gray-800 p-2 rounded-2xl ${
+						weatherDataIsLocal ? "active" : ""
+					}`}
+				>
 					<FontAwesomeIcon icon={faMapMarkerAlt} />
 					Local
 				</li>

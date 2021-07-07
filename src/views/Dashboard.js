@@ -22,19 +22,21 @@ function Dashboard() {
 
 	// fetching the weatherData on first render and everytime user changes the AppData.unitSystem
 	useEffect(() => {
-		fetch(weatherDataURL(AppData.localCoords))
-			.then((res) => res.json())
-			.then((data) =>
-				// dispatching weather data setting action to the AppContext with weather data
-				dispatch({
-					type: "SET_WEATHER_DATA_TO_SHOW",
-					payload: data,
-				})
-			);
+		if (AppData.localCoords.lat) {
+			fetch(weatherDataURL(AppData.localCoords))
+				.then((res) => res.json())
+				.then((data) =>
+					// dispatching weather data setting action to the AppContext with weather data
+					dispatch({
+						type: "SET_WEATHER_DATA_TO_SHOW",
+						payload: data,
+					})
+				);
+		}
 	}, [AppData.unitSystem]);
 
 	return (
-		<section className="bg-gray-800 text-gray-100 h-screen w-screen">
+		<section className="bg-gray-800 text-gray-100 h-screen w-screen text-font">
 			<AppNav />
 			{AppData.userSearchingLocation && <LocationSearch />}
 			{!AppData.weatherDataToShow ? (

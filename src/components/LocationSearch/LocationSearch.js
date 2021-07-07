@@ -1,15 +1,14 @@
-import { useState, useContext } from 'react';
-import { AppContext } from '../../contexts/AppContext';
+import { useState } from 'react';
 import LocationResult from './LocationResult';
 
 function LocationSearch() {
-	const { AppData, dispatch } = useContext(AppContext);
-
-	const geoCoderURL = locationToLookFor =>
-		`http://api.openweathermap.org/geo/1.0/direct?q=${locationToLookFor}&limit=${1}&appid=${
-			AppData.apiKey
-		}`;
-
+//	const { AppData, dispatch } = useContext(AppContext);
+//
+//	const geoCoderURL = locationToLookFor =>
+//		`http://api.openweathermap.org/geo/1.0/direct?q=${locationToLookFor}&limit=${1}&appid=${
+//			AppData.apiKey
+//		}`;
+//
 	const [locationSearchTerm, setLocationSearchTerm] = useState('');
 
 	return (
