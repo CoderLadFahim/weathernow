@@ -13,7 +13,8 @@ function LocationSearch() {
 		}`;
 
 	const handleSearchTermChange = async (e) => {
-		if (e.target.value) {
+
+		if (e.target.value && e.keyCode === 13) {
 			const requestResponse = await fetch(geoCoderURL(e.target.value));
 			const responseData = await requestResponse.json();
 
@@ -22,16 +23,8 @@ function LocationSearch() {
 				...responseData,
 			]);
 		}
-	};
 
-	const debounce = (func, timeout = 1000) => {
-		let timer;
-		return (...args) => {
-			clearTimeout(timer);
-			timer = setTimeout(() => {
-				func.apply(this, args);
-			}, timeout);
-		};
+		if (e.keyCode === 8) setFoundLocations([]);
 	};
 
 	return (
@@ -39,11 +32,12 @@ function LocationSearch() {
 			<input
 				type="text"
 				className="text-center text-gray-500 text-font-bold outline-none rounded-lg py-1"
-				onChange={debounce(handleSearchTermChange)}
+				onKeyUp={handleSearchTermChange}
 				placeholder="Search Location"
 			/>
-
-			<LocationResult />
+			{
+				foundLocations.map((location, i) => <LocationResult key={i} foundLocation={location} />)
+			}
 		</section>
 	);
 }

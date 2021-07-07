@@ -39,21 +39,21 @@ function AppNav() {
 		<nav className="app-nav text-font-bold capitalize bg-gray-700 flex items-center content-evenly h-12">
 			<ul className="w-full h-full flex items-center justify-around border">
 				<li
-					className={`bg-gray-800 p-2 rounded-2xl ${
+					className={`bg-gray-800 cursor-pointer  p-2 rounded-2xl ${
 						weatherDataIsLocal ? "active" : ""
 					}`}
 				>
 					<FontAwesomeIcon icon={faMapMarkerAlt} />
 					Local
 				</li>
-				<li onClick={toggleLocationSearch}>
+				<li className="cursor-pointer"  onClick={toggleLocationSearch}>
 					<FontAwesomeIcon icon={faSearch} />
 					Search Location
 				</li>
 				<li
 					className={`text-${
 						AppData.unitSystem === "metric" ? "green" : "yellow"
-					}-400`}
+					}-400 cursor-pointer`}
 					onClick={switchUnitSystem}
 				>
 					{AppData.unitSystem}
