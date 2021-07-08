@@ -18,6 +18,7 @@ function LocationSearch() {
 				const requestResponse = await fetch(geoCoderURL(e.target.value));
 				const responseData = await requestResponse.json();
 
+				// responseData being set to foundLocations only if data is properly received as an array as the server sends an object if location not found
 				if (Array.isArray(responseData)) {
 					setFoundLocations((prevLocations) => [
 						...prevLocations,
@@ -36,7 +37,7 @@ function LocationSearch() {
 		<section className="location-search bg-green-400">
 			<input
 				type="text"
-				className="text-center text-gray-500 text-font-bold outline-none rounded-lg py-1"
+				className="text-center bg-gray-100 mb-5 text-gray-500 text-font-bold outline-none rounded-lg py-1"
 				onKeyUp={handleSearchTermChange}
 				placeholder="Search Location"
 			/>

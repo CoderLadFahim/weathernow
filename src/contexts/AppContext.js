@@ -12,6 +12,7 @@ const appState = {
 	userSearchingLocation: false,
 	searchedLocationData: {},
 
+	activeCoordsForData: {},
 	weatherDataToShow: {},
 };
 
@@ -31,6 +32,9 @@ const appReducer = (state, action) => {
 
 		case "SET_SEARCHED_LOCATION_DATA":
 			return { ...state, searchedLocationData: action.payload };
+
+		case "SET_ACTIVE_COORDS":
+			return { ...state, activeCoordsForData: action.payload };
 
 		case "SET_WEATHER_DATA_TO_SHOW":
 			return { ...state, weatherDataToShow: action.payload };

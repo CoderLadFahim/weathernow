@@ -22,6 +22,11 @@ function Opening() {
 					payload: { lat: latitude, lon: longitude },
 				});
 
+				// setting the activeCoords for weather data api call and render
+				dispatch({
+					type: "SET_ACTIVE_COORDS",
+					payload: { lat: latitude, lon: longitude },
+				});
 				history.push("/dashboard");
 			});
 		}
