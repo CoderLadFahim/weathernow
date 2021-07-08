@@ -1,26 +1,49 @@
-import { useState } from 'react';
-import LocationResult from './LocationResult';
+import { useState, useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
+import LocationResult from "./LocationResult";
 
 function LocationSearch() {
-//	const { AppData, dispatch } = useContext(AppContext);
-//
-//	const geoCoderURL = locationToLookFor =>
-//		`http://api.openweathermap.org/geo/1.0/direct?q=${locationToLookFor}&limit=${1}&appid=${
-//			AppData.apiKey
-//		}`;
-//
-	const [locationSearchTerm, setLocationSearchTerm] = useState('');
+	const { AppData, dispatch } = useContext(AppContext);
+
+	const [foundLocations, setFoundLocations] = useState([]);
+
+	const geoCoderURL = (locationToLookFor) =>
+		`http://api.openweathermap.org/geo/1.0/direct?q=${locationToLookFor}&limit=${50}&appid=${
+			AppData.apiKey
+		}`;
+
+	const handleSearchTermChange = async (e) => {
+		if (e.target.value && e.keyCode === 13) {
+			try {
+				const requestResponse = await fetch(geoCoderURL(e.target.value));
+				const responseData = await requestResponse.json();
+
+				// responseData being set to foundLocations only if data is properly received as an array as the server sends an object if location not found
+				if (Array.isArray(responseData)) {
+					setFoundLocations((prevLocations) => [
+						...prevLocations,
+						...responseData,
+					]);
+				}
+			} catch (e) {
+				console.log(e);
+			}
+		}
+
+		if (e.keyCode === 8) setFoundLocations([]);
+	};
 
 	return (
-		<section className="location-search bg-green-100">
+		<section className="location-search bg-green-400">
 			<input
 				type="text"
-				value={locationSearchTerm}
-				onChange={e => setLocationSearchTerm(e.target.value)}
+				className="text-center bg-gray-100 mb-5 text-gray-500 text-font-bold outline-none rounded-lg py-1"
+				onKeyUp={handleSearchTermChange}
 				placeholder="Search Location"
 			/>
-
-			<LocationResult />
+			{foundLocations.map((location, i) => (
+				<LocationResult key={i} foundLocation={location} />
+			))}
 		</section>
 	);
 }

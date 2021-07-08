@@ -20,10 +20,10 @@ function Dashboard() {
 				: null
 		);
 
-	// fetching the weatherData on first render and everytime user changes the AppData.unitSystem
+	// fetching the weatherData on first render and everytime user changes the AppData.unitSystem or AppData.activeCoordsForData
 	useEffect(() => {
-		if (AppData.localCoords.lat) {
-			fetch(weatherDataURL(AppData.localCoords))
+		if (AppData.activeCoordsForData.lat) {
+			fetch(weatherDataURL(AppData.activeCoordsForData))
 				.then((res) => res.json())
 				.then((data) =>
 					// dispatching weather data setting action to the AppContext with weather data
@@ -33,7 +33,7 @@ function Dashboard() {
 					})
 				);
 		}
-	}, [AppData.unitSystem]);
+	}, [AppData.unitSystem, AppData.activeCoordsForData]);
 
 	return (
 		<section className="bg-gray-800 text-gray-100 h-screen w-screen text-font-light">
