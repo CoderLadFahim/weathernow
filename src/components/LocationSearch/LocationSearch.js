@@ -13,15 +13,20 @@ function LocationSearch() {
 		}`;
 
 	const handleSearchTermChange = async (e) => {
-
 		if (e.target.value && e.keyCode === 13) {
-			const requestResponse = await fetch(geoCoderURL(e.target.value));
-			const responseData = await requestResponse.json();
+			try {
+				const requestResponse = await fetch(geoCoderURL(e.target.value));
+				const responseData = await requestResponse.json();
 
-			setFoundLocations((prevLocations) => [
-				...prevLocations,
-				...responseData,
-			]);
+				if (Array.isArray(responseData)) {
+					setFoundLocations((prevLocations) => [
+						...prevLocations,
+						...responseData,
+					]);
+				}
+			} catch (e) {
+				console.log(e);
+			}
 		}
 
 		if (e.keyCode === 8) setFoundLocations([]);
@@ -35,9 +40,9 @@ function LocationSearch() {
 				onKeyUp={handleSearchTermChange}
 				placeholder="Search Location"
 			/>
-			{
-				foundLocations.map((location, i) => <LocationResult key={i} foundLocation={location} />)
-			}
+			{foundLocations.map((location, i) => (
+				<LocationResult key={i} foundLocation={location} />
+			))}
 		</section>
 	);
 }
