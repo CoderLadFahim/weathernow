@@ -21,6 +21,14 @@ function AppNav() {
 		return null;
 	})();
 
+	const toggleLocalLocationData = () => {
+		// setting the active weather data coords to localCoords to render local weather data
+		dispatch({
+			type: "SET_ACTIVE_COORDS",
+			payload: AppData.localCoords,
+		});
+	};
+
 	const switchUnitSystem = () =>
 		// switching the unit system on the application context
 		dispatch({
@@ -42,11 +50,12 @@ function AppNav() {
 					className={`bg-gray-800 cursor-pointer  p-2 rounded-2xl ${
 						weatherDataIsLocal ? "active" : ""
 					}`}
+					onClick={toggleLocalLocationData}
 				>
 					<FontAwesomeIcon icon={faMapMarkerAlt} />
 					Local
 				</li>
-				<li className="cursor-pointer"  onClick={toggleLocationSearch}>
+				<li className="cursor-pointer" onClick={toggleLocationSearch}>
 					<FontAwesomeIcon icon={faSearch} />
 					Search Location
 				</li>
