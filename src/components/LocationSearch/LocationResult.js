@@ -15,9 +15,16 @@ function LocationResult({ foundLocation }) {
 	const handleClick = () => {
 		const { lat, lon } = foundLocation;
 
+		// setting the active coords to selected location coords
 		dispatch({
 			type: "SET_ACTIVE_COORDS",
 			payload: { lat, lon },
+		});
+
+		// hiding the location searching sidebar as user selected a location to view weather data of
+		dispatch({
+			type: "SET_USER_SEARCHING_LOCATION",
+			payload: !AppData.userSearchingLocation,
 		});
 	};
 
