@@ -8,7 +8,7 @@ function LocationSearch() {
 	const [foundLocations, setFoundLocations] = useState([]);
 
 	const geoCoderURL = (locationToLookFor) =>
-		`http://api.openweathermap.org/geo/1.0/direct?q=${locationToLookFor}&limit=${1}&appid=${
+		`http://api.openweathermap.org/geo/1.0/direct?q=${locationToLookFor}&limit=${50}&appid=${
 			AppData.apiKey
 		}`;
 
