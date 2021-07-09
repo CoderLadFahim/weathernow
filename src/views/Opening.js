@@ -1,8 +1,8 @@
-import { useHistory } from "react-router-dom";
-import GeolocationPermission from "../components/GeolocationPermission";
-import AppLogo from "../components/AppLogo";
-import { useContext, useEffect } from "react";
-import { AppContext } from "../contexts/AppContext";
+import { useHistory } from 'react-router-dom';
+import GeolocationPermission from '../components/GeolocationPermission';
+import AppLogo from '../components/AppLogo';
+import { useContext, useEffect } from 'react';
+import { AppContext } from '../contexts/AppContext';
 
 function Opening() {
 	const {
@@ -18,16 +18,16 @@ function Opening() {
 
 				// setting the local coords on the AppContext
 				dispatch({
-					type: "SET_LOCAL_COORDS",
+					type: 'SET_LOCAL_COORDS',
 					payload: { lat: latitude, lon: longitude },
 				});
 
 				// setting the activeCoords for weather data api call and render
 				dispatch({
-					type: "SET_ACTIVE_COORDS",
+					type: 'SET_ACTIVE_COORDS',
 					payload: { lat: latitude, lon: longitude },
 				});
-				history.push("/dashboard");
+				history.push('/dashboard');
 			});
 		}
 	}, []);

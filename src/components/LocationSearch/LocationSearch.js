@@ -1,9 +1,9 @@
-import { useState, useContext } from "react";
-import { AppContext } from "../../contexts/AppContext";
-import LocationResult from "./LocationResult";
+import { useState, useContext } from 'react';
+import { AppContext } from '../../contexts/AppContext';
+import LocationResult from './LocationResult';
 
 function LocationSearch() {
-	const { AppData, dispatch } = useContext(AppContext);
+	const { AppData } = useContext(AppContext);
 
 	const [foundLocations, setFoundLocations] = useState([]);
 
@@ -20,9 +20,9 @@ function LocationSearch() {
 				const responseData = await requestResponse.json();
 
 				// alerting the user if searched location doesn't exist
-				if (responseData.cod === "404" || !responseData[0]) {
+				if (responseData.cod === '404' || !responseData[0]) {
 					alert(`We couldn't find "${e.target.value}"`);
-					e.target.value = "";
+					e.target.value = '';
 				}
 
 				// responseData being set to foundLocations only if data is properly received as an array as the server sends an object if location not found

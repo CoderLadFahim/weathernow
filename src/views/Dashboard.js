@@ -1,8 +1,10 @@
-import { useContext, useEffect } from "react";
-import LocationSearch from "../components/LocationSearch/LocationSearch";
-import AppNav from "../components/AppNav";
-import { useHistory } from "react-router-dom";
-import { AppContext } from "../contexts/AppContext";
+import LocationSearch from '../components/LocationSearch/LocationSearch';
+import AppNav from '../components/AppNav';
+import MainDataCard from '../components/MainDataCard';
+
+import { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { AppContext } from '../contexts/AppContext';
 
 function Dashboard() {
 	const history = useHistory();
@@ -13,10 +15,10 @@ function Dashboard() {
 
 	// redirecting to Opening ('/') if user manually visits '/dashboard' and localcoords haven't been fetched
 	navigator.permissions
-		.query({ name: "geolocation" })
+		.query({ name: 'geolocation' })
 		.then((permissionStatus) =>
-			permissionStatus.state !== "granted" || !AppData.localCoords.lat
-				? history.push("/")
+			permissionStatus.state !== 'granted' || !AppData.localCoords.lat
+				? history.push('/')
 				: null
 		);
 
@@ -28,7 +30,7 @@ function Dashboard() {
 				.then((data) =>
 					// dispatching weather data setting action to the AppContext with weather data
 					dispatch({
-						type: "SET_WEATHER_DATA_TO_SHOW",
+						type: 'SET_WEATHER_DATA_TO_SHOW',
 						payload: data,
 					})
 				);
@@ -42,7 +44,11 @@ function Dashboard() {
 			{!AppData.weatherDataToShow ? (
 				<h1> Loading... </h1>
 			) : (
-				JSON.stringify(AppData.weatherDataToShow)
+				//	JSON.stringify(AppData.weatherDataToShow)
+				<MainDataCard
+					locationTimezone={AppData.weatherDataToShow.timezone}
+					mainData={AppData.weatherDataToShow.current}
+				/>
 			)}
 		</section>
 	);

@@ -7,7 +7,7 @@ function GeolocationPermission() {
 
 	navigator.permissions
 		.query({ name: 'geolocation' })
-		.then(permissionStatus => {
+		.then((permissionStatus) => {
 			permissionStatus.onchange = () => setPermissionStateChanged(true);
 		});
 

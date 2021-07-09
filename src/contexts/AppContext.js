@@ -1,13 +1,14 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer } from 'react';
 
 export const AppContext = createContext();
 
 const appState = {
-	apiKey: "051b2b620d19b836a71135e92c59335f",
+	apiKey: '051b2b620d19b836a71135e92c59335f',
 	localCoords: {},
 
-	unitSystem: "metric",
-	timelyDataType: "HOURLY",
+	unitSystem: 'metric',
+	timelyDataType: 'HOURLY',
+	userViewingTimelyData: false,
 
 	userSearchingLocation: false,
 	searchedLocationData: {},
@@ -18,29 +19,29 @@ const appState = {
 
 const appReducer = (state, action) => {
 	switch (action.type) {
-		case "SET_LOCAL_COORDS":
+		case 'SET_LOCAL_COORDS':
 			return { ...state, localCoords: action.payload };
 
-		case "SET_UNIT_SYSTEM":
+		case 'SET_UNIT_SYSTEM':
 			return { ...state, unitSystem: action.payload };
 
-		case "SET_TIMELY_DATA_TYPE":
+		case 'SET_TIMELY_DATA_TYPE':
 			return { ...state, timelyDataType: action.payload };
 
-		case "SET_USER_SEARCHING_LOCATION":
+		case 'SET_USER_SEARCHING_LOCATION':
 			return { ...state, userSearchingLocation: action.payload };
 
-		case "SET_SEARCHED_LOCATION_DATA":
+		case 'SET_SEARCHED_LOCATION_DATA':
 			return { ...state, searchedLocationData: action.payload };
 
-		case "SET_ACTIVE_COORDS":
+		case 'SET_ACTIVE_COORDS':
 			return { ...state, activeCoordsForData: action.payload };
 
-		case "SET_WEATHER_DATA_TO_SHOW":
+		case 'SET_WEATHER_DATA_TO_SHOW':
 			return { ...state, weatherDataToShow: action.payload };
 
 		default:
-			throw new Error("Invalid Action Type!");
+			throw new Error('Invalid Action Type!');
 	}
 };
 
