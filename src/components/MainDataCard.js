@@ -11,6 +11,8 @@ function MainDataCard({ locationTimezone, mainData }) {
 		AppData: { unitSystem },
 	} = useContext(AppContext);
 
+	const visibility = mainData ? unitSystem === 'metric' ? mainData.visibility + 'm' : (mainData.visibility / 1609).toFixed(0) + 'mi' : '';
+
 	return (
 		<section className="main-data-card bg-gray-200 text-gray-800">
 			<div className="current-weather-data">
@@ -54,7 +56,7 @@ function MainDataCard({ locationTimezone, mainData }) {
 				<div className="data-card">
 					<FontAwesomeIcon icon={faRoad} className="data-icon" />
 					<div className="data-info">
-						<h1 className="data">{mainData && mainData.visibility + `${unitSystem === 'metric' ? 'm' : 'mi'}`}</h1>
+						<h1 className="data">{visibility}</h1>
 						<h2 className="data-label">Visibility</h2>
 					</div>
 				</div>
