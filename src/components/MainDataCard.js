@@ -11,7 +11,23 @@ function MainDataCard({ locationTimezone, mainData }) {
 		AppData: { unitSystem },
 	} = useContext(AppContext);
 
-	const visibility = mainData ? unitSystem === 'metric' ? mainData.visibility + 'm' : (mainData.visibility / 1609).toFixed(0) + 'mi' : '';
+	const windSpeed = mainData
+		? mainData.wind_speed + `${unitSystem === "metric" ? "m/s" : "mph"}`
+		: "";
+
+	const humidity = mainData
+		? mainData.humidity + '%'
+		: "";
+
+	const UVindex = mainData
+		? mainData.uvi
+		: "";
+
+	const visibility = mainData
+		? unitSystem === "metric"
+			? mainData.visibility + "m"
+			: (mainData.visibility / 1609).toFixed(0) + "mi"
+		: "";
 
 	return (
 		<section className="main-data-card bg-gray-200 text-gray-800">
@@ -20,7 +36,10 @@ function MainDataCard({ locationTimezone, mainData }) {
 				<h2 className="time">{JSON.stringify(new Date())}</h2>
 
 				<h1>{mainData && mainData.weather[0].description}</h1>
-				<h1 className="temperature">{mainData && mainData.temp}</h1>
+				<h1 className="temperature">{mainData && mainData.temp}
+
+					<span className="temp-unit">°{unitSystem === 'metric' ? 'C' : 'F' }</span>
+				</h1>
 			</div>
 
 			{mainData && (
@@ -36,7 +55,7 @@ function MainDataCard({ locationTimezone, mainData }) {
 				<div className="data-card">
 					<FontAwesomeIcon icon={faWind} className="data-icon" />
 					<div className="data-info">
-						<h1 className="data">{mainData && mainData.wind_speed + `${unitSystem === 'metric' ? 'm/s' : 'mph'}`}</h1>
+						<h1 className="data">{windSpeed}</h1>
 						<h2 className="data-label">Wind Speed</h2>
 					</div>
 				</div>
@@ -46,13 +65,13 @@ function MainDataCard({ locationTimezone, mainData }) {
 				<div className="data-card">
 					<FontAwesomeIcon icon={faTint} className="data-icon" />
 					<div className="data-info">
-						<h1 className="data">{mainData && mainData.humidity}%</h1>
+						<h1 className="data">{humidity}</h1>
 						<h2 className="data-label">Humidity</h2>
 					</div>
 				</div>
 
 				{/* Visibility */}
-				
+
 				<div className="data-card">
 					<FontAwesomeIcon icon={faRoad} className="data-icon" />
 					<div className="data-info">
@@ -61,14 +80,12 @@ function MainDataCard({ locationTimezone, mainData }) {
 					</div>
 				</div>
 
-				
 				{/* UVI */}
-				
-			
+
 				<div className="data-card">
 					<FontAwesomeIcon icon={faSun} className="data-icon" />
 					<div className="data-info">
-						<h1 className="data">{mainData && mainData.uvi}</h1>
+						<h1 className="data">{UVindex}</h1>
 						<h2 className="data-label">UV Index</h2>
 					</div>
 				</div>
