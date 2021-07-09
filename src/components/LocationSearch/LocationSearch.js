@@ -3,7 +3,7 @@ import { AppContext } from "../../contexts/AppContext";
 import LocationResult from "./LocationResult";
 
 function LocationSearch() {
-	const { AppData, dispatch } = useContext(AppContext);
+	const { AppData } = useContext(AppContext);
 
 	const [foundLocations, setFoundLocations] = useState([]);
 
