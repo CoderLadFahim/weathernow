@@ -8,6 +8,7 @@ function AppNav() {
 	const { AppData, dispatch } = useContext(AppContext);
 
 	const weatherDataIsLocal = (() => {
+		// checking if the localCoords are equal to the apiData coords (then the active data is local)
 		if (AppData.weatherDataToShow.lat) {
 			const localLat = AppData.localCoords.lat.toFixed(0);
 			const localLon = AppData.localCoords.lon.toFixed(0);

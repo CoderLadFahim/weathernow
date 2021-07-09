@@ -1,6 +1,8 @@
-import { useContext, useEffect } from "react";
 import LocationSearch from "../components/LocationSearch/LocationSearch";
 import AppNav from "../components/AppNav";
+import MainDataCard from "../components/MainDataCard";
+
+import { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { AppContext } from "../contexts/AppContext";
 
@@ -42,7 +44,8 @@ function Dashboard() {
 			{!AppData.weatherDataToShow ? (
 				<h1> Loading... </h1>
 			) : (
-				JSON.stringify(AppData.weatherDataToShow)
+			//	JSON.stringify(AppData.weatherDataToShow)
+			<MainDataCard mainData={AppData.weatherDataToShow.current}  />
 			)}
 		</section>
 	);
