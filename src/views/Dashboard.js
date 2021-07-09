@@ -44,8 +44,11 @@ function Dashboard() {
 			{!AppData.weatherDataToShow ? (
 				<h1> Loading... </h1>
 			) : (
-			//	JSON.stringify(AppData.weatherDataToShow)
-			<MainDataCard mainData={AppData.weatherDataToShow.current}  />
+				//	JSON.stringify(AppData.weatherDataToShow)
+				<MainDataCard
+					locationTimezone={AppData.weatherDataToShow.timezone}
+					mainData={AppData.weatherDataToShow.current}
+				/>
 			)}
 		</section>
 	);
