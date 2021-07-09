@@ -15,13 +15,9 @@ function MainDataCard({ locationTimezone, mainData }) {
 		? mainData.wind_speed + `${unitSystem === "metric" ? "m/s" : "mph"}`
 		: "";
 
-	const humidity = mainData
-		? mainData.humidity + '%'
-		: "";
+	const humidity = mainData ? mainData.humidity + "%" : "";
 
-	const UVindex = mainData
-		? mainData.uvi
-		: "";
+	const UVindex = mainData ? mainData.uvi : "";
 
 	const visibility = mainData
 		? unitSystem === "metric"
@@ -30,15 +26,18 @@ function MainDataCard({ locationTimezone, mainData }) {
 		: "";
 
 	return (
-		<section className="main-data-card bg-gray-200 text-gray-800">
+		<section className="main-data-card w-1/3 bg-gray-200 text-gray-800">
 			<div className="current-weather-data">
 				<h1 className="location-timezone">{locationTimezone}</h1>
 				<h2 className="time">{JSON.stringify(new Date())}</h2>
 
 				<h1>{mainData && mainData.weather[0].description}</h1>
-				<h1 className="temperature">{mainData && mainData.temp}
+				<h1 className="temperature">
+					{mainData && mainData.temp}
 
-					<span className="temp-unit">°{unitSystem === 'metric' ? 'C' : 'F' }</span>
+					<span className="temp-unit">
+						°{unitSystem === "metric" ? "C" : "F"}
+					</span>
 				</h1>
 			</div>
 
@@ -90,10 +89,6 @@ function MainDataCard({ locationTimezone, mainData }) {
 					</div>
 				</div>
 			</div>
-
-			<pre className="current-location">
-				{JSON.stringify({ locationTimezone, ...mainData }, undefined, 2)}
-			</pre>
 		</section>
 	);
 }
