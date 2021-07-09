@@ -45,7 +45,7 @@ function AppNav() {
 
 	return (
 		<nav className="app-nav text-font-bold capitalize bg-gray-700 flex items-center content-evenly h-12">
-			<ul className="w-full h-full flex items-center justify-around border">
+			<ul className="w-full h-full flex items-center justify-around">
 				<li
 					className={`bg-gray-800 cursor-pointer  p-2 rounded-2xl ${
 						weatherDataIsLocal ? "active" : ""
