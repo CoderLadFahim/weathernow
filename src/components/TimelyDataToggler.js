@@ -6,15 +6,44 @@ function TimelyDataToggler() {
 		AppData: { timelyDataType },
 		dispatch,
 	} = useContext(AppContext);
+
+	let activeClass;
+
+	const timeTypeToggler = ({
+		target: {
+			dataset: { toggleType },
+		},
+	}) => {
+		dispatch({
+			type: 'SET_TIMELY_DATA_TYPE',
+			payload: toggleType,
+		});
+	};
+
 	return (
-		<ul className="timely-data-toggler">
-			<li data-toggle-type="daily" className="data-toggler">
+		<ul className="timely-data-toggler" onClick={timeTypeToggler}>
+			<li
+				data-toggle-type="daily"
+				className={`data-toggler ${
+					timelyDataType === 'daily' ? 'active-timeType' : ''
+				}`}
+			>
 				Daily
 			</li>
-			<li data-toggle-type="hourly" className="data-toggler">
+			<li
+				data-toggle-type="hourly"
+				className={`data-toggler ${
+					timelyDataType === 'hourly' ? 'active-timeType' : ''
+				}`}
+			>
 				Hourly
 			</li>
-			<li data-toggle-type="minutely" className="data-toggler">
+			<li
+				data-toggle-type="minutely"
+				className={`data-toggler ${
+					timelyDataType === 'minutely' ? 'active-timeType' : ''
+				}`}
+			>
 				Minutely
 			</li>
 		</ul>
