@@ -2,13 +2,32 @@ import LocationSearch from '../components/LocationSearch/LocationSearch';
 import AppNav from '../components/AppNav';
 import MainDataCard from '../components/MainDataCard';
 
-import { useContext, useEffect } from 'react';
+import TimelyDataToggler from '../components/TimelyDataToggler';
+import TimelyDataCard from '../components/TimelyDataCard';
+import DetailedTimelyDataDisplay from '../components/DetailedTimelyDataDisplay';
+
+import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/AppContext';
 
 function Dashboard() {
 	const history = useHistory();
 	const { AppData, dispatch } = useContext(AppContext);
+	const [dataIndexToShow, setDataIndexToShow] = useState(null);
+
+	// getting the toggled timely data type
+	let timelyData = null;
+
+	switch (AppData.timelyDataType) {
+		case 'daily':
+			timelyData = AppData.weatherDataToShow.daily;
+			break;
+		case 'hourly':
+			timelyData = AppData.weatherDataToShow.hourly;
+			break;
+		default:
+			timelyData = null;
+	}
 
 	const weatherDataURL = (coords) =>
 		`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=alerts,minutely&appid=${AppData.apiKey}&units=${AppData.unitSystem}`;
@@ -44,12 +63,31 @@ function Dashboard() {
 			{!AppData.weatherDataToShow ? (
 				<h1> Loading... </h1>
 			) : (
-				//	JSON.stringify(AppData.weatherDataToShow)
 				<MainDataCard
 					locationTimezone={AppData.weatherDataToShow.timezone}
 					mainData={AppData.weatherDataToShow.current}
 				/>
 			)}
+			{dataIndexToShow !== null ? (
+				<DetailedTimelyDataDisplay
+					hideDataDisplay={() => setDataIndexToShow(null)}
+					dataIndex={dataIndexToShow}
+				/>
+			) : (
+				''
+			)}
+			<TimelyDataToggler />
+
+			<div className="timely-data-display">
+				{timelyData &&
+					timelyData.map((data, i) => (
+						<TimelyDataCard
+							dataIndexSetter={() => setDataIndexToShow(i)}
+							timelyWeatherData={data}
+							key={i}
+						/>
+					))}
+			</div>
 		</section>
 	);
 }
