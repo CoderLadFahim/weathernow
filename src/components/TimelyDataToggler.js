@@ -38,14 +38,6 @@ function TimelyDataToggler() {
 			>
 				Hourly
 			</li>
-			<li
-				data-toggle-type="minutely"
-				className={`data-toggler ${
-					timelyDataType === 'minutely' ? 'active-timeType' : ''
-				}`}
-			>
-				Minutely
-			</li>
 		</ul>
 	);
 }

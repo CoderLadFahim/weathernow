@@ -23,14 +23,12 @@ function Dashboard() {
 		case 'hourly':
 			timelyData = AppData.weatherDataToShow.hourly;
 			break;
-		case 'minutely':
-			timelyData = AppData.weatherDataToShow.minutely;
 		default:
 			timelyData = null;
 	}
 
 	const weatherDataURL = (coords) =>
-		`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=alerts&appid=${AppData.apiKey}&units=${AppData.unitSystem}`;
+		`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=alerts,minutely&appid=${AppData.apiKey}&units=${AppData.unitSystem}`;
 
 	// redirecting to Opening ('/') if user manually visits '/dashboard' and localcoords haven't been fetched
 	navigator.permissions
