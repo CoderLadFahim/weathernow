@@ -3,7 +3,7 @@ import AppNav from '../components/AppNav';
 import MainDataCard from '../components/MainDataCard';
 
 import TimelyDataToggler from '../components/TimelyDataToggler';
-import TimelyDataDisplay from '../components/TimelyDataDisplay';
+import TimelyDataCard from '../components/TimelyDataCard';
 
 import { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -13,8 +13,24 @@ function Dashboard() {
 	const history = useHistory();
 	const { AppData, dispatch } = useContext(AppContext);
 
+	// getting the toggled timely data type
+	let timelyData = null;
+
+	switch (AppData.timelyDataType) {
+		case 'daily':
+			timelyData = AppData.weatherDataToShow.daily;
+			break;
+		case 'hourly':
+			timelyData = AppData.weatherDataToShow.hourly;
+			break;
+		case 'minutely':
+			timelyData = AppData.weatherDataToShow.minutely;
+		default:
+			timelyData = null;
+	}
+
 	const weatherDataURL = (coords) =>
-		`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=alerts,minutely&appid=${AppData.apiKey}&units=${AppData.unitSystem}`;
+		`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=alerts&appid=${AppData.apiKey}&units=${AppData.unitSystem}`;
 
 	// redirecting to Opening ('/') if user manually visits '/dashboard' and localcoords haven't been fetched
 	navigator.permissions
@@ -47,7 +63,6 @@ function Dashboard() {
 			{!AppData.weatherDataToShow ? (
 				<h1> Loading... </h1>
 			) : (
-				//	JSON.stringify(AppData.weatherDataToShow)
 				<MainDataCard
 					locationTimezone={AppData.weatherDataToShow.timezone}
 					mainData={AppData.weatherDataToShow.current}
@@ -56,7 +71,12 @@ function Dashboard() {
 
 			<TimelyDataToggler />
 
-			<TimelyDataDisplay />
+			<div className="timely-data-display">
+				{timelyData &&
+					timelyData.map((data, i) => (
+						<TimelyDataCard timelyWeatherData={data} key={i} />
+					))}
+			</div>
 		</section>
 	);
 }

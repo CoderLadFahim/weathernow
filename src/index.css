@@ -5,5 +5,9 @@
 @tailwind utilities;
 
 .active {
-	@apply text-blue-400 border-2 border-blue-400
+	@apply text-blue-400 border-2 border-blue-400;
+}
+
+.active-timeType {
+	@apply text-green-300;
 }
