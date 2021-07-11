@@ -2,6 +2,9 @@ import LocationSearch from '../components/LocationSearch/LocationSearch';
 import AppNav from '../components/AppNav';
 import MainDataCard from '../components/MainDataCard';
 
+import TimelyDataToggler from '../components/TimelyDataToggler';
+import TimelyDataDisplay from '../components/TimelyDataDisplay';
+
 import { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/AppContext';
@@ -50,6 +53,10 @@ function Dashboard() {
 					mainData={AppData.weatherDataToShow.current}
 				/>
 			)}
+
+			<TimelyDataToggler />
+
+			<TimelyDataDisplay />
 		</section>
 	);
 }

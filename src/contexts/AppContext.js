@@ -7,7 +7,7 @@ const appState = {
 	localCoords: {},
 
 	unitSystem: 'metric',
-	timelyDataType: 'HOURLY',
+	timelyDataType: 'hourly',
 	userViewingTimelyData: false,
 
 	userSearchingLocation: false,
