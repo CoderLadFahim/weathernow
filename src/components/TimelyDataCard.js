@@ -3,7 +3,7 @@ import { AppContext } from '../contexts/AppContext';
 
 function TimelyDataCard({ timelyWeatherData }) {
 	const {
-		AppData: { timelyDataType },
+		AppData: { timelyDataType, unitSystem },
 	} = useContext(AppContext);
 
 	const { dt, temp, weather } = timelyWeatherData;
@@ -11,7 +11,7 @@ function TimelyDataCard({ timelyWeatherData }) {
 	const { description, icon } = weatherData;
 
 	return (
-		<div className="timely-data-card text-gray-900">
+		<div className="timely-data-card border border-blue-400 text-gray-900">
 			<h1 className="time">{dt}</h1>
 			<div className="weather">
 				<img
@@ -20,9 +20,19 @@ function TimelyDataCard({ timelyWeatherData }) {
 				/>
 				<p className="weather-description">{description}</p>{' '}
 				<div className="temps">
-					<p className="celsius">28°C</p>
+					{unitSystem === 'metric' ? (
+						<>
+							<p className="celsius">28°C</p>
 
-					<p className="fahrenheit">55°F</p>
+							<p className="fahrenheit">55°F</p>
+						</>
+					) : (
+						<>
+							<p className="fahrenheit">55°F</p>
+
+							<p className="celsius">28°C</p>
+						</>
+					)}
 				</div>
 			</div>
 		</div>
