@@ -1,8 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWind } from '@fortawesome/free-solid-svg-icons';
-import { faTint } from '@fortawesome/free-solid-svg-icons';
-import { faRoad } from '@fortawesome/free-solid-svg-icons';
-import { faSun } from '@fortawesome/free-solid-svg-icons';
+import {
+	faWind,
+	faTint,
+	faRoad,
+	faCloud,
+} from '@fortawesome/free-solid-svg-icons';
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
@@ -21,7 +23,7 @@ function DataCardsDisplay() {
 
 	const humidity = mainData ? mainData.humidity + '%' : '';
 
-	const UVindex = mainData ? mainData.uvi : '';
+	const cloudsPercentage = mainData.clouds;
 
 	const visibility = mainData
 		? AppData.unitSystem === 'metric'
@@ -58,13 +60,13 @@ function DataCardsDisplay() {
 				</div>
 			</div>
 
-			{/* UVI */}
+			{/* Clouds Percentage */}
 
 			<div className="data-card">
-				<FontAwesomeIcon icon={faSun} className="data-icon" />
+				<FontAwesomeIcon icon={faCloud} className="data-icon" />
 				<div className="data-info">
-					<h1 className="data">{UVindex}</h1>
-					<h2 className="data-label">UV Index</h2>
+					<h1 className="data">{cloudsPercentage}%</h1>
+					<h2 className="data-label">Clouds</h2>
 				</div>
 			</div>
 		</div>
