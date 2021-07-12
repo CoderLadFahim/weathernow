@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
@@ -12,7 +13,9 @@ function TimelyDataCard({ timelyWeatherData }) {
 
 	return (
 		<div className="timely-data-card border border-blue-400 text-gray-900">
-			<h1 className="time">{dt}</h1>
+			<h1 className="time">
+				{moment.unix(dt).format(timelyDataType === 'daily' ? 'dddd' : 'hA')}
+			</h1>
 			<div className="weather">
 				<img
 					src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
