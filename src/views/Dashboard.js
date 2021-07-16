@@ -69,7 +69,10 @@ function Dashboard() {
 				/>
 			)}
 			{activeTimelyData && (
-				<DetailedTimelyDataDisplay data={activeTimelyData} />
+				<DetailedTimelyDataDisplay
+					hideDataDisplay={() => setActiveTimelyData(null)}
+					data={activeTimelyData}
+				/>
 			)}
 			<TimelyDataToggler />
 
