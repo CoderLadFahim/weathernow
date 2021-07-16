@@ -2,7 +2,7 @@ import moment from 'moment';
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
-function TimelyDataCard({ timelyWeatherData }) {
+function TimelyDataCard({ timelyWeatherData, activeTimelyDataToggler }) {
 	const {
 		AppData: { timelyDataType, unitSystem },
 	} = useContext(AppContext);
@@ -10,9 +10,11 @@ function TimelyDataCard({ timelyWeatherData }) {
 	const { dt, temp, weather } = timelyWeatherData;
 	const [weatherData] = weather;
 	const { description, icon } = weatherData;
-
 	return (
-		<div className="timely-data-card border border-blue-400 text-gray-900 cursor-pointer">
+		<div
+			onClick={activeTimelyDataToggler}
+			className="timely-data-card border border-blue-400 text-gray-900 cursor-pointer"
+		>
 			<h1 className="time">
 				{moment.unix(dt).format(timelyDataType === 'daily' ? 'dddd' : 'hA')}
 			</h1>

@@ -7,8 +7,6 @@ function TimelyDataToggler() {
 		dispatch,
 	} = useContext(AppContext);
 
-	let activeClass;
-
 	const timeTypeToggler = ({
 		target: {
 			dataset: { toggleType },

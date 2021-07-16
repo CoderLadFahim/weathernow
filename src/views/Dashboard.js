@@ -4,14 +4,16 @@ import MainDataCard from '../components/MainDataCard';
 
 import TimelyDataToggler from '../components/TimelyDataToggler';
 import TimelyDataCard from '../components/TimelyDataCard';
+import DetailedTimelyDataDisplay from '../components/DetailedTimelyDataDisplay';
 
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/AppContext';
 
 function Dashboard() {
 	const history = useHistory();
 	const { AppData, dispatch } = useContext(AppContext);
+	const [activeTimelyData, setActiveTimelyData] = useState(null);
 
 	// getting the toggled timely data type
 	let timelyData = null;
@@ -66,13 +68,19 @@ function Dashboard() {
 					mainData={AppData.weatherDataToShow.current}
 				/>
 			)}
-
+			{activeTimelyData && (
+				<DetailedTimelyDataDisplay data={activeTimelyData} />
+			)}
 			<TimelyDataToggler />
 
 			<div className="timely-data-display">
 				{timelyData &&
 					timelyData.map((data, i) => (
-						<TimelyDataCard timelyWeatherData={data} key={i} />
+						<TimelyDataCard
+							activeTimelyDataToggler={() => setActiveTimelyData(data)}
+							timelyWeatherData={data}
+							key={i}
+						/>
 					))}
 			</div>
 		</section>
