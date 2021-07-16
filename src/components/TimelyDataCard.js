@@ -12,7 +12,7 @@ function TimelyDataCard({ timelyWeatherData }) {
 	const { description, icon } = weatherData;
 
 	return (
-		<div className="timely-data-card border border-blue-400 text-gray-900">
+		<div className="timely-data-card border border-blue-400 text-gray-900 cursor-pointer">
 			<h1 className="time">
 				{moment.unix(dt).format(timelyDataType === 'daily' ? 'dddd' : 'hA')}
 			</h1>

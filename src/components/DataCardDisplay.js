@@ -23,7 +23,7 @@ function DataCardsDisplay() {
 
 	const humidity = mainData ? mainData.humidity + '%' : '';
 
-	const cloudsPercentage = mainData.clouds;
+	const cloudsPercentage = mainData && mainData.clouds;
 
 	const visibility = mainData
 		? AppData.unitSystem === 'metric'
