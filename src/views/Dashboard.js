@@ -29,6 +29,13 @@ function Dashboard() {
 			timelyData = null;
 	}
 
+	const dispatchTimeType = (newType) => {
+		dispatch({
+			type: 'SET_TIMELY_DATA_TYPE',
+			payload: newType,
+		});
+	};
+
 	const weatherDataURL = (coords) =>
 		`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=alerts,minutely&appid=${AppData.apiKey}&units=${AppData.unitSystem}`;
 
@@ -76,7 +83,8 @@ function Dashboard() {
 			) : (
 				''
 			)}
-			<TimelyDataToggler />
+
+			<TimelyDataToggler timeTypeToggler={dispatchTimeType} />
 
 			<div className="timely-data-display">
 				{timelyData &&
