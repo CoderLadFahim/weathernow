@@ -2,7 +2,7 @@ import moment from 'moment';
 import { useContext, useEffect } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
-function TimelyDataCard({ timelyWeatherData, activeTimelyDataToggler }) {
+function TimelyDataCard({ timelyWeatherData, dataIndexSetter }) {
 	const {
 		AppData: { timelyDataType, unitSystem },
 		dispatch,
@@ -31,7 +31,7 @@ function TimelyDataCard({ timelyWeatherData, activeTimelyDataToggler }) {
 	);
 	return (
 		<section
-			onClick={activeTimelyDataToggler}
+			onClick={dataIndexSetter}
 			className="timely-data-card border border-blue-400 text-gray-900 cursor-pointer"
 		>
 			<h1 className="time">

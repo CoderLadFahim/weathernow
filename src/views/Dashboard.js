@@ -13,7 +13,6 @@ import { AppContext } from '../contexts/AppContext';
 function Dashboard() {
 	const history = useHistory();
 	const { AppData, dispatch } = useContext(AppContext);
-	const [activeTimelyData, setActiveTimelyData] = useState(null);
 	const [dataIndexToShow, setDataIndexToShow] = useState(null);
 
 	// getting the toggled timely data type
@@ -69,12 +68,13 @@ function Dashboard() {
 					mainData={AppData.weatherDataToShow.current}
 				/>
 			)}
-			{activeTimelyData && (
+			{dataIndexToShow !== null ? (
 				<DetailedTimelyDataDisplay
-					hideDataDisplay={() => setActiveTimelyData(null)}
-					dataIndex={1}
-					data={activeTimelyData}
+					hideDataDisplay={() => setDataIndexToShow(null)}
+					dataIndex={dataIndexToShow}
 				/>
+			) : (
+				''
 			)}
 			<TimelyDataToggler />
 
@@ -82,7 +82,7 @@ function Dashboard() {
 				{timelyData &&
 					timelyData.map((data, i) => (
 						<TimelyDataCard
-							activeTimelyDataToggler={() => setActiveTimelyData(data)}
+							dataIndexSetter={() => setDataIndexToShow(i)}
 							timelyWeatherData={data}
 							key={i}
 						/>

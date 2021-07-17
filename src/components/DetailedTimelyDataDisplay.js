@@ -7,9 +7,7 @@ import { AppContext } from '../contexts/AppContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-function DetailedTimelyDataDisplay({ dataIndex, data, hideDataDisplay }) {
-	const [weather] = data.weather;
-	const iconCode = weather.icon;
+function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 	const {
 		AppData: {
 			weatherDataToShow,
@@ -19,7 +17,9 @@ function DetailedTimelyDataDisplay({ dataIndex, data, hideDataDisplay }) {
 		},
 	} = useContext(AppContext);
 
-	const car = weatherDataToShow[timelyDataType][dataIndex];
+	const data = weatherDataToShow[timelyDataType][dataIndex];
+	const [weather] = data.weather;
+	const iconCode = weather.icon;
 
 	return (
 		<div className="detailed-data-display border bg-indigo-800">
@@ -76,8 +76,9 @@ function DetailedTimelyDataDisplay({ dataIndex, data, hideDataDisplay }) {
 								fill="#3B82F6"
 							/>
 						</svg>
-						moment .unix(data.dt) .format(timelyDataType === 'daily' ?
-						'dddd' : 'hA')
+						{moment
+							.unix(data.dt)
+							.format(timelyDataType === 'daily' ? 'dddd' : 'hA')}
 						<svg
 							className="right-arrow"
 							width="26"
