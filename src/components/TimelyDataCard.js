@@ -12,16 +12,23 @@ function TimelyDataCard({ timelyWeatherData, dataIndexSetter }) {
 	const [weatherData] = weather;
 	const { description, icon } = weatherData;
 
-	// calculating the average temperature from the weatherData property
-	const avgTemp = (
-		Object.values(temp).reduce((a, v) => a + v) / Object.keys(temp).length
-	).toFixed(0);
-
 	// converting the average temperatures to different unit systems
-	const [tempInF, tempInC] = (() =>
-		unitSystem === 'metric'
+	const [tempInF, tempInC] = (() => {
+		let avgTemp = null;
+
+		typeof temp === 'object' && temp !== null
+			? // calculating the average temperature from the weatherData property
+			  (avgTemp =
+					Object.values(temp).reduce((a, v) => a + v) /
+					Object.keys(temp).length)
+			: (avgTemp = temp);
+
+		avgTemp = avgTemp.toFixed(0);
+
+		return unitSystem === 'metric'
 			? [(avgTemp * (9 / 5) + 32).toFixed(0), avgTemp]
-			: [avgTemp, ((avgTemp - 32) * (5 / 9)).toFixed(0)])();
+			: [avgTemp, ((avgTemp - 32) * (5 / 9)).toFixed(0)];
+	})();
 
 	// setting the temperatures on the AppContext to access it from the DetailedTimelyDataDisplay
 	useEffect(
@@ -34,7 +41,7 @@ function TimelyDataCard({ timelyWeatherData, dataIndexSetter }) {
 			onClick={dataIndexSetter}
 			className="timely-data-card border border-blue-400 text-gray-900 cursor-pointer"
 		>
-			<h1 className="time">
+			<h1 className="time text-blue-200">
 				{moment.unix(dt).format(timelyDataType === 'daily' ? 'dddd' : 'hA')}
 			</h1>
 
