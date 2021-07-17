@@ -2,12 +2,15 @@ import moment from 'moment';
 import TimelyDataToggler from './TimelyDataToggler';
 import DataCardDisplay from './DataCardDisplay';
 
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AppContext } from '../contexts/AppContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
+	// initializing the index to display, initially the component will render dataIndex passed in as props (what the use clicked to see)
+	const [timelyDataIndex, setTimelyDataIndex] = useState(dataIndex);
+
 	const {
 		AppData: {
 			weatherDataToShow,
@@ -17,9 +20,19 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 		},
 	} = useContext(AppContext);
 
-	const data = weatherDataToShow[timelyDataType][dataIndex];
+	const data = weatherDataToShow[timelyDataType][timelyDataIndex];
 	const [weather] = data.weather;
 	const iconCode = weather.icon;
+
+	const decrementDataIndex = () => {
+		if (timelyDataIndex > 0)
+			return setTimelyDataIndex((prevIndex) => prevIndex - 1);
+	};
+
+	const incrementDataIndex = () => {
+		if (timelyDataIndex < weatherDataToShow[timelyDataType].length - 1)
+			return setTimelyDataIndex((prevIndex) => prevIndex + 1);
+	};
 
 	return (
 		<div className="detailed-data-display border bg-indigo-800">
@@ -65,6 +78,7 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 					<div className="toggle-time">
 						<svg
 							className="left-arrow"
+							onClick={decrementDataIndex}
 							width="26"
 							height="32"
 							viewBox="0 0 26 32"
@@ -81,6 +95,7 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 							.format(timelyDataType === 'daily' ? 'dddd' : 'hA')}
 						<svg
 							className="right-arrow"
+							onClick={incrementDataIndex}
 							width="26"
 							height="32"
 							viewBox="0 0 26 32"
