@@ -14,12 +14,11 @@ function Dashboard() {
 	const history = useHistory();
 	const { AppData, dispatch } = useContext(AppContext);
 	const [dataIndexToShow, setDataIndexToShow] = useState(null);
-	const [timelyDataType, setTimelyDataType] = useState('hourly');
 
 	// getting the toggled timely data type
 	let timelyData = null;
 
-	switch (timelyDataType) {
+	switch (AppData.timelyDataType) {
 		case 'daily':
 			timelyData = AppData.weatherDataToShow.daily;
 			break;
@@ -60,7 +59,10 @@ function Dashboard() {
 						type: 'SET_WEATHER_DATA_TO_SHOW',
 						payload: data,
 					})
-				);
+				)
+				.catch((err) => {
+					console.log(err);
+				});
 		}
 	}, [AppData.unitSystem, AppData.activeCoordsForData]);
 

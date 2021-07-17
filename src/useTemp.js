@@ -1,4 +1,4 @@
-// takes in a temp (can be an obj or num) and a metric system for conversion
+// takes in a temp (can be an obj or num) and a unit system for conversion
 const useTemp = (temp, unitSystem) => {
 	let avgTemp = null;
 

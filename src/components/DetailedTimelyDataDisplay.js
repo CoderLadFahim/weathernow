@@ -13,8 +13,10 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 	const [timelyDataIndex, setTimelyDataIndex] = useState(dataIndex);
 
 	const {
-		AppData: { weatherDataToShow, timelyDataType, unitSystem },
+		AppData: { weatherDataToShow, unitSystem },
 	} = useContext(AppContext);
+
+	const [timelyDataType, setTimelyDataType] = useState('hourly');
 
 	const data = weatherDataToShow[timelyDataType][timelyDataIndex];
 	const [tempInF, tempInC] = useTemp(data.temp, unitSystem);
@@ -33,7 +35,9 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 
 	return (
 		<div className="detailed-data-display border bg-indigo-800">
-			<TimelyDataToggler />
+			<TimelyDataToggler
+				timeTypeToggler={(newType) => setTimelyDataType(newType)}
+			/>
 
 			<div className="details-card">
 				<div className="card-header">
