@@ -1,27 +1,20 @@
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
-function TimelyDataToggler({ typeToggler }) {
+function TimelyDataToggler({ timeTypeToggler }) {
 	const {
 		AppData: { timelyDataType },
 		dispatch,
 	} = useContext(AppContext);
 
-	const timeTypeToggler = ({
+	const toggleTimeType = ({
 		target: {
 			dataset: { toggleType },
 		},
-	}) => {
-		dispatch({
-			type: 'SET_TIMELY_DATA_TYPE',
-			payload: toggleType,
-		});
-
-		typeToggler(toggleType);
-	};
+	}) => timeTypeToggler(toggleType);
 
 	return (
-		<ul className="timely-data-toggler" onClick={timeTypeToggler}>
+		<ul className="timely-data-toggler" onClick={toggleTimeType}>
 			<li
 				data-toggle-type="daily"
 				className={`data-toggler ${
