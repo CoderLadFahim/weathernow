@@ -10,19 +10,20 @@ function TimelyDataCard({ timelyWeatherData, activeTimelyDataToggler }) {
 	const { dt, temp, weather } = timelyWeatherData;
 	const [weatherData] = weather;
 	const { description, icon } = weatherData;
+
+	// calculating the average temperature from the weatherData property
 	const avgTemp = (
 		Object.values(temp).reduce((a, v) => a + v) / Object.keys(temp).length
 	).toFixed(0);
 
-	const [tempInF, tempInC] = (() => {
-		if (unitSystem === 'metric')
-			return [(avgTemp * (9 / 5) + 32).toFixed(0), avgTemp];
-		if (unitSystem === 'imperial')
-			return [avgTemp, ((avgTemp - 32) * (5 / 9)).toFixed(0)];
-	})();
+	// converting the average temperatures to different unit systems
+	const [tempInF, tempInC] = (() =>
+		unitSystem === 'metric'
+			? [(avgTemp * (9 / 5) + 32).toFixed(0), avgTemp]
+			: [avgTemp, ((avgTemp - 32) * (5 / 9)).toFixed(0)])();
 
 	return (
-		<div
+		<section
 			onClick={activeTimelyDataToggler}
 			className="timely-data-card border border-blue-400 text-gray-900 cursor-pointer"
 		>
@@ -52,7 +53,7 @@ function TimelyDataCard({ timelyWeatherData, activeTimelyDataToggler }) {
 					)}
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 }
 
