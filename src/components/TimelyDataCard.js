@@ -10,6 +10,17 @@ function TimelyDataCard({ timelyWeatherData, activeTimelyDataToggler }) {
 	const { dt, temp, weather } = timelyWeatherData;
 	const [weatherData] = weather;
 	const { description, icon } = weatherData;
+	const avgTemp = (
+		Object.values(temp).reduce((a, v) => a + v) / Object.keys(temp).length
+	).toFixed(0);
+
+	const [tempInF, tempInC] = (() => {
+		if (unitSystem === 'metric')
+			return [(avgTemp * (9 / 5) + 32).toFixed(0), avgTemp];
+		if (unitSystem === 'imperial')
+			return [avgTemp, ((avgTemp - 32) * (5 / 9)).toFixed(0)];
+	})();
+
 	return (
 		<div
 			onClick={activeTimelyDataToggler}
@@ -18,24 +29,25 @@ function TimelyDataCard({ timelyWeatherData, activeTimelyDataToggler }) {
 			<h1 className="time">
 				{moment.unix(dt).format(timelyDataType === 'daily' ? 'dddd' : 'hA')}
 			</h1>
+
 			<div className="weather">
 				<img
 					src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
 					alt="weather icon"
 				/>
 				<p className="weather-description">{description}</p>{' '}
-				<div className="temps">
+				<div className="temperatures">
 					{unitSystem === 'metric' ? (
 						<>
-							<p className="celsius">28°C</p>
+							<p className="celsius">{tempInC}°C</p>
 
-							<p className="fahrenheit">55°F</p>
+							<p className="fahrenheit">{tempInF}°F</p>
 						</>
 					) : (
 						<>
-							<p className="fahrenheit">55°F</p>
+							<p className="fahrenheit">{tempInF}°F</p>
 
-							<p className="celsius">28°C</p>
+							<p className="celsius">{tempInC}°C</p>
 						</>
 					)}
 				</div>
