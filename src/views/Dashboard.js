@@ -14,6 +14,7 @@ function Dashboard() {
 	const history = useHistory();
 	const { AppData, dispatch } = useContext(AppContext);
 	const [activeTimelyData, setActiveTimelyData] = useState(null);
+	const [dataIndexToShow, setDataIndexToShow] = useState(null);
 
 	// getting the toggled timely data type
 	let timelyData = null;
@@ -71,6 +72,7 @@ function Dashboard() {
 			{activeTimelyData && (
 				<DetailedTimelyDataDisplay
 					hideDataDisplay={() => setActiveTimelyData(null)}
+					dataIndex={1}
 					data={activeTimelyData}
 				/>
 			)}
