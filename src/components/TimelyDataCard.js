@@ -1,10 +1,11 @@
 import moment from 'moment';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
 function TimelyDataCard({ timelyWeatherData, activeTimelyDataToggler }) {
 	const {
 		AppData: { timelyDataType, unitSystem },
+		dispatch,
 	} = useContext(AppContext);
 
 	const { dt, temp, weather } = timelyWeatherData;
@@ -22,6 +23,12 @@ function TimelyDataCard({ timelyWeatherData, activeTimelyDataToggler }) {
 			? [(avgTemp * (9 / 5) + 32).toFixed(0), avgTemp]
 			: [avgTemp, ((avgTemp - 32) * (5 / 9)).toFixed(0)])();
 
+	// setting the temperatures on the AppContext to access it from the DetailedTimelyDataDisplay
+	useEffect(
+		() =>
+			dispatch({ type: 'SET_TEMPERATURE', payload: { tempInC, tempInF } }),
+		[]
+	);
 	return (
 		<section
 			onClick={activeTimelyDataToggler}

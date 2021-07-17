@@ -11,7 +11,11 @@ function DetailedTimelyDataDisplay({ data, hideDataDisplay }) {
 	const [weather] = data.weather;
 	const iconCode = weather.icon;
 	const {
-		AppData: { timelyDataType, unitSystem },
+		AppData: {
+			timelyDataType,
+			unitSystem,
+			temperatures: { tempInC, tempInF },
+		},
 	} = useContext(AppContext);
 
 	return (
@@ -38,15 +42,15 @@ function DetailedTimelyDataDisplay({ data, hideDataDisplay }) {
 					<div className="temps">
 						{unitSystem === 'metric' ? (
 							<>
-								<p className="celsius">28°C</p>
+								<p className="celsius">{tempInC}°C</p>
 
-								<p className="fahrenheit">55°F</p>
+								<p className="fahrenheit">{tempInF}°F</p>
 							</>
 						) : (
 							<>
-								<p className="fahrenheit">55°F</p>
+								<p className="fahrenheit">{tempInF}°F</p>
 
-								<p className="celsius">28°C</p>
+								<p className="celsius">{tempInC}°C</p>
 							</>
 						)}
 					</div>
