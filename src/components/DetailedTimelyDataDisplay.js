@@ -6,21 +6,18 @@ import { useContext, useState } from 'react';
 import { AppContext } from '../contexts/AppContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import useTemp from '../useTemp';
 
 function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 	// initializing the index to display, initially the component will render dataIndex passed in as props (what the use clicked to see)
 	const [timelyDataIndex, setTimelyDataIndex] = useState(dataIndex);
 
 	const {
-		AppData: {
-			weatherDataToShow,
-			timelyDataType,
-			unitSystem,
-			temperatures: { tempInC, tempInF },
-		},
+		AppData: { weatherDataToShow, timelyDataType, unitSystem },
 	} = useContext(AppContext);
 
 	const data = weatherDataToShow[timelyDataType][timelyDataIndex];
+	const [tempInF, tempInC] = useTemp(data.temp, unitSystem);
 	const [weather] = data.weather;
 	const iconCode = weather.icon;
 

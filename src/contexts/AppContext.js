@@ -14,7 +14,6 @@ const appState = {
 
 	activeCoordsForData: {},
 	weatherDataToShow: {},
-	temperatures: {},
 };
 
 const appReducer = (state, action) => {
@@ -39,9 +38,6 @@ const appReducer = (state, action) => {
 
 		case 'SET_WEATHER_DATA_TO_SHOW':
 			return { ...state, weatherDataToShow: action.payload };
-
-		case 'SET_TEMPERATURE':
-			return { ...state, temperatures: action.payload };
 
 		default:
 			throw new Error('Invalid Action Type!');

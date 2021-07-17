@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { useContext, useEffect } from 'react';
 import { AppContext } from '../contexts/AppContext';
+import useTemp from '../useTemp';
 
 function TimelyDataCard({ timelyWeatherData, dataIndexSetter }) {
 	const {
@@ -12,30 +13,8 @@ function TimelyDataCard({ timelyWeatherData, dataIndexSetter }) {
 	const [weatherData] = weather;
 	const { description, icon } = weatherData;
 
-	// converting the average temperatures to different unit systems
-	const [tempInF, tempInC] = (() => {
-		let avgTemp = null;
+	const [tempInF, tempInC] = useTemp(temp, unitSystem);
 
-		typeof temp === 'object' && temp !== null
-			? // calculating the average temperature from the weatherData property
-			  (avgTemp =
-					Object.values(temp).reduce((a, v) => a + v) /
-					Object.keys(temp).length)
-			: (avgTemp = temp);
-
-		avgTemp = avgTemp.toFixed(0);
-
-		return unitSystem === 'metric'
-			? [(avgTemp * (9 / 5) + 32).toFixed(0), avgTemp]
-			: [avgTemp, ((avgTemp - 32) * (5 / 9)).toFixed(0)];
-	})();
-
-	// setting the temperatures on the AppContext to access it from the DetailedTimelyDataDisplay
-	useEffect(
-		() =>
-			dispatch({ type: 'SET_TEMPERATURE', payload: { tempInC, tempInF } }),
-		[]
-	);
 	return (
 		<section
 			onClick={dataIndexSetter}
