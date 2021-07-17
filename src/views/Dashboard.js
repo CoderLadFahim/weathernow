@@ -14,11 +14,12 @@ function Dashboard() {
 	const history = useHistory();
 	const { AppData, dispatch } = useContext(AppContext);
 	const [dataIndexToShow, setDataIndexToShow] = useState(null);
+	const [timelyDataType, setTimelyDataType] = useState('hourly');
 
 	// getting the toggled timely data type
 	let timelyData = null;
 
-	switch (AppData.timelyDataType) {
+	switch (timelyDataType) {
 		case 'daily':
 			timelyData = AppData.weatherDataToShow.daily;
 			break;
@@ -76,7 +77,9 @@ function Dashboard() {
 			) : (
 				''
 			)}
-			<TimelyDataToggler />
+			<TimelyDataToggler
+				typeToggler={(newType) => setTimelyDataType(newType)}
+			/>
 
 			<div className="timely-data-display">
 				{timelyData &&

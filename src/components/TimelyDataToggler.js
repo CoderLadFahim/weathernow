@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
-function TimelyDataToggler() {
+function TimelyDataToggler({ typeToggler }) {
 	const {
 		AppData: { timelyDataType },
 		dispatch,
@@ -16,6 +16,8 @@ function TimelyDataToggler() {
 			type: 'SET_TIMELY_DATA_TYPE',
 			payload: toggleType,
 		});
+
+		typeToggler(toggleType);
 	};
 
 	return (
