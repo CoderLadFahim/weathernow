@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
-function TimelyDataToggler({ timeTypeToggler }) {
+function TimelyDataToggler({ timeTypeToggler, activeTimeType }) {
 	const {
 		AppData: { timelyDataType },
 		dispatch,
@@ -18,7 +18,7 @@ function TimelyDataToggler({ timeTypeToggler }) {
 			<li
 				data-toggle-type="daily"
 				className={`data-toggler ${
-					timelyDataType === 'daily' ? 'active-timeType' : ''
+					activeTimeType === 'daily' ? 'active-timeType' : ''
 				}`}
 			>
 				Daily
@@ -26,7 +26,7 @@ function TimelyDataToggler({ timeTypeToggler }) {
 			<li
 				data-toggle-type="hourly"
 				className={`data-toggler ${
-					timelyDataType === 'hourly' ? 'active-timeType' : ''
+					activeTimeType === 'hourly' ? 'active-timeType' : ''
 				}`}
 			>
 				Hourly

@@ -23,6 +23,12 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 	const [weather] = data.weather;
 	const iconCode = weather.icon;
 
+	const updateLocalTimelyDataType = (newType) => {
+		setTimelyDataType(newType);
+		// setting the data index to 0 to avoid undefined error on line 21
+		setTimelyDataIndex(0);
+	};
+
 	const decrementDataIndex = () => {
 		if (timelyDataIndex > 0)
 			return setTimelyDataIndex((prevIndex) => prevIndex - 1);
@@ -36,7 +42,8 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 	return (
 		<div className="detailed-data-display border bg-indigo-800">
 			<TimelyDataToggler
-				timeTypeToggler={(newType) => setTimelyDataType(newType)}
+				timeTypeToggler={updateLocalTimelyDataType}
+				activeTimeType={timelyDataType}
 			/>
 
 			<div className="details-card">

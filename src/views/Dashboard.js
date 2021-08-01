@@ -16,25 +16,16 @@ function Dashboard() {
 	const [dataIndexToShow, setDataIndexToShow] = useState(null);
 
 	// getting the toggled timely data type
-	let timelyData = null;
+	let timelyData =
+		AppData.timelyDataType === 'daily'
+			? AppData.weatherDataToShow.daily
+			: AppData.weatherDataToShow.hourly;
 
-	switch (AppData.timelyDataType) {
-		case 'daily':
-			timelyData = AppData.weatherDataToShow.daily;
-			break;
-		case 'hourly':
-			timelyData = AppData.weatherDataToShow.hourly;
-			break;
-		default:
-			timelyData = null;
-	}
-
-	const dispatchTimeType = (newType) => {
+	const dispatchTimeType = (newType) =>
 		dispatch({
 			type: 'SET_TIMELY_DATA_TYPE',
 			payload: newType,
 		});
-	};
 
 	const weatherDataURL = (coords) =>
 		`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=alerts,minutely&appid=${AppData.apiKey}&units=${AppData.unitSystem}`;
@@ -86,7 +77,10 @@ function Dashboard() {
 			) : (
 				''
 			)}
-			<TimelyDataToggler timeTypeToggler={dispatchTimeType} />
+			<TimelyDataToggler
+				timeTypeToggler={dispatchTimeType}
+				activeTimeType={AppData.timelyDataType}
+			/>
 
 			<div className="timely-data-display">
 				{timelyData &&
