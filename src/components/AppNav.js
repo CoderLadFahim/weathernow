@@ -28,6 +28,12 @@ function AppNav() {
 			type: 'SET_ACTIVE_COORDS',
 			payload: AppData.localCoords,
 		});
+
+		// setting the searched location name to an empty string when user toggles local data
+		dispatch({
+			type: 'SET_SEARCHED_LOCATION_NAME',
+			payload: '',
+		});
 	};
 
 	const switchUnitSystem = () =>

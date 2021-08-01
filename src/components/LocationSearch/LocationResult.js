@@ -13,6 +13,9 @@ function LocationResult({ foundLocation }) {
 		}
 	})();
 
+	const locationName =
+		foundLocation.name + ', ' + countries[foundLocation.country];
+
 	const handleClick = () => {
 		const { lat, lon } = foundLocation;
 
@@ -20,6 +23,12 @@ function LocationResult({ foundLocation }) {
 		dispatch({
 			type: 'SET_ACTIVE_COORDS',
 			payload: { lat, lon },
+		});
+
+		// caching the searched location name in AppContext
+		dispatch({
+			type: 'SET_SEARCHED_LOCATION_NAME',
+			payload: locationName,
 		});
 
 		// hiding the location searching sidebar as user selected a location to view weather data of

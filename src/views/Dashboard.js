@@ -65,7 +65,11 @@ function Dashboard() {
 				<h1> Loading... </h1>
 			) : (
 				<MainDataCard
-					locationTimezone={AppData.weatherDataToShow.timezone}
+					locationTimezone={
+						!AppData.searchedLocationName
+							? AppData.weatherDataToShow.timezone
+							: AppData.searchedLocationName
+					}
 					mainData={AppData.weatherDataToShow.current}
 				/>
 			)}

@@ -10,7 +10,7 @@ const appState = {
 	timelyDataType: 'daily',
 
 	userSearchingLocation: false,
-	searchedLocationData: {},
+	searchedLocationName: '',
 
 	activeCoordsForData: {},
 	weatherDataToShow: {},
@@ -32,6 +32,9 @@ const appReducer = (state, action) => {
 
 		case 'SET_SEARCHED_LOCATION_DATA':
 			return { ...state, searchedLocationData: action.payload };
+
+		case 'SET_SEARCHED_LOCATION_NAME':
+			return { ...state, searchedLocationName: action.payload };
 
 		case 'SET_ACTIVE_COORDS':
 			return { ...state, activeCoordsForData: action.payload };
