@@ -1,6 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import {
+	faMapMarkerAlt,
+	faSearch,
+	faWeight,
+	faWeightHanging,
+} from '@fortawesome/free-solid-svg-icons';
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
@@ -51,27 +55,35 @@ function AppNav() {
 		});
 
 	return (
-		<nav className="app-nav text-font-bold capitalize bg-gray-700 flex items-center content-evenly h-12">
+		<nav className="app-nav text-font-bold capitalize bg-gray-700 flex items-center content-evenly h-14">
 			<ul className="w-full h-full flex items-center justify-around">
 				<li
-					className={`bg-gray-800 cursor-pointer  p-2 rounded-2xl ${
-						weatherDataIsLocal ? 'active' : ''
-					}`}
+					className={`nav-item ${weatherDataIsLocal ? 'active' : ''}`}
 					onClick={toggleLocalLocationData}
 				>
-					<FontAwesomeIcon icon={faMapMarkerAlt} />
+					<FontAwesomeIcon className="mr-2" icon={faMapMarkerAlt} />
 					Local
 				</li>
-				<li className="cursor-pointer" onClick={toggleLocationSearch}>
-					<FontAwesomeIcon icon={faSearch} />
+				<li className="nav-item border-none" onClick={toggleLocationSearch}>
+					<FontAwesomeIcon className="mr-2" icon={faSearch} />
 					Search Location
 				</li>
 				<li
-					className={`text-${
-						AppData.unitSystem === 'metric' ? 'green' : 'yellow'
-					}-400 cursor-pointer`}
+					className={`nav-item ${
+						AppData.unitSystem === 'metric'
+							? 'text-green-400 border-green-600'
+							: 'text-yellow-400 border-yellow-600'
+					}`}
 					onClick={switchUnitSystem}
 				>
+					<FontAwesomeIcon
+						className="mr-2"
+						icon={
+							AppData.unitSystem === 'metric'
+								? faWeight
+								: faWeightHanging
+						}
+					/>
 					{AppData.unitSystem}
 				</li>{' '}
 			</ul>{' '}

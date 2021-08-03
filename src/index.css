@@ -11,3 +11,7 @@
 .active-timeType {
 	@apply text-green-300;
 }
+
+.nav-item {
+	@apply bg-gray-800 cursor-pointer border-2 py-1 px-3 rounded-2xl cursor-pointer;
+}
