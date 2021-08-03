@@ -41,7 +41,7 @@ function LocationResult({ foundLocation }) {
 	return (
 		<div
 			onClick={handleClick}
-			className="location-result bg-gray-50 cursor-pointer text-gray-800 rounded-lg mb-2"
+			className="location-result bg-gray-50 cursor-pointer text-gray-800 rounded-lg mb-2 text-left"
 		>
 			<h2 className="location-name">
 				{foundLocation.name + ', ' + countries[foundLocation.country]},{' '}

@@ -1,12 +1,4 @@
-import { useContext } from 'react';
-import { AppContext } from '../contexts/AppContext';
-
 function TimelyDataToggler({ timeTypeToggler, activeTimeType }) {
-	const {
-		AppData: { timelyDataType },
-		dispatch,
-	} = useContext(AppContext);
-
 	const toggleTimeType = ({
 		target: {
 			dataset: { toggleType },

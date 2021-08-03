@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faMapMarkerAlt,
 	faSearch,
+	faCloud,
 	faWeight,
 	faWeightHanging,
 } from '@fortawesome/free-solid-svg-icons';
@@ -55,8 +56,16 @@ function AppNav() {
 		});
 
 	return (
-		<nav className="app-nav text-font-bold capitalize bg-gray-700 flex items-center content-evenly h-14">
-			<ul className="w-full h-full flex items-center justify-around">
+		<nav className="app-nav shadow text-font-bold capitalize bg-gray-700 flex items-center content-between w-screen h-12 fixed bottom-0 md:top-0 2xl:h-14">
+			<div className="app-logo w-0 h-full flex items-center justify-center md:w-1/2 text-center">
+				<FontAwesomeIcon icon={faCloud} className="mr-2" />
+				<h1 className="inline text-lg">
+					<span className="text-green-400">Weather</span>
+					<span className="text-blue-400">Now</span>
+				</h1>
+			</div>
+			<ul className="w-full h-full flex items-center justify-around md:flex-1">
+				{/* Local weather toggler */}
 				<li
 					className={`nav-item ${weatherDataIsLocal ? 'active' : ''}`}
 					onClick={toggleLocalLocationData}
@@ -64,12 +73,13 @@ function AppNav() {
 					<FontAwesomeIcon className="mr-2" icon={faMapMarkerAlt} />
 					Local
 				</li>
-				<li className="nav-item border-none" onClick={toggleLocationSearch}>
+				{/* Search Location  */}
+				<li className="nav-item" onClick={toggleLocationSearch}>
 					<FontAwesomeIcon className="mr-2" icon={faSearch} />
-					Search Location
 				</li>
+				{/*  Unit System Toggle  */}
 				<li
-					className={`nav-item ${
+					className={`nav-item  ${
 						AppData.unitSystem === 'metric'
 							? 'text-green-400 border-green-600'
 							: 'text-yellow-400 border-yellow-600'
@@ -77,7 +87,7 @@ function AppNav() {
 					onClick={switchUnitSystem}
 				>
 					<FontAwesomeIcon
-						className="mr-2"
+						className="mr-2 text-sm"
 						icon={
 							AppData.unitSystem === 'metric'
 								? faWeight
@@ -86,6 +96,8 @@ function AppNav() {
 					/>
 					{AppData.unitSystem}
 				</li>{' '}
+				{/* Developer Contact */}
+				<li className="nav-item">Coder</li>{' '}
 			</ul>{' '}
 		</nav>
 	);

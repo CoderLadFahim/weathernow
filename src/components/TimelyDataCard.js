@@ -1,12 +1,11 @@
 import moment from 'moment';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 import useTemp from '../useTemp';
 
 function TimelyDataCard({ timelyWeatherData, dataIndexSetter }) {
 	const {
 		AppData: { timelyDataType, unitSystem },
-		dispatch,
 	} = useContext(AppContext);
 
 	const { dt, temp, weather } = timelyWeatherData;
@@ -18,7 +17,7 @@ function TimelyDataCard({ timelyWeatherData, dataIndexSetter }) {
 	return (
 		<section
 			onClick={dataIndexSetter}
-			className="timely-data-card border border-blue-400 text-gray-900 cursor-pointer"
+			className="timely-data-card w-1/2 border border-blue-400 text-gray-900 cursor-pointer"
 		>
 			<h1 className="time text-blue-200">
 				{moment.unix(dt).format(timelyDataType === 'daily' ? 'dddd' : 'hA')}
