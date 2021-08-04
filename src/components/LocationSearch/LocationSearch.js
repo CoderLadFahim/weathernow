@@ -76,7 +76,7 @@ function LocationSearch() {
 	}, []);
 
 	return (
-		<section className="location-search w-5/6 bg-green-400 z-10 absolute top-0 bottom-0 right-0 pt-7 shadow text-center sm:w-3/5 lg:w-2/6 flex flex-col items-center">
+		<section className="location-search w-5/6 bg-green-400 z-10 fixed top-0 bottom-0 right-0 pt-7 shadow text-center sm:w-3/5 lg:w-2/6 flex flex-col items-center">
 			<div className="backdrop"></div>
 
 			<input
@@ -91,7 +91,7 @@ function LocationSearch() {
 			))}
 
 			<FontAwesomeIcon
-				className="absolute text-green-200 cursor-pointer bottom-4 right-5 transform scale-150 hover:text-white"
+				className="absolute text-green-200 cursor-pointer bottom-4 right-5 transform scale-150 hover:text-white transition"
 				onClick={hideSearchMenu}
 				icon={faTimes}
 			/>

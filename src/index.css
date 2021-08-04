@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 .active {
-	@apply text-blue-400;
+	@apply text-blue-400 font-bold;
 }
 
 .active-timeType {
