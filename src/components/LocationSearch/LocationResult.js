@@ -41,24 +41,23 @@ function LocationResult({ foundLocation }) {
 	return (
 		<div
 			onClick={handleClick}
-			className="location-result bg-gray-50 cursor-pointer text-gray-800 rounded-xl mb-3 shadow text-left w-11/12"
+			className="location-result bg-gray-50 cursor-pointer text-gray-800 rounded-2xl mb-3 shadow text-left w-11/12 min-h-16 px-4 py-3  flex items-center justify-between relative"
 		>
-			<h2 className="location-name text-blue-400 font-bold">
-				{foundLocation.name + ', ' + countries[foundLocation.country]}{' '}
-				{/* <img */}
-				{/* 	src={`https://flagcdn.com/16x12/${foundLocation.country.toLowerCase()}.png`} */}
-				{/* 	className="inline" */}
-				{/* 	alt="" */}
-				{/* /> */}
-			</h2>
+			<div>
+				<h2 className="location-name text-blue-400 font-bold pb-1">
+					{foundLocation.name + ', ' + countries[foundLocation.country]}{' '}
+				</h2>
 
-			<h4>
+				<h3 className="capitalize text-sm font-bold text-gray-400">
+					{locationContinent}
+				</h3>
+			</div>
+
+			<h4 className="font-bold text-xs text-gray-300 absolute right-2 bottom-2">
 				(
-				{foundLocation.lat.toFixed(2) + ', ' + foundLocation.lon.toFixed(2)}
+				{foundLocation.lat.toFixed(0) + ', ' + foundLocation.lon.toFixed(0)}
 				)
 			</h4>
-
-			<h3 className="capitalize">{locationContinent}</h3>
 		</div>
 	);
 }
