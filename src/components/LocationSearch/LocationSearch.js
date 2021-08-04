@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { AppContext } from '../../contexts/AppContext';
 import LocationResult from './LocationResult';
 
@@ -55,6 +55,25 @@ function LocationSearch() {
 			type: 'SET_USER_SEARCHING_LOCATION',
 			payload: !AppData.userSearchingLocation,
 		});
+
+	useEffect(() => {
+		const documentEventListener = ({ path }) => {
+			// finding the '.location-search' classed node within the click event path
+			try {
+				// it will be found if user clicked within the element
+				const locationSidebar = path.find((node) =>
+					Array.from(node.classList).includes('location-search')
+				);
+			} catch (e) {
+				// hiding the component if user clicks outside the sidebar
+				hideSearchMenu();
+			}
+		};
+
+		document.addEventListener('click', documentEventListener);
+
+		return () => document.removeEventListener('click', documentEventListener);
+	}, []);
 
 	return (
 		<section className="location-search w-5/6 bg-green-400 z-10 absolute top-0 bottom-0 right-0 pt-7 shadow text-center sm:w-3/5 lg:w-2/6 flex flex-col items-center">
