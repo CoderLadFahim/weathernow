@@ -16,6 +16,10 @@ function LocationSearch() {
 	const handleSearchTermChange = async (e) => {
 		// executing operations on enter press and truthy search term
 		if (e.target.value && e.keyCode === 13) {
+			// clearing the foundLocations state array before fetching new ones
+			setFoundLocations([]);
+
+			// fetching new foundLocations
 			try {
 				const requestResponse = await fetch(geoCoderURL(e.target.value));
 				const responseData = await requestResponse.json();
@@ -37,8 +41,13 @@ function LocationSearch() {
 				console.log(err);
 			}
 		}
-		// setting the foundLocations array to be empty if user clears search term
-		if (e.keyCode === 8) setFoundLocations([]);
+
+		// setting the foundLocations array to be empty if user changes or clears search term
+		if (
+			(e.target.value && foundLocations && e.keyCode !== 13) ||
+			e.keyCode === 8
+		)
+			setFoundLocations([]);
 	};
 
 	const hideSearchMenu = () =>
@@ -48,7 +57,7 @@ function LocationSearch() {
 		});
 
 	return (
-		<section className="location-search w-4/5 bg-green-400 z-10 absolute top-0 bottom-0 right-0 pt-7 shadow text-center sm:w-3/5 lg:w-2/6">
+		<section className="location-search w-5/6 bg-green-400 z-10 absolute top-0 bottom-0 right-0 pt-7 shadow text-center sm:w-3/5 lg:w-2/6 flex flex-col items-center">
 			<div className="backdrop"></div>
 
 			<input
@@ -58,7 +67,6 @@ function LocationSearch() {
 				placeholder="Search Location"
 			/>
 
-			<h6 className="font-bold text-sm mb-2">Results</h6>
 			{foundLocations.map((location, i) => (
 				<LocationResult key={i} foundLocation={location} />
 			))}
