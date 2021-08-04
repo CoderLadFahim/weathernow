@@ -56,8 +56,8 @@ function AppNav() {
 		});
 
 	return (
-		<nav className="app-nav shadow text-font-bold capitalize bg-gray-700 flex items-center content-between w-screen h-12 fixed bottom-0 md:top-0 2xl:h-14">
-			<div className="app-logo w-0 h-full flex items-center justify-center md:w-1/2 text-center">
+		<nav className="app-nav shadow-inner md:shadow text-font-bold capitalize bg-gray-700 flex items-center content-between w-screen h-12 fixed bottom-0 md:top-0 2xl:h-14">
+			<div className="app-logo w-0 h-full flex items-center justify-center hidden md:block md:w-1/2 text-center">
 				<FontAwesomeIcon icon={faCloud} className="mr-2" />
 				<h1 className="inline text-lg">
 					<span className="text-green-400">Weather</span>
