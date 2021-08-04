@@ -41,10 +41,11 @@ function LocationSearch() {
 	};
 
 	return (
-		<section className="location-search bg-green-400">
+		<section className="location-search w-1/4 bg-green-400 z-10 absolute top-0 bottom-0 right-0 pt-7 shadow text-center">
+			<div className="backdrop"></div>
 			<input
 				type="text"
-				className="text-center bg-gray-100 mb-5 text-gray-500 text-font-bold outline-none rounded-lg py-1"
+				className="text-center bg-gray-100 mb-5 text-gray-500 text-font-bold outline-none rounded-xl py-3 w-5/6"
 				onKeyUp={handleSearchTermChange}
 				placeholder="Search Location"
 			/>

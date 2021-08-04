@@ -11,7 +11,6 @@ import { AppContext } from '../contexts/AppContext';
 function DataCardsDisplay() {
 	const {
 		AppData,
-		TimelyDataDisplay,
 		AppData: {
 			weatherDataToShow: { current: mainData },
 		},
