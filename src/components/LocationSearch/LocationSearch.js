@@ -48,19 +48,22 @@ function LocationSearch() {
 		});
 
 	return (
-		<section className="location-search w-4/5 bg-green-400 z-10 absolute top-0 bottom-0 right-0 pt-7 shadow text-center">
+		<section className="location-search w-4/5 bg-green-400 z-10 absolute top-0 bottom-0 right-0 pt-7 shadow text-center sm:w-3/5 lg:w-2/6">
 			<div className="backdrop"></div>
+
 			<input
 				type="text"
 				className="text-center bg-gray-100 mb-5 text-gray-500 text-font-bold outline-none rounded-xl py-3 w-5/6 shadow"
 				onKeyUp={handleSearchTermChange}
 				placeholder="Search Location"
 			/>
+
 			{foundLocations.map((location, i) => (
 				<LocationResult key={i} foundLocation={location} />
 			))}
+
 			<FontAwesomeIcon
-				className="absolute text-green-200 cursor-pointer  bottom-4 right-5 transform scale-150 hover:text-white"
+				className="absolute text-green-200 cursor-pointer bottom-4 right-5 transform scale-150 hover:text-white"
 				onClick={hideSearchMenu}
 				icon={faTimes}
 			/>
