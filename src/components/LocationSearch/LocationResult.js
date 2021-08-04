@@ -41,9 +41,9 @@ function LocationResult({ foundLocation }) {
 	return (
 		<div
 			onClick={handleClick}
-			className="location-result bg-gray-50 cursor-pointer text-gray-800 rounded-lg mb-2 text-left"
+			className="location-result bg-gray-50 cursor-pointer text-gray-800 rounded-lg mb-2 text-left w-5/6"
 		>
-			<h2 className="location-name">
+			<h2 className="location-name text-blue-400 font-bold">
 				{foundLocation.name + ', ' + countries[foundLocation.country]},{' '}
 				<img
 					src={`https://flagcdn.com/16x12/${foundLocation.country.toLowerCase()}.png`}

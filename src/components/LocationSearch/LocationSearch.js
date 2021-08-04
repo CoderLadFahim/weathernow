@@ -53,11 +53,12 @@ function LocationSearch() {
 
 			<input
 				type="text"
-				className="text-center bg-gray-100 mb-5 text-gray-500 text-font-bold outline-none rounded-xl py-3 w-5/6 shadow"
+				className="text-center bg-gray-100 mb-9 text-gray-500 text-lg text-font-bold outline-none rounded-xl py-3 w-5/6 shadow"
 				onKeyUp={handleSearchTermChange}
 				placeholder="Search Location"
 			/>
 
+			<h6 className="font-bold text-sm mb-2">Results</h6>
 			{foundLocations.map((location, i) => (
 				<LocationResult key={i} foundLocation={location} />
 			))}
