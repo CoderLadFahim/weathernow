@@ -86,7 +86,7 @@ function Dashboard() {
 				activeTimeType={AppData.timelyDataType}
 			/>
 
-			<div className="timely-data-display">
+			<div className="timely-data-display overflow-x-scroll flex mb-5">
 				{timelyData &&
 					timelyData.map((data, i) => (
 						<TimelyDataCard

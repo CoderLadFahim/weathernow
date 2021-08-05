@@ -6,7 +6,10 @@ function TimelyDataToggler({ timeTypeToggler, activeTimeType }) {
 	}) => timeTypeToggler(toggleType);
 
 	return (
-		<ul className="timely-data-toggler" onClick={toggleTimeType}>
+		<ul
+			className="timely-data-toggler flex ml-3 my-4"
+			onClick={toggleTimeType}
+		>
 			<li
 				data-toggle-type="daily"
 				className={`data-toggler ${

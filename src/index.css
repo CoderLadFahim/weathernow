@@ -4,12 +4,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* .container { */
+/* 	@apply */
+/* } */
+
+.data-toggler {
+	@apply py-1 px-4 border border-green-300 text-green-200 rounded-full mr-3;
+}
+
 .active {
 	@apply text-blue-400 font-bold;
 }
 
 .active-timeType {
-	@apply text-green-300;
+	@apply text-gray-100 bg-green-400 font-bold shadow;
 }
 
 .nav-item {
