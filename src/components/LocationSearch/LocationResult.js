@@ -46,6 +46,11 @@ function LocationResult({ foundLocation }) {
 			<div>
 				<h2 className="location-name text-blue-400 font-bold pb-1">
 					{foundLocation.name + ', ' + countries[foundLocation.country]}{' '}
+					<img
+						src={`https://flagcdn.com/16x12/${foundLocation.country.toLowerCase()}.png`}
+						className="inline pl-2"
+						alt="Country Flag"
+					/>{' '}
 				</h2>
 
 				<h3 className="capitalize text-sm font-bold text-gray-400">
