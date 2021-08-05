@@ -31,15 +31,14 @@ function Dashboard() {
 		`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=alerts,minutely&appid=${AppData.apiKey}&units=${AppData.unitSystem}`;
 
 	// redirecting to Opening ('/') if user manually visits '/dashboard' and localcoords haven't been fetched
-	// TEMPORARY FIX FOR OFFLINE DEVELOPMENT
 
-	// navigator.permissions
-	// 	.query({ name: 'geolocation' })
-	// 	.then((permissionStatus) =>
-	// 		permissionStatus.state !== 'granted' || !AppData.localCoords.lat
-	// 			? history.push('/')
-	// 			: null
-	// 	);
+	navigator.permissions
+		.query({ name: 'geolocation' })
+		.then((permissionStatus) =>
+			permissionStatus.state !== 'granted' || !AppData.localCoords.lat
+				? history.push('/')
+				: null
+		);
 
 	// fetching the weatherData on first render and everytime user changes the AppData.unitSystem or AppData.activeCoordsForData
 	useEffect(() => {

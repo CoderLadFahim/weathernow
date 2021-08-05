@@ -9,7 +9,7 @@ function MainDataCard({ locationTimezone, mainData }) {
 	} = useContext(AppContext);
 
 	const weatherDescription = mainData ? mainData.weather[0].description : null;
-	const temperature = mainData ? mainData.temp : null;
+	const temperature = mainData ? mainData.temp.toFixed(0) : null;
 	const currentTime =
 		mainData && moment.unix(mainData.dt).format('h:mm A, dddd');
 
@@ -29,9 +29,9 @@ function MainDataCard({ locationTimezone, mainData }) {
 						<span
 							className={`text-${
 								unitSystem === 'metric' ? 'green' : 'blue'
-							}-400`}
+							}-400 transition`}
 						>
-							{temperature.toFixed(0)}
+							{temperature}
 						</span>
 
 						<span className="temp-unit text-xs text-gray-600 absolute top-0">

@@ -13,8 +13,6 @@ function AppNav() {
 	const { AppData, dispatch } = useContext(AppContext);
 
 	const weatherDataIsLocal = (() => {
-		// TEMPORARY FIX FOR OFFLINE DEVELOPMENT
-		return true;
 
 		// checking if the localCoords are equal to the apiData coords (then the active data is local)
 		if (AppData.weatherDataToShow.lat) {

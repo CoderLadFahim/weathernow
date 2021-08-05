@@ -12,9 +12,6 @@ function Opening() {
 	const history = useHistory();
 
 	useEffect(() => {
-		// TEMPORARY FIX FOR OFFLINE DEVELOPMENT
-		return history.push('/dashboard');
-
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition((position) => {
 				const { latitude, longitude } = position.coords;

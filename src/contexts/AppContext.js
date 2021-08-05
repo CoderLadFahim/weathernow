@@ -1,6 +1,5 @@
 import { createContext, useReducer } from 'react';
-import fakeData from '../openWeatherMapData.json';
-console.log(fakeData);
+
 export const AppContext = createContext();
 
 const appState = {
@@ -14,7 +13,7 @@ const appState = {
 	searchedLocationName: '',
 
 	activeCoordsForData: {},
-	weatherDataToShow: { ...fakeData },
+	weatherDataToShow: {},
 };
 
 const appReducer = (state, action) => {

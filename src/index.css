@@ -13,6 +13,23 @@
 	@apply py-1 px-4 border border-green-300 text-green-200 rounded-full mr-3;
 }
 
+.data-card {
+	@apply bg-gray-100 rounded-xl flex items-center justify-center py-3 px-2;
+}
+
+.data-icon {
+	@apply text-gray-500;
+}
+
+.data {
+	@apply font-bold text-blue-400;
+	font-family: 'Montserrat';
+}
+
+.data-label {
+	@apply text-gray-400 font-bold text-xs;
+}
+
 .active {
 	@apply text-blue-400 font-bold;
 }

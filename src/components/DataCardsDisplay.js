@@ -32,7 +32,7 @@ function DataCardsDisplay() {
 		: '';
 
 	return (
-		<div className="data-card-display flex">
+		<div className="data-card-display grid grid-cols-2 grid-rows-2 gap-4 mb-2">
 			<div className="data-card">
 				<FontAwesomeIcon icon={faWind} className="data-icon" />
 				<div className="data-info">
