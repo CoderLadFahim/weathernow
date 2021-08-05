@@ -7,7 +7,7 @@ function TimelyDataToggler({ timeTypeToggler, activeTimeType }) {
 
 	return (
 		<ul
-			className="timely-data-toggler flex ml-3 my-4"
+			className="timely-data-toggler flex ml-3 my-4 cursor-pointer container"
 			onClick={toggleTimeType}
 		>
 			<li

@@ -1,5 +1,5 @@
 import moment from 'moment';
-import DataCardsDisplay from './DataCardDisplay';
+import DataCardsDisplay from './DataCardsDisplay.js';
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
@@ -14,7 +14,7 @@ function MainDataCard({ locationTimezone, mainData }) {
 		mainData && moment.unix(mainData.dt).format('h:mm A, dddd');
 
 	return (
-		<section className="main-data-card w-1/2 bg-gray-200 text-gray-800">
+		<section className="main-data-card container w-1/2 bg-gray-200 mt-3 text-gray-800 rounded-2xl shadow">
 			<div className="current-weather-data">
 				<h1 className="location-timezone">{locationTimezone}</h1>
 				<h2 className="time">{currentTime}</h2>
