@@ -1,6 +1,6 @@
 import moment from 'moment';
 import TimelyDataToggler from './TimelyDataToggler';
-import DataCardDisplay from './DataCardDisplay';
+import DataCardDisplay from './DataCardsDisplay';
 
 import { useContext, useState } from 'react';
 import { AppContext } from '../contexts/AppContext';

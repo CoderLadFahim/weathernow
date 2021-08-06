@@ -31,6 +31,7 @@ function Dashboard() {
 		`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=alerts,minutely&appid=${AppData.apiKey}&units=${AppData.unitSystem}`;
 
 	// redirecting to Opening ('/') if user manually visits '/dashboard' and localcoords haven't been fetched
+
 	navigator.permissions
 		.query({ name: 'geolocation' })
 		.then((permissionStatus) =>
@@ -58,7 +59,7 @@ function Dashboard() {
 	}, [AppData.unitSystem, AppData.activeCoordsForData]);
 
 	return (
-		<section className="bg-gray-800 text-gray-100 h-screen w-screen text-font-light md:mt-12">
+		<section className="bg-gray-800 text-gray-100 h-screen w-screen text-font-light pt-7">
 			<AppNav />
 			{AppData.userSearchingLocation && <LocationSearch />}
 			{!AppData.weatherDataToShow ? (
