@@ -10,16 +10,17 @@ function TimelyDataCard({ timelyWeatherData, dataIndexSetter }) {
 
 	const { dt, temp, weather } = timelyWeatherData;
 	const [weatherData] = weather;
-	const { description, icon } = weatherData;
+	const { main, icon } = weatherData;
 
 	const [tempInF, tempInC] = useTemp(temp, unitSystem);
 
 	return (
-		<section
+		<div
 			onClick={dataIndexSetter}
-			className="timely-data-card w-1/2 border border-blue-400 text-gray-900 cursor-pointer"
+			className="timely-data-card block cursor-pointer bg-gray-200 rounded-xl flex flex-col items-center justify-around text-center"
+			style={{ width: '300px' }}
 		>
-			<h1 className="time text-blue-200">
+			<h1 className="time text-gray-500">
 				{moment.unix(dt).format(timelyDataType === 'daily' ? 'dddd' : 'hA')}
 			</h1>
 
@@ -28,24 +29,34 @@ function TimelyDataCard({ timelyWeatherData, dataIndexSetter }) {
 					src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
 					alt="weather icon"
 				/>
-				<p className="weather-description">{description}</p>{' '}
-				<div className="temperatures">
+				<p className="weather-description text-gray-800 font-bold">
+					{main}
+				</p>{' '}
+				<div className="temperatures flex w-full justify-between">
 					{unitSystem === 'metric' ? (
 						<>
-							<p className="celsius">{tempInC}°C</p>
+							<p className="celsius text-blue-400 num-font">
+								{tempInC}°C
+							</p>
 
-							<p className="fahrenheit">{tempInF}°F</p>
+							<p className="fahrenheit text-green-400 num-font">
+								{tempInF}°F
+							</p>
 						</>
 					) : (
 						<>
-							<p className="fahrenheit">{tempInF}°F</p>
+							<p className="fahrenheit text-green-400 num-font">
+								{tempInF}°F
+							</p>
 
-							<p className="celsius">{tempInC}°C</p>
+							<p className="celsius text-blue-400 num-font">
+								{tempInC}°C
+							</p>
 						</>
 					)}
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 }
 
