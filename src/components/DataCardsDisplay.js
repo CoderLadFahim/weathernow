@@ -33,11 +33,16 @@ function DataCardsDisplay() {
 
 	return (
 		<div className="data-card-display grid grid-cols-2 grid-rows-2 gap-4 mb-2">
-			<div className="data-card">
-				<FontAwesomeIcon icon={faWind} className="data-icon" />
+			<div className="data-card bg-gray-100 py-3 px-3 rounded-xl flex items-center justify-center">
+				<FontAwesomeIcon
+					icon={faWind}
+					className="data-icon block text-gray-600"
+				/>
 				<div className="data-info">
-					<h1 className="data">{windSpeed}</h1>
-					<h2 className="data-label">Wind Speed</h2>
+					<h1 className="data font-bold text-blue-400">{windSpeed}</h1>
+					<h2 className="data-label text-gray-400 font-bold text-xs">
+						Wind Speed
+					</h2>
 				</div>
 			</div>
 

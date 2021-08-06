@@ -8,7 +8,7 @@ function MainDataCard({ locationTimezone, mainData }) {
 		AppData: { unitSystem },
 	} = useContext(AppContext);
 
-	const weatherDescription = mainData ? mainData.weather[0].description : null;
+	const weatherDescription = mainData ? mainData.weather[0].main : null;
 	const temperature = mainData ? mainData.temp.toFixed(0) : null;
 	const currentTime =
 		mainData && moment.unix(mainData.dt).format('h:mm A, dddd');

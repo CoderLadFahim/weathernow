@@ -14,20 +14,28 @@
 }
 
 .data-card {
-	@apply bg-gray-100 rounded-xl flex items-center justify-center py-3 px-2;
+	@apply bg-gray-100 py-3 px-3 rounded-xl flex items-center justify-center;
+}
+
+.data-card > * {
+	border: 1px solid gray;
 }
 
 .data-icon {
-	@apply text-gray-500;
+	@apply block text-gray-600 mr-3;
+}
+
+.data-info {
+	@apply w-3/4;
 }
 
 .data {
 	@apply font-bold text-blue-400;
-	font-family: 'Montserrat';
 }
 
 .data-label {
 	@apply text-gray-400 font-bold text-xs;
+	font-family: 'Montserrat';
 }
 
 .active {
