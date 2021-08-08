@@ -10,7 +10,7 @@
 }
 
 .data-toggler {
-	@apply py-1 px-4 border border-green-300 text-green-200 rounded-full mr-3;
+	@apply py-1 px-5 border border-green-300 text-green-200 rounded-full text-xs;
 }
 
 /* Applying reusable styles in DataCardsDisplay */

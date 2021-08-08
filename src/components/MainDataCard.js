@@ -36,7 +36,7 @@ function MainDataCard({ locationTimezone, mainData }) {
 							{temperature}
 						</span>
 
-						<span className="temp-unit text-xs text-gray-600 absolute top-2 right-6">
+						<span className="temp-unit text-xs text-gray-600 absolute top-2">
 							°{unitSystem === 'metric' ? 'C' : 'F'}
 						</span>
 					</h1>
