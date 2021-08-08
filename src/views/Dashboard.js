@@ -21,8 +21,6 @@ function Dashboard() {
 			? AppData.weatherDataToShow.daily
 			: AppData.weatherDataToShow.hourly;
 
-	// timelyData ? (timelyData.length = 3) : null;
-
 	const dispatchTimeType = (newType) =>
 		dispatch({
 			type: 'SET_TIMELY_DATA_TYPE',
@@ -61,7 +59,7 @@ function Dashboard() {
 	}, [AppData.unitSystem, AppData.activeCoordsForData]);
 
 	return (
-		<section className="text-gray-100 bg-gray-800 h-screen pt-6 shadow text-font-light">
+		<section className="text-gray-100 bg-gray-700 h-screen pt-6 shadow text-font-light">
 			<AppNav />
 			{AppData.userSearchingLocation && <LocationSearch />}
 			{!AppData.weatherDataToShow ? (
