@@ -6,7 +6,7 @@
 
 .container {
 	width: 85%;
-	@apply my-0 mx-auto;
+	/* @apply my-0 mx-auto; */
 }
 
 .data-toggler {

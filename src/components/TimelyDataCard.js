@@ -17,45 +17,36 @@ function TimelyDataCard({ timelyWeatherData, dataIndexSetter }) {
 	return (
 		<div
 			onClick={dataIndexSetter}
-			className="timely-data-card block cursor-pointer bg-gray-200 rounded-xl flex flex-col items-center justify-around text-center"
-			style={{ width: '300px' }}
+			className="timely-data-card cursor-pointer w-28 h-44 bg-gray-200 px-6 py-2 rounded-3xl flex flex-col items-center justify-between text-center"
 		>
-			<h1 className="time text-gray-500">
+			<h1 className="time text-gray-500 text-sm">
 				{moment.unix(dt).format(timelyDataType === 'daily' ? 'dddd' : 'hA')}
 			</h1>
+			{/* <div className="weather"> */}
+			<img
+				src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+				className="transform scale-150"
+				alt="weather icon"
+			/>
+			<p className="weather-description text-sm text-gray-800 font-bold">
+				{main}
+			</p>{' '}
+			<div className="temperatures flex text-xs num-font items-center w-full mt-3  justify-between">
+				{unitSystem === 'metric' ? (
+					<>
+						<p className="celsius text-blue-400">{tempInC}°C</p>
 
-			<div className="weather">
-				<img
-					src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
-					alt="weather icon"
-				/>
-				<p className="weather-description text-gray-800 font-bold">
-					{main}
-				</p>{' '}
-				<div className="temperatures flex w-full justify-between">
-					{unitSystem === 'metric' ? (
-						<>
-							<p className="celsius text-blue-400 num-font">
-								{tempInC}°C
-							</p>
+						<p className="fahrenheit text-green-400 ">{tempInF}°F</p>
+					</>
+				) : (
+					<>
+						<p className="fahrenheit text-green-400 ">{tempInF}°F</p>
 
-							<p className="fahrenheit text-green-400 num-font">
-								{tempInF}°F
-							</p>
-						</>
-					) : (
-						<>
-							<p className="fahrenheit text-green-400 num-font">
-								{tempInF}°F
-							</p>
-
-							<p className="celsius text-blue-400 num-font">
-								{tempInC}°C
-							</p>
-						</>
-					)}
-				</div>
+						<p className="celsius text-blue-400 ">{tempInC}°C</p>
+					</>
+				)}
 			</div>
+			{/* </div> */}
 		</div>
 	);
 }
