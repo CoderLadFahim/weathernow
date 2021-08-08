@@ -15,7 +15,7 @@ function MainDataCard({ locationTimezone, mainData }) {
 
 	return (
 		<section className="main-data-card container w-1/2 bg-gray-200 text-gray-800 rounded-2xl shadow px-5 py-3">
-			<div className="flex">
+			<div className="flex justify-between">
 				<div className="current-weather-data">
 					<h1 className="location-timezone font-bold text-gray-600">
 						{locationTimezone}
@@ -42,6 +42,7 @@ function MainDataCard({ locationTimezone, mainData }) {
 				{mainData && (
 					<img
 						src={`http://openweathermap.org/img/wn/${mainData.weather[0].icon}@2x.png`}
+						className="w-28"
 						alt="weather icon"
 					/>
 				)}
