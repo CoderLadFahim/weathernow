@@ -87,7 +87,7 @@ function AppNav() {
 					onClick={switchUnitSystem}
 				>
 					<FontAwesomeIcon
-						className="mr-2 text-sm"
+						className="mr-1  text-sm"
 						icon={
 							AppData.unitSystem === 'metric' ? faWeight : faBalanceScale
 						}

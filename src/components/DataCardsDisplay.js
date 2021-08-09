@@ -39,7 +39,7 @@ function DataCardsDisplay() {
 	];
 
 	return (
-		<div className="data-card-display grid grid-cols-2 grid-rows-2 gap-4 sm:gap-5">
+		<div className="data-card-display grid grid-cols-2 grid-rows-2 gap-4 sm:gap-5 md:gap-6">
 			{cardsDataDisplay.map((data, i) => (
 				<div
 					key={i}
@@ -50,7 +50,7 @@ function DataCardsDisplay() {
 						className="data-icon block text-gray-500 absolute left-5 transform scale-125 sm:scale-200 sm:static"
 					/>
 					<div className="data-info absolute left-12 sm:static">
-						<h1 className="data num-font font-bold text-blue-400 text-sm sm:text-2xl">
+						<h1 className="data num-font font-bold text-blue-400 text-sm sm:text-2xl ">
 							{data.cardData}
 						</h1>
 						<h2 className="data-label text-gray-400 font-bold text-xs sm:text-xl">

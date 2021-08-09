@@ -13,7 +13,7 @@ module.exports = {
 			...defaultTheme.screens,
 		},
 		scale: {
-			200: '2',
+			200: '2.5',
 		},
 		extend: {},
 	},
