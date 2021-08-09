@@ -19,11 +19,6 @@
 	@apply bg-gray-100 rounded-xl flex items-center justify-center text-center;
 }
 
-.data-card > * {
-	@apply py-1
-	/* border: 1px solid gray; */;
-}
-
 .data-icon {
 	@apply block text-gray-500;
 	display: none;
