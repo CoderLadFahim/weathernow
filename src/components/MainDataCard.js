@@ -14,10 +14,10 @@ function MainDataCard({ locationTimezone, mainData }) {
 		mainData && moment.unix(mainData.dt).format('h:mm A, dddd');
 
 	return (
-		<section className="main-data-card container w-1/2 bg-gray-200 text-gray-800 rounded-2xl shadow px-5 py-3">
+		<section className="main-data-card container w-1/2 bg-gray-200 text-gray-800 rounded-2xl shadow px-5 py-3 relative">
 			<div className="flex justify-between mb-6">
 				<div className="current-weather-data">
-					<h1 className="location-timezone font-bold text-gray-600 relative">
+					<h1 className="location-timezone font-bold text-gray-600 relative text-xs">
 						{locationTimezone}
 					</h1>
 					<h2 className="time text-blue-400 font-bold text-sm">
@@ -44,7 +44,7 @@ function MainDataCard({ locationTimezone, mainData }) {
 				{mainData && (
 					<img
 						src={`http://openweathermap.org/img/wn/${mainData.weather[0].icon}@2x.png`}
-						className="w-32"
+						className="w-32 absolute right-0"
 						alt="weather icon"
 					/>
 				)}
