@@ -28,3 +28,7 @@ body {
 .num-font {
 	font-family: 'Montserrat';
 }
+
+.timely-data-display::-webkit-scrollbar {
+	display: none;
+}
