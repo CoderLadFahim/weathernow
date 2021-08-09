@@ -40,14 +40,17 @@ function DataCardsDisplay() {
 
 	return (
 		<div className="data-card-display grid grid-cols-2 grid-rows-2 gap-4">
-			{cardsDataDisplay.map((data) => (
-				<div className="data-card bg-gray-100 py-3 px-3 rounded-xl flex items-center justify-center">
+			{cardsDataDisplay.map((data, i) => (
+				<div
+					key={i}
+					className="data-card bg-gray-100 py-3 px-3 rounded-xl flex items-center justify-center"
+				>
 					<FontAwesomeIcon
 						icon={data.icon}
-						className="data-icon block text-gray-600"
+						className="data-icon block text-gray-600 "
 					/>
 					<div className="data-info">
-						<h1 className="data font-bold text-blue-400">
+						<h1 className="data num-font font-bold text-blue-400">
 							{data.cardData}
 						</h1>
 						<h2 className="data-label text-gray-400 font-bold text-xs">
