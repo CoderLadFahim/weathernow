@@ -59,7 +59,7 @@ function Dashboard() {
 	}, [AppData.unitSystem, AppData.activeCoordsForData]);
 
 	return (
-		<section className="text-gray-100 bg-gray-700 h-screen pt-6 shadow text-font-light">
+		<section className="text-gray-100 bg-gray-700 h-screen pt-6 sm:pt-20  shadow text-font-light">
 			<AppNav />
 			{AppData.userSearchingLocation && <LocationSearch />}
 			{!AppData.weatherDataToShow ? (

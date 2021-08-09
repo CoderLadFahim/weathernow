@@ -12,6 +12,9 @@ module.exports = {
 			xs: '414px',
 			...defaultTheme.screens,
 		},
+		scale: {
+			200: '2',
+		},
 		extend: {},
 	},
 	variants: {
