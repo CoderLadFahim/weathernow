@@ -17,7 +17,7 @@ function MainDataCard({ locationTimezone, mainData }) {
 		<section className="main-data-card container w-1/2 bg-gray-200 text-gray-800 rounded-2xl shadow px-5 py-3">
 			<div className="flex justify-between mb-6">
 				<div className="current-weather-data">
-					<h1 className="location-timezone font-bold text-gray-600">
+					<h1 className="location-timezone font-bold text-gray-600 relative">
 						{locationTimezone}
 					</h1>
 					<h2 className="time text-blue-400 font-bold text-sm">

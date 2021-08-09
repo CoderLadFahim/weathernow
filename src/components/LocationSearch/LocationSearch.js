@@ -13,6 +13,38 @@ function LocationSearch() {
 			AppData.apiKey
 		}`;
 
+	const setLocations = (responseData) => {
+		// responseData being set to foundLocations only if data is properly received as an array as the server sends an error object if location not found
+		if (Array.isArray(responseData)) {
+			// Removing the duplicate location results that have the same coordinates
+			let dupesRemoved = [];
+
+			responseData.forEach((locationObj) => {
+				// clearing out all the null values
+				dupesRemoved = dupesRemoved.filter((el) => el);
+
+				// pushing a locationObj if dupesRemoved doesn't have an obj that shares the same coordinates
+				dupesRemoved.push(
+					dupesRemoved.find(
+						(obj) =>
+							obj.lat.toFixed(0) === locationObj.lat.toFixed(0) &&
+							obj.lon.toFixed(0) === locationObj.lon.toFixed(0)
+					) === undefined
+						? locationObj
+						: null
+				);
+			});
+
+			// clearing out all the remaining null values
+			dupesRemoved = dupesRemoved.filter((el) => el);
+
+			setFoundLocations((prevLocations) => [
+				...prevLocations,
+				...dupesRemoved,
+			]);
+		}
+	};
+
 	const handleSearchTermChange = async (e) => {
 		// executing operations on enter press and truthy search term
 		if (e.target.value && e.keyCode === 13) {
@@ -30,13 +62,7 @@ function LocationSearch() {
 					e.target.value = '';
 				}
 
-				// responseData being set to foundLocations only if data is properly received as an array as the server sends an object if location not found
-				if (Array.isArray(responseData)) {
-					setFoundLocations((prevLocations) => [
-						...prevLocations,
-						...responseData,
-					]);
-				}
+				setLocations(responseData);
 			} catch (err) {
 				console.log(err);
 			}
