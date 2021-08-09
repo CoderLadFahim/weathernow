@@ -10,7 +10,7 @@
 }
 
 .data-toggler {
-	@apply py-1 px-5 border border-green-300 text-green-200 rounded-full text-xs;
+	@apply py-1 px-4 border border-green-300 text-green-200 rounded-full text-xs;
 }
 
 /* Applying reusable styles in DataCardsDisplay */
@@ -20,7 +20,8 @@
 }
 
 .data-card > * {
-	/* border: 1px solid gray; */
+	@apply py-1
+	/* border: 1px solid gray; */;
 }
 
 .data-icon {
@@ -33,12 +34,12 @@
 }
 
 .data {
-	@apply font-bold text-blue-400 text-sm;
+	@apply font-bold text-blue-400 text-sm xs:text-base;
 	font-family: 'Montserrat';
 }
 
 .data-label {
-	@apply text-gray-400 font-bold text-xs;
+	@apply text-gray-400 font-bold text-xs xs:text-sm;
 }
 /* =============== */
 .active {
