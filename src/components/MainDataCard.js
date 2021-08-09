@@ -14,8 +14,8 @@ function MainDataCard({ locationTimezone, mainData }) {
 		mainData && moment.unix(mainData.dt).format('h:mm A, dddd');
 
 	return (
-		<section className="main-data-card container w-1/2 bg-gray-200 text-gray-800 rounded-2xl shadow px-5 py-3 relative">
-			<div className="flex justify-between mb-6">
+		<section className="main-data-card container flex flex-col justify-around w-1/2 h-1/2 bg-gray-200 text-gray-800 rounded-2xl shadow px-5 py-3 relative">
+			<div className="flex mb-4">
 				<div className="current-weather-data">
 					<h1 className="location-timezone font-bold text-gray-600 relative text-xs">
 						{locationTimezone}
