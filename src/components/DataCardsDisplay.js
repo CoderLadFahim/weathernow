@@ -33,8 +33,8 @@ function DataCardsDisplay() {
 
 	const cardsDataDisplay = [
 		{ icon: faWind, cardData: windSpeed, dataLabel: 'Wind Speed' },
-		{ icon: faRoad, cardData: visibility, dataLabel: 'Visibility' },
 		{ icon: faTint, cardData: humidity, dataLabel: 'Humidity' },
+		{ icon: faRoad, cardData: visibility, dataLabel: 'Visibility' },
 		{ icon: faCloud, cardData: cloudsPercentage, dataLabel: 'Clouds' },
 	];
 
@@ -43,14 +43,14 @@ function DataCardsDisplay() {
 			{cardsDataDisplay.map((data, i) => (
 				<div
 					key={i}
-					className="data-card bg-gray-100 py-3 px-3 rounded-xl flex items-center justify-center"
+					className="data-card bg-gray-100 py-8 px-3 rounded-xl flex items-center justify-center relative"
 				>
 					<FontAwesomeIcon
 						icon={data.icon}
-						className="data-icon block text-gray-600 "
+						className="data-icon block text-gray-500 absolute left-5 transform scale-125"
 					/>
-					<div className="data-info">
-						<h1 className="data num-font font-bold text-blue-400">
+					<div className="data-info absolute left-12">
+						<h1 className="data num-font font-bold text-blue-400 text-sm">
 							{data.cardData}
 						</h1>
 						<h2 className="data-label text-gray-400 font-bold text-xs">
