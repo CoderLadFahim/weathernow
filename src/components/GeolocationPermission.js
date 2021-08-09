@@ -20,7 +20,10 @@ function GeolocationPermission() {
 						icon={faMapMarkerAlt}
 						className="text-gray-400 animate-pulse"
 					/>{' '}
-					<br /> Allow Location Access{' '}
+					<br /> Allow location access <br />
+					<span className="text-base text-green-400 opacity-80">
+						(please)
+					</span>
 				</span>
 			) : (
 				<button
