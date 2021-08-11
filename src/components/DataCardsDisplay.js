@@ -50,8 +50,8 @@ function DataCardsDisplay() {
 						className="data-icon block text-gray-500 absolute left-5 transform scale-125 sm:scale-200 sm:static"
 					/>
 
-					<div className="data-info absolute left-12 sm:static pt-6">
-						<h1 className="data num-font font-bold text-blue-400 text-sm sm:text-2xl ">
+					<div className="data-info absolute left-12 sm:static lg:pt-6">
+						<h1 className="data num-font font-bold text-blue-400 text-sm sm:text-2xl">
 							{data.cardData}
 						</h1>
 						<h2 className="data-label text-gray-400 font-bold text-xs sm:text-xl">
