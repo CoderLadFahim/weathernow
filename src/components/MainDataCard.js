@@ -14,17 +14,17 @@ function MainDataCard({ locationTimezone, mainData }) {
 		mainData && moment.unix(mainData.dt).format('h:mm A, dddd');
 
 	return (
-		<section className="main-data-card container flex flex-col justify-evenly   w-1/2 h-1/2 xs:h-3/5 bg-gray-200 text-gray-800 rounded-2xl sm:rounded-3xl  shadow px-5 py-3 relative">
+		<section className="main-data-card container flex flex-col justify-evenly w-1/2 h-1/2 xs:h-3/5 bg-gray-200 text-gray-800 rounded-2xl sm:rounded-3xl shadow px-5 py-3 relative lg:rounded-3xl lg:justify-around">
 			<div className="flex mb-4 sm:justify-evenly">
 				<div className="current-weather-data">
-					<h1 className="location-timezone font-bold text-gray-600 relative text-xs xs:text-sm sm:text-base">
+					<h1 className="location-timezone font-bold text-gray-600 relative text-xs xs:text-sm sm:text-base lg:text-lg">
 						{locationTimezone}
 					</h1>
-					<h2 className="time text-blue-400 font-bold text-sm xs:text-base sm:text-lg">
+					<h2 className="time text-blue-400 font-bold text-sm xs:text-base sm:text-lg lg:text-xl">
 						{currentTime}
 					</h2>
 
-					<h1 className="font-extrabold text-xl xs:text-2xl mb-1 capitalize">
+					<h1 className="font-extrabold text-xl xs:text-2xl mb-1 capitalize lg:text-2xl">
 						{weatherDescription}
 					</h1>
 					<h1 className="temperature num-font text-6xl xs:text-7xl sm:text-8xl font-bold relative">
@@ -36,7 +36,7 @@ function MainDataCard({ locationTimezone, mainData }) {
 							{temperature}
 						</span>
 
-						<span className="temp-unit text-xs text-gray-600 absolute top-2">
+						<span className="temp-unit text-xs text-gray-600 absolute top-2 lg:text-sm top-3">
 							°{unitSystem === 'metric' ? 'C' : 'F'}
 						</span>
 					</h1>
