@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AppContextProvider from './contexts/AppContext';
 import Dashboard from './views/Dashboard';
 import Opening from './views/Opening';
+import Coder from './views/Coder';
 
 function App() {
 	return (
@@ -14,6 +15,9 @@ function App() {
 					</Route>
 					<Route exact path="/dashboard">
 						<Dashboard />
+					</Route>
+					<Route exact path="/coder">
+						<Coder />
 					</Route>
 				</Switch>
 			</Router>
