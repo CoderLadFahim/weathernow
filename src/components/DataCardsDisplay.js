@@ -39,15 +39,15 @@ function DataCardsDisplay() {
 	];
 
 	return (
-		<div className="data-card-display grid grid-cols-2 grid-rows-2 gap-4 sm:gap-5 md:gap-6 lg:items-center">
+		<div className="data-card-display grid grid-cols-2 grid-rows-2 gap-4 sm:gap-5 md:gap-6">
 			{cardsDataDisplay.map((data, i) => (
 				<div
 					key={i}
-					className="data-card bg-gray-100 py-8 sm:py-10 px-3 rounded-xl sm:rounded-2xl flex items-center justify-evenly relative lg:flex-1 lg:py-8 lg:flex-col lg:items-center lg:text-center lg:transform-none"
+					className="data-card bg-gray-100 py-8 sm:py-10 px-3 rounded-xl sm:rounded-2xl flex items-center justify-evenly relative lg:flex-1 lg:py-8 lg:flex-col lg:items-center lg:text-center lg:transform-none lg:px-7 lg:bg-gray-800"
 				>
 					<FontAwesomeIcon
 						icon={data.icon}
-						className="data-icon block text-gray-500 absolute left-5 transform scale-125 sm:scale-200 sm:static"
+						className="data-icon block text-gray-500 absolute left-5 transform scale-125 sm:scale-200 sm:static lg:text-green-400"
 					/>
 
 					<div className="data-info absolute left-12 sm:static lg:pt-6">
