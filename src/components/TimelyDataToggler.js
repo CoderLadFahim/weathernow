@@ -1,9 +1,12 @@
 function TimelyDataToggler({ timeTypeToggler, activeTimeType }) {
 	const toggleTimeType = ({
 		target: {
+			classList,
 			dataset: { toggleType },
 		},
-	}) => timeTypeToggler(toggleType);
+	}) =>
+		Array.from(classList).includes('data-toggler') &&
+		timeTypeToggler(toggleType);
 
 	return (
 		<ul

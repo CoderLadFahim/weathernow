@@ -87,7 +87,7 @@ function LocationSearch() {
 			// finding the '.location-search' classed node within the click event path
 			try {
 				// it will be found if user clicked within the element
-				const locationSidebar = path.find((node) =>
+				path.find((node) =>
 					Array.from(node.classList).includes('location-search')
 				);
 			} catch (e) {
@@ -102,7 +102,7 @@ function LocationSearch() {
 	}, []);
 
 	return (
-		<section className="location-search w-11/12 bg-green-400 z-10 fixed top-0 bottom-0 right-0 pt-7 shadow text-center sm:w-3/5 lg:w-2/6 flex flex-col items-center">
+		<section className="location-search w-11/12 bg-green-400 z-10 fixed top-0 bottom-0 right-0 pt-7 shadow text-center sm:w-3/5 lg:w-1/2 flex flex-col items-center">
 			<div className="backdrop"></div>
 
 			<input
