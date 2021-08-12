@@ -23,6 +23,7 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 	const [weather] = data.weather;
 	const iconCode = weather.icon;
 
+	// toggle-time svg-button fill colors
 	const btnDisabledCol = '#6b7280';
 	const btnBlue = '#3B82F6';
 	const btnGreen = '#34D399';
@@ -44,7 +45,15 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 	};
 
 	return (
-		<div className="detailed-data-display bg-gray-800 absolute top-0 right-0 bottom-0 left-0 bg-opacity-90 flex flex-col z-10">
+		<div
+			className="detailed-data-display bg-gray-800 absolute top-0 right-0 bottom-0 left-0 bg-opacity-90 flex flex-col z-10"
+			// destructuring the detailed-data-display el's classes and hiding the component when clicked on the backdrop (the parent element)
+			onClick={({ target: { classList: nodeClasses } }) =>
+				Array.from(nodeClasses).includes('detailed-data-display')
+					? hideDataDisplay()
+					: ''
+			}
+		>
 			<TimelyDataToggler
 				timeTypeToggler={updateLocalTimelyDataType}
 				activeTimeType={timelyDataType}
