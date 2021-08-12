@@ -106,9 +106,19 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 							</>
 						) : (
 							<>
-								<p className="fahrenheit">{tempInF}°F</p>
+								<h1 className="fahrenheit text-blue-400 relative">
+									{tempInF}
+									<span className="text-gray-500 text-xs absolute top-2">
+										°F
+									</span>
+								</h1>
 
-								<p className="celsius">{tempInC}°C</p>
+								<h1 className="celsius text-green-400 relative">
+									{tempInC}
+									<span className="text-gray-500 text-xs absolute top-2">
+										°C
+									</span>
+								</h1>
 							</>
 						)}
 					</div>
@@ -138,6 +148,8 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 								fill={timelyDataIndex === 0 ? btnDisabledCol : btnGreen}
 							/>
 						</svg>
+
+						{/* CURRENT TIME */}
 						{moment
 							.unix(data.dt)
 							.format(timelyDataType === 'daily' ? 'dddd' : 'hA')}
