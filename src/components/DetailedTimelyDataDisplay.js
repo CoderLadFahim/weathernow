@@ -76,13 +76,17 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 					/>
 				</div>
 
+				{/* CARD CONTENT */}
+
 				<div className="general-data border border-2 h-full flex flex-col justify-around">
+					{/* WEATHER ICON/IMAGE */}
 					<img
 						src={`http://openweathermap.org/img/wn/${iconCode}@2x.png`}
 						alt="weather icon"
 						className="mx-auto my-0 transform scale-125 sm:scale-150"
 					/>
 
+					{/* TEMPERATURES */}
 					<div className="temps num-font flex items-center justify-around text-5xl space-x-5 sm:text-6xl">
 						{unitSystem === 'metric' ? (
 							<>
@@ -109,12 +113,15 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 						)}
 					</div>
 
+					{/* WEATHER DESCRIPTION */}
 					<h2 className="weather-desc text-gray-600 capitalize font-bold text-center text-lg sm:text-3xl">
 						{weather.main}
 					</h2>
 
+					{/* DATA CARD DISPLAY */}
 					<DataCardDisplay dataToDisplay={data} />
 
+					{/* TIME TOGGLER */}
 					<div className="toggle-time text-gray-700 font-bold text-xl flex justify-between align-baseline items-center sm:text-2xl w-3/4 mx-auto">
 						<svg
 							className="left-arrow transition duration-50  transform cursor-pointer hover:scale-125"
