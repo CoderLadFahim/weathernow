@@ -23,6 +23,10 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 	const [weather] = data.weather;
 	const iconCode = weather.icon;
 
+	const btnDisabledCol = '#6b7280';
+	const btnBlue = '#3B82F6';
+	const btnGreen = '#34D399';
+
 	const updateLocalTimelyDataType = (newType) => {
 		setTimelyDataType(newType);
 		// setting the data index to 0 to avoid undefined error on line 21
@@ -51,8 +55,8 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 				<div className="card-header text-gray-400 font-extrabold text-lg flex justify-between align-baseline items-center">
 					<h2
 						className={`day ${
-							timelyDataType === 'hourly' ? 'opacity-0' : ''
-						}`}
+							timelyDataType !== 'hourly' ? 'opacity-0' : ''
+						} md:text-2xl`}
 					>
 						{moment.unix(data.dt).format('dddd')}
 					</h2>
@@ -102,9 +106,9 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 
 					<DataCardDisplay />
 
-					<div className="toggle-time text-gray-700 font-bold text-xl flex justify-between align-baseline items-center sm:text-2xl">
+					<div className="toggle-time text-gray-700 font-bold text-xl flex justify-between align-baseline items-center sm:text-2xl w-3/4 mx-auto">
 						<svg
-							className="left-arrow"
+							className="left-arrow transition duration-50  transform cursor-pointer hover:scale-125"
 							onClick={decrementDataIndex}
 							width="26"
 							height="32"
@@ -114,14 +118,15 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 						>
 							<path
 								d="M1.82861 18.5092C0.0211775 17.3246 0.0211747 14.6754 1.82861 13.4908L21.1056 0.857288C23.1007 -0.450256 25.75 0.98103 25.75 3.36644V28.6336C25.75 31.019 23.1007 32.4503 21.1056 31.1427L1.82861 18.5092Z"
-								fill="#3B82F6"
+								// fill={'#3B82F6'}
+								fill={timelyDataIndex === 0 ? btnDisabledCol : btnGreen}
 							/>
 						</svg>
 						{moment
 							.unix(data.dt)
 							.format(timelyDataType === 'daily' ? 'dddd' : 'hA')}
 						<svg
-							className="right-arrow"
+							className="right-arrow transition duration-50 cursor-pointer transform hover:scale-125"
 							onClick={incrementDataIndex}
 							width="26"
 							height="32"
@@ -131,7 +136,12 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 						>
 							<path
 								d="M24.1714 18.5092C25.9788 17.3246 25.9788 14.6754 24.1714 13.4908L4.89443 0.857288C2.8993 -0.450256 0.25 0.98103 0.25 3.36644V28.6336C0.25 31.019 2.8993 32.4503 4.89443 31.1427L24.1714 18.5092Z"
-								fill="#34D399"
+								fill={
+									timelyDataIndex <
+									weatherDataToShow[timelyDataType].length - 1
+										? btnBlue
+										: btnDisabledCol
+								}
 							/>
 						</svg>
 					</div>
