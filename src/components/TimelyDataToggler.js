@@ -1,4 +1,8 @@
-function TimelyDataToggler({ timeTypeToggler, activeTimeType }) {
+function TimelyDataToggler({
+	timeTypeToggler,
+	activeTimeType,
+	className: additionalClasses,
+}) {
 	const toggleTimeType = ({
 		target: {
 			classList,
@@ -10,7 +14,7 @@ function TimelyDataToggler({ timeTypeToggler, activeTimeType }) {
 
 	return (
 		<ul
-			className="timely-data-toggler flex my-5 container cursor-pointer space-x-4"
+			className={`timely-data-toggler flex my-5 container cursor-pointer space-x-4 ${additionalClasses}`}
 			onClick={toggleTimeType}
 		>
 			<li
