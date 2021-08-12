@@ -8,12 +8,12 @@ import {
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
-function DataCardsDisplay() {
+function DataCardsDisplay({ dataToDisplay: mainData }) {
 	const {
 		AppData,
-		AppData: {
-			weatherDataToShow: { current: mainData },
-		},
+		// AppData: {
+		// 	weatherDataToShow: { current: mainData },
+		// },
 	} = useContext(AppContext);
 
 	const windSpeed = mainData
@@ -27,7 +27,7 @@ function DataCardsDisplay() {
 
 	const visibility = mainData
 		? AppData.unitSystem === 'metric'
-			? mainData.visibility + 'm'
+			? (mainData.visibility / 1000).toFixed(0) + 'km'
 			: (mainData.visibility / 1609).toFixed(0) + 'mi'
 		: '';
 

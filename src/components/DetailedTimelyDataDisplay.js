@@ -113,7 +113,7 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 						{weather.main}
 					</h2>
 
-					<DataCardDisplay />
+					<DataCardDisplay dataToDisplay={data} />
 
 					<div className="toggle-time text-gray-700 font-bold text-xl flex justify-between align-baseline items-center sm:text-2xl w-3/4 mx-auto">
 						<svg

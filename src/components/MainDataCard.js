@@ -49,7 +49,7 @@ function MainDataCard({ locationTimezone, mainData }) {
 					/>
 				)}
 			</div>
-			<DataCardsDisplay />
+			<DataCardsDisplay dataToDisplay={mainData} />
 		</section>
 	);
 }
