@@ -14,6 +14,7 @@ module.exports = {
 		},
 		scale: {
 			200: '2.5',
+			...defaultTheme.scale,
 		},
 		extend: {},
 	},

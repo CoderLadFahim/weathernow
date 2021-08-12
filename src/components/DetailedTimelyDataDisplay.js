@@ -46,30 +46,41 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 				activeTimeType={timelyDataType}
 			/>
 
-			<div className="details-card bg-gray-200 container rounded-3xl px-5 pt-3 h-4/5">
-				<div className="card-header text-gray-400 font-extrabold text-lg flex justify-between baseline items-center">
+			<div className="details-card bg-gray-200 container rounded-3xl px-5 pt-3 h-4/5 flex flex-col">
+				{/* CARD HEADER */}
+				<div className="card-header text-gray-400 font-extrabold text-lg flex justify-between align-baseline items-center">
 					{timelyDataType === 'hourly' && (
 						<h2 className="day">{moment.unix(data.dt).format('dddd')}</h2>
 					)}
 					<FontAwesomeIcon
-						className="cursor-pointer tranform scale-125"
+						className="cursor-pointer transform scale-125"
 						onClick={hideDataDisplay}
 						icon={faTimes}
 					/>
 				</div>
-				<div className="general-data">
+
+				<div className="general-data border border-2 h-full flex flex-col justify-around">
 					<img
 						src={`http://openweathermap.org/img/wn/${iconCode}@2x.png`}
 						alt="weather icon"
+						className="mx-auto my-0 transform scale-125"
 					/>
 
-					<div className="temps num-font flex items-center justify-around text-2xl">
+					<div className="temps num-font flex items-center justify-around text-5xl space-x-5">
 						{unitSystem === 'metric' ? (
 							<>
-								<h1 className="celsius text-green-400">{tempInC}°C</h1>
+								<h1 className="celsius text-green-400 relative">
+									{tempInC}
+									<span className="text-gray-500 text-xs absolute top-2">
+										°C
+									</span>
+								</h1>
 
-								<h1 className="fahrenheit text-blue-400">
-									{tempInF}°F
+								<h1 className="fahrenheit text-blue-400 relative">
+									{tempInF}
+									<span className="text-gray-500 text-xs absolute top-2">
+										°F
+									</span>
 								</h1>
 							</>
 						) : (
@@ -81,11 +92,13 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 						)}
 					</div>
 
-					<h2 className="weather-desc">{weather.description}</h2>
+					<h2 className="weather-desc text-gray-600 capitalize font-bold text-center text-lg">
+						{weather.main}
+					</h2>
 
 					<DataCardDisplay />
 
-					<div className="toggle-time text-gray-700 font-bold text-lg flex justify-between baseline items-center">
+					<div className="toggle-time text-gray-700 font-bold text-xl flex justify-between align-baseline items-center">
 						<svg
 							className="left-arrow"
 							onClick={decrementDataIndex}
