@@ -40,13 +40,13 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 	};
 
 	return (
-		<div className="detailed-data-display border bg-gray-800 absolute top-0 right-0 bottom-0 left-0 bg-opacity-90">
+		<div className="detailed-data-display border bg-gray-800 absolute top-0 right-0 bottom-0 left-0 bg-opacity-90 flex flex-col z-10">
 			<TimelyDataToggler
 				timeTypeToggler={updateLocalTimelyDataType}
 				activeTimeType={timelyDataType}
 			/>
 
-			<div className="details-card bg-gray-200 container rounded-3xl px-5 pt-3">
+			<div className="details-card bg-gray-200 container rounded-3xl px-5 pt-3 h-4/5">
 				<div className="card-header text-gray-400 font-extrabold text-lg flex justify-between baseline items-center">
 					{timelyDataType === 'hourly' && (
 						<h2 className="day">{moment.unix(data.dt).format('dddd')}</h2>
@@ -63,12 +63,14 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 						alt="weather icon"
 					/>
 
-					<div className="temps">
+					<div className="temps num-font flex items-center justify-around text-2xl">
 						{unitSystem === 'metric' ? (
 							<>
-								<p className="celsius">{tempInC}°C</p>
+								<h1 className="celsius text-green-400">{tempInC}°C</h1>
 
-								<p className="fahrenheit">{tempInF}°F</p>
+								<h1 className="fahrenheit text-blue-400">
+									{tempInF}°F
+								</h1>
 							</>
 						) : (
 							<>
