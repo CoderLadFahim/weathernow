@@ -33,7 +33,7 @@ function AuthorContact({ authorContactToggler }) {
 		>
 			<div className="contact-content bg-gray-900 shadow rounded-2xl w-3/4 h-5/6 mx-auto my-0 flex flex-col items-center justify-evenly relative">
 				<div
-					className="coder-image w-28 h-28 border rounded-full"
+					className="coder-image w-28 h-28 rounded-full ring-4"
 					style={{
 						backgroundImage: `url(${imgUrl})`,
 						backgroundSize: 'cover',
