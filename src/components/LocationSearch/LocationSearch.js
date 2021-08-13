@@ -89,27 +89,15 @@ function LocationSearch() {
 			payload: !AppData.userSearchingLocation,
 		});
 
-	useEffect(() => {
-		const documentEventListener = ({ path }) => {
-			// finding the '.location-search' classed node within the click event path
-			try {
-				// it will be found if user clicked within the element
-				path.find((node) =>
-					Array.from(node.classList).includes('location-search')
-				);
-			} catch (e) {
-				// hiding the component if user clicks outside the sidebar
-				hideSearchMenu();
-			}
-		};
-
-		document.addEventListener('click', documentEventListener);
-
-		return () => document.removeEventListener('click', documentEventListener);
-	}, []);
-
 	return (
-		<section className="location-search bg-gray-800 bg-opacity-95 absolute top-0 right-0 bottom-0 left-0 z-10">
+		<section
+			className="location-search backdrop bg-gray-800 bg-opacity-95 absolute top-0 right-0 bottom-0 left-0 z-10"
+			onClick={({ target: { classList: nodeClasses } }) =>
+				Array.from(nodeClasses).includes('location-search')
+					? hideSearchMenu()
+					: ''
+			}
+		>
 			<div className="w-11/12 bg-green-400 bg-opacity-95  z-10 fixed top-0 bottom-0 right-0 pt-7 shadow text-center sm:w-3/5 lg:w-1/2 flex flex-col items-center">
 				<input
 					type="text"
