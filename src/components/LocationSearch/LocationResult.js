@@ -4,7 +4,10 @@ import continents from '../../continents.json';
 import countries from '../../countries.json';
 
 function LocationResult({ foundLocation }) {
-	const { AppData, dispatch } = useContext(AppContext);
+	const {
+		AppData: { userSearchingLocation },
+		dispatch,
+	} = useContext(AppContext);
 
 	const locationContinent = (() => {
 		for (const continentName in continents) {
@@ -34,7 +37,7 @@ function LocationResult({ foundLocation }) {
 		// hiding the location searching sidebar as user selected a location to view weather data of
 		dispatch({
 			type: 'SET_USER_SEARCHING_LOCATION',
-			payload: !AppData.userSearchingLocation,
+			payload: !userSearchingLocation,
 		});
 	};
 

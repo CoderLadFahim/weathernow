@@ -56,18 +56,20 @@ function LocationSearch() {
 				const requestResponse = await fetch(geoCoderURL(e.target.value));
 				const responseData = await requestResponse.json();
 
-				// DEISRAELIZATION
-				console.log(
-					responseData.some((location) => location.country === 'IL')
-				);
-
 				// alerting the user if searched location doesn't exist
 				if (responseData.cod === '404' || !responseData[0]) {
 					alert(`We couldn't find "${e.target.value}"`);
 					e.target.value = '';
 				}
 
-				setLocations(responseData);
+				// DEISRAELIZATION
+				const deIsraelizedLocations = responseData.map((location) =>
+					location.country === 'IL'
+						? (location = { ...location, country: 'PS' })
+						: location
+				);
+
+				setLocations(deIsraelizedLocations);
 			} catch (err) {
 				console.log(err);
 			}
@@ -107,7 +109,7 @@ function LocationSearch() {
 	}, []);
 
 	return (
-		<section className="location-search w-11/12 bg-green-400 z-10 fixed top-0 bottom-0 right-0 pt-7 shadow text-center sm:w-3/5 lg:w-1/2 flex flex-col items-center">
+		<section className="location-search w-11/12 bg-green-400 bg-opacity-95  z-10 fixed top-0 bottom-0 right-0 pt-7 shadow text-center sm:w-3/5 lg:w-1/2 flex flex-col items-center">
 			<div className="backdrop"></div>
 
 			<input
