@@ -24,3 +24,7 @@
 .nav-item {
 	@apply w-1/4 h-full flex items-center justify-center text-center text-sm md:text-lg cursor-pointer hover:bg-gray-600 transition;
 }
+
+.social-icon {
+	@apply transition duration-75 ease-in-out transform scale-175 hover:text-gray-100;
+}
