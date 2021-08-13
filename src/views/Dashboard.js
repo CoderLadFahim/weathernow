@@ -1,7 +1,7 @@
 import LocationSearch from '../components/LocationSearch/LocationSearch';
 import AppNav from '../components/AppNav';
 import MainDataCard from '../components/MainDataCard';
-import CoderContact from '../components/CoderContact';
+import AuthorContact from '../components/AuthorContact';
 
 import TimelyDataToggler from '../components/TimelyDataToggler';
 import TimelyDataCard from '../components/TimelyDataCard';
@@ -15,10 +15,10 @@ function Dashboard() {
 	const history = useHistory();
 	const { AppData, dispatch } = useContext(AppContext);
 	const [dataIndexToShow, setDataIndexToShow] = useState(null);
-	const [showCoderContact, setShowCoderContact] = useState(false);
+	const [showAuthorContact, setShowAuthorContact] = useState(false);
 
-	const togglerCoderContact = () =>
-		setShowCoderContact((prevState) => !prevState);
+	const toggleAuthorContact = () =>
+		setShowAuthorContact((prevState) => !prevState);
 
 	// getting the toggled timely data type
 	let timelyData =
@@ -65,9 +65,9 @@ function Dashboard() {
 
 	return (
 		<section className="text-gray-100 bg-gray-700 h-screen pt-6 sm:pt-20  shadow text-font-light">
-			<AppNav coderContactToggler={togglerCoderContact} />
-			{showCoderContact ? (
-				<CoderContact coderContactToggler={togglerCoderContact} />
+			<AppNav authorContactToggler={toggleAuthorContact} />
+			{showAuthorContact ? (
+				<AuthorContact authorContactToggler={toggleAuthorContact} />
 			) : (
 				''
 			)}

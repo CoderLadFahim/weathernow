@@ -5,7 +5,7 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-function AuthorContact({ coderContactToggler }) {
+function AuthorContact({ authorContactToggler }) {
 	const imgUrl =
 		'https://i0.wp.com/media.ghgossip.com/wp-content/uploads/2021/02/05170404/Rowan_Atkinson.jpg?fit=885%2C516&ssl=1';
 
@@ -58,7 +58,7 @@ function AuthorContact({ coderContactToggler }) {
 				</ul>
 				<FontAwesomeIcon
 					className="absolute text-gray-500 cursor-pointer bottom-4 lg:top-4 right-5 transform scale-110 hover:text-white transition"
-					onClick={coderContactToggler}
+					onClick={authorContactToggler}
 					icon={faTimes}
 				/>
 			</div>{' '}
