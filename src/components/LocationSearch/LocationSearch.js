@@ -56,6 +56,11 @@ function LocationSearch() {
 				const requestResponse = await fetch(geoCoderURL(e.target.value));
 				const responseData = await requestResponse.json();
 
+				// DEISRAELIZATION
+				console.log(
+					responseData.some((location) => location.country === 'IL')
+				);
+
 				// alerting the user if searched location doesn't exist
 				if (responseData.cod === '404' || !responseData[0]) {
 					alert(`We couldn't find "${e.target.value}"`);
