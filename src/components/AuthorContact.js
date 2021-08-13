@@ -6,8 +6,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 function AuthorContact({ authorContactToggler }) {
-	const imgUrl =
-		'https://i0.wp.com/media.ghgossip.com/wp-content/uploads/2021/02/05170404/Rowan_Atkinson.jpg?fit=885%2C516&ssl=1';
+	const authorImgUrl = 'https://cdn.wallpapersafari.com/45/18/L62TrB.jpg';
 
 	const links = {
 		linkedIn: 'https://www.linkedin.com/in/fahim-al-emroz-52b21720b/',
@@ -35,7 +34,7 @@ function AuthorContact({ authorContactToggler }) {
 				<div
 					className="coder-image w-28 h-28 rounded-full ring-4"
 					style={{
-						backgroundImage: `url(${imgUrl})`,
+						backgroundImage: `url(${authorImgUrl})`,
 						backgroundSize: 'cover',
 						backgroundPosition: 'center',
 					}}
@@ -47,15 +46,12 @@ function AuthorContact({ authorContactToggler }) {
 				</h1>
 				<ul className="w-3/4 flex items-center justify-around lg:justify-center lg:space-x-20 text-gray-400">
 					<li className="social-icon">
-						<a
-							href="https://www.linkedin.com/in/fahim-al-emroz-52b21720b/"
-							target="_blank"
-						>
+						<a href={links.linkedIn} target="_blank">
 							<FontAwesomeIcon icon={faLinkedin} />
 						</a>
 					</li>
 					<li className="social-icon">
-						<a href="https://github.com/CoderLadFahim" target="_blank">
+						<a href={links.github} target="_blank">
 							<FontAwesomeIcon icon={faGithub} />
 						</a>
 					</li>
