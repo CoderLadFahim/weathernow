@@ -59,7 +59,7 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 				activeTimeType={timelyDataType}
 			/>
 
-			<div className="details-card bg-gray-200 container rounded-3xl px-5 pt-3 h-4/5 flex flex-col">
+			<div className="details-card bg-gray-200 container shadow rounded-3xl px-5 pt-3 h-4/5 flex flex-col">
 				{/* CARD HEADER */}
 				<div className="card-header text-gray-400 font-extrabold text-lg flex justify-between align-baseline items-center">
 					<h2
@@ -83,11 +83,11 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 					<img
 						src={`http://openweathermap.org/img/wn/${iconCode}@2x.png`}
 						alt="weather icon"
-						className="mx-auto my-0 transform scale-125 sm:scale-150"
+						className="mx-auto my-0 transform scale-125 sm:scale-150 lg:scale-200"
 					/>
 
 					{/* TEMPERATURES */}
-					<div className="temps num-font flex items-center justify-around text-5xl space-x-5 sm:text-6xl">
+					<div className="temps num-font flex items-center justify-around text-5xl space-x-5 sm:text-6xl md:text-7xl lg:space-x-5 lg:text-8xl">
 						{unitSystem === 'metric' ? (
 							<>
 								<h1 className="celsius text-green-400 relative">
@@ -124,12 +124,17 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 					</div>
 
 					{/* WEATHER DESCRIPTION */}
-					<h2 className="weather-desc text-gray-600 capitalize font-bold text-center text-lg sm:text-3xl">
+					<h2 className="weather-desc text-gray-600 capitalize font-bold text-center text-lg sm:text-3xl md:text-4xl lg:text-5xl">
 						{weather.main}
 					</h2>
 
 					{/* DATA CARD DISPLAY */}
-					<DataCardDisplay dataToDisplay={data} />
+					<div className="cards-display">
+						<DataCardDisplay
+							dataToDisplay={data}
+							additionalClasses={``}
+						/>
+					</div>
 
 					{/* TIME TOGGLER */}
 					<div className="toggle-time text-gray-700 font-bold text-xl flex justify-between align-baseline items-center sm:text-2xl w-3/4 mx-auto">
