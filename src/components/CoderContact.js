@@ -3,7 +3,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 function CoderContact({ coderContactToggler }) {
 	const imgUrl =
@@ -16,6 +16,12 @@ function CoderContact({ coderContactToggler }) {
 	};
 
 	const coderName = '<span><</span>CoderLadFahim<span>/ ></span>';
+
+	const copyEmailToClipboard = ({
+		currentTarget: {
+			dataset: { emailAddress },
+		},
+	}) => navigator.clipboard.writeText(emailAddress);
 
 	return (
 		<section className="coder-info bg-gray-800 text-gray-200 text-font-bold absolute top-0 right-0 bottom-0 left-0 bg-opacity-95 z-10 pt-10">
@@ -47,13 +53,12 @@ function CoderContact({ coderContactToggler }) {
 							<FontAwesomeIcon icon={faGithub} />
 						</a>
 					</li>
-					<li className="social-icon">
-						<a
-							href="https://www.facebook.com/Comet.258456/"
-							target="_blank"
-						>
-							<FontAwesomeIcon icon={faFacebook} />
-						</a>
+					<li
+						className="social-icon"
+						data-email-address="fahimalemroz@gmail.com"
+						onClick={copyEmailToClipboard}
+					>
+						<FontAwesomeIcon icon={faEnvelope} />
 					</li>
 				</ul>
 				<FontAwesomeIcon
