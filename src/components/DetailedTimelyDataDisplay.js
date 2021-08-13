@@ -129,7 +129,7 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 					</h2>
 
 					{/* DATA CARD DISPLAY */}
-					<div className="cards-display">
+					<div className="cards-display lg:w-3/4 lg:mx-auto">
 						<DataCardDisplay
 							dataToDisplay={data}
 							additionalClasses={``}

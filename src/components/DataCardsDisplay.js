@@ -47,7 +47,7 @@ function DataCardsDisplay({ dataToDisplay: mainData, additionalClasses }) {
 				>
 					<FontAwesomeIcon
 						icon={data.icon}
-						className="data-icon block text-gray-500 absolute left-5 transform scale-125 sm:scale-200 sm:static"
+						className="data-icon block border border-1 border-green-400  text-gray-500 absolute left-5 transform scale-125 sm:scale-200 sm:static"
 					/>
 
 					<div className="data-info absolute left-12 sm:static lg:pt-6">
