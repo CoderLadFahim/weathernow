@@ -23,7 +23,14 @@ function AuthorContact({ authorContactToggler }) {
 	};
 
 	return (
-		<section className="coder-info bg-gray-800 text-gray-200 text-font-bold absolute top-0 right-0 bottom-0 left-0 bg-opacity-95 z-10 pt-10">
+		<section
+			className="coder-info bg-gray-800 text-gray-200 text-font-bold absolute top-0 right-0 bottom-0 left-0 bg-opacity-95 z-10 pt-10"
+			onClick={({ target: { classList: nodeClasses } }) =>
+				Array.from(nodeClasses).includes('coder-info')
+					? authorContactToggler()
+					: ''
+			}
+		>
 			<div className="contact-content bg-gray-900 shadow rounded-2xl w-3/4 h-5/6 mx-auto my-0 flex flex-col items-center justify-evenly relative">
 				<div
 					className="coder-image w-28 h-28 border rounded-full"
