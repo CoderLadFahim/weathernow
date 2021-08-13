@@ -98,7 +98,7 @@ function LocationSearch() {
 					: ''
 			}
 		>
-			<div className="w-11/12 bg-green-400 bg-opacity-95  z-10 fixed top-0 bottom-0 right-0 pt-7 shadow text-center sm:w-3/5 lg:w-1/2 flex flex-col items-center">
+			<div className="w-11/12 bg-green-400 bg-opacity-95  z-10 fixed top-0 bottom-0 right-0 pt-7 shadow text-center sm:w-3/5 lg:w-1/2 flex flex-col items-center xl:w-1/3">
 				<input
 					type="text"
 					className="text-center bg-gray-100 mb-9 text-gray-500 text-lg text-font-bold outline-none rounded-xl py-3 w-5/6 shadow"
