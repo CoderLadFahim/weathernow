@@ -34,7 +34,7 @@ function AuthorContact({ authorContactToggler }) {
 			}
 		>
 			{/* CONTACT CONTENT */}
-			<div className="contact-content bg-gray-900 shadow rounded-2xl w-3/4 h-5/6 md:w-3/5 lg:w-1/2  mx-auto my-0 flex flex-col items-center justify-evenly relative">
+			<div className="contact-content bg-gray-900 shadow rounded-2xl w-3/4 h-5/6 md:w-3/5 lg:w-1/2 lg:h-11/12 flex flex-col items-center justify-evenly relative">
 				<div
 					className="coder-image w-28 h-28 rounded-full ring-4"
 					style={{
@@ -76,7 +76,7 @@ function AuthorContact({ authorContactToggler }) {
 
 				<button
 					className={`font-bold bg-gray-800 py-2 px-4 rounded-md hover:bg-gray-700 transition text-sm outline-none focus:outline-none ${
-						emailCopied ? 'ring-2 ring-blue-300' : ''
+						emailCopied ? 'ring-2 ring-blue-300 ' : ''
 					}`}
 					onClick={copyEmailToClipboard}
 				>
