@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,6 +9,7 @@ import { faCopy } from '@fortawesome/free-solid-svg-icons';
 
 function AuthorContact({ authorContactToggler }) {
 	const authorImgUrl = 'https://cdn.wallpapersafari.com/45/18/L62TrB.jpg';
+	const [emailCopied, setEmailCopied] = useState(false);
 
 	const links = {
 		linkedIn: 'https://www.linkedin.com/in/fahim-al-emroz-52b21720b/',
@@ -19,12 +21,12 @@ function AuthorContact({ authorContactToggler }) {
 
 	const copyEmailToClipboard = () => {
 		navigator.clipboard.writeText(authorEmail);
-		alert('Author email copied to clipboard');
+		setEmailCopied(true);
 	};
 
 	return (
 		<section
-			className="coder-info bg-gray-800 text-gray-200 text-font-bold absolute top-0 right-0 bottom-0 left-0 bg-opacity-95 z-10 pt-10"
+			className="coder-info bg-gray-800 text-gray-200 text-font-bold absolute bg-opacity-95 top-0 right-0 bottom-0 left-0 z-10 grid place-items-center"
 			onClick={({ target: { classList: nodeClasses } }) =>
 				Array.from(nodeClasses).includes('coder-info')
 					? authorContactToggler()
@@ -32,7 +34,7 @@ function AuthorContact({ authorContactToggler }) {
 			}
 		>
 			{/* CONTACT CONTENT */}
-			<div className="contact-content bg-gray-900 shadow rounded-2xl w-3/4 h-5/6 lg:w-3/5  mx-auto my-0 flex flex-col items-center justify-evenly relative">
+			<div className="contact-content bg-gray-900 shadow rounded-2xl w-3/4 h-5/6 md:w-3/5 lg:w-1/2  mx-auto my-0 flex flex-col items-center justify-evenly relative">
 				<div
 					className="coder-image w-28 h-28 rounded-full ring-4"
 					style={{
@@ -73,10 +75,12 @@ function AuthorContact({ authorContactToggler }) {
 				{/* EMAIL COPY BUTTON */}
 
 				<button
-					className="font-bold bg-gray-800 py-2 px-4 rounded-md hover:bg-gray-700 transition text-sm outline-none focus:outline-none active:ring-2"
+					className={`font-bold bg-gray-800 py-2 px-4 rounded-md hover:bg-gray-700 transition text-sm outline-none focus:outline-none ${
+						emailCopied ? 'ring-2 ring-blue-300' : ''
+					}`}
 					onClick={copyEmailToClipboard}
 				>
-					Copy email to clipboard
+					{emailCopied ? 'Email Copied' : 'Copy email to clipboard'}
 				</button>
 
 				{/* CLOSE BUTTON */}
