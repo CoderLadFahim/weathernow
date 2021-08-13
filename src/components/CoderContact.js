@@ -24,7 +24,11 @@ function CoderContact({ coderContactToggler }) {
 						backgroundPosition: 'center',
 					}}
 				></div>
-				<h1 dangerouslySetInnerHTML={{ __html: coderName }}></h1>
+				<h1 className="text-xl">
+					<span className="text-blue-400">{'<'}</span>
+					<span className="text-green-400">CoderLadFahim</span>
+					<span className="text-blue-400">{'/>'}</span>
+				</h1>
 				<ul className="w-3/4 flex items-center justify-between">
 					<li className="social-icon">
 						<a href="">LinkedIn</a>
