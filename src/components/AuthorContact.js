@@ -76,7 +76,7 @@ function AuthorContact({ authorContactToggler }) {
 
 				<button
 					className={`font-bold bg-gray-800 py-2 px-4 rounded-md hover:bg-gray-700 transition text-sm outline-none focus:outline-none ${
-						emailCopied ? 'ring-2 ring-blue-300' : ''
+						emailCopied ? 'ring-2 ring-blue-300 ' : ''
 					}`}
 					onClick={copyEmailToClipboard}
 				>
