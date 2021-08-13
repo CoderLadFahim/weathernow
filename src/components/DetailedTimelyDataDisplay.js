@@ -59,7 +59,7 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 				activeTimeType={timelyDataType}
 			/>
 
-			<div className="details-card bg-gray-200 container shadow rounded-3xl px-5 pt-3 h-4/5 flex flex-col">
+			<div className="details-card bg-gray-200 container shadow rounded-3xl px-5 pt-3 h-4/5 flex flex-col lg:rounded-none lg:rounded-3xl">
 				{/* CARD HEADER */}
 				<div className="card-header text-gray-400 font-extrabold text-lg flex justify-between align-baseline items-center">
 					<h2
@@ -87,40 +87,23 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 					/>
 
 					{/* TEMPERATURES */}
-					<div className="temps num-font flex items-center justify-around text-5xl space-x-5 sm:text-6xl md:text-7xl lg:space-x-5 lg:text-8xl">
-						{unitSystem === 'metric' ? (
-							<>
-								<h1 className="celsius text-green-400 relative">
-									{tempInC}
-									<span className="text-gray-500 text-xs absolute top-2">
-										°C
-									</span>
-								</h1>
+					<div className="temps num-font flex items-center justify-evenly text-5xl space-x-5 sm:text-6xl md:text-7xl lg:space-x-5 lg:text-8xl">
+						<h1 className="celsius text-green-400 relative">
+							{tempInC}
+							<span className="text-gray-500 text-xs absolute top-2 lg:text-base lg:top-3">
+								°C
+							</span>
+						</h1>
 
-								<h1 className="fahrenheit text-blue-400 relative">
-									{tempInF}
-									<span className="text-gray-500 text-xs absolute top-2">
-										°F
-									</span>
-								</h1>
-							</>
-						) : (
-							<>
-								<h1 className="fahrenheit text-blue-400 relative">
-									{tempInF}
-									<span className="text-gray-500 text-xs absolute top-2">
-										°F
-									</span>
-								</h1>
-
-								<h1 className="celsius text-green-400 relative">
-									{tempInC}
-									<span className="text-gray-500 text-xs absolute top-2">
-										°C
-									</span>
-								</h1>
-							</>
-						)}
+						<h1 className="text-gray-500 text-lg text-font-light md:text-xl lg:text-3xl">
+							||
+						</h1>
+						<h1 className="fahrenheit text-blue-400 relative">
+							{tempInF}
+							<span className="text-gray-500 text-xs absolute top-2 lg:text-base lg:top-3">
+								°F
+							</span>
+						</h1>
 					</div>
 
 					{/* WEATHER DESCRIPTION */}
@@ -137,9 +120,9 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 					</div>
 
 					{/* TIME TOGGLER */}
-					<div className="toggle-time text-gray-700 font-bold text-xl flex justify-between align-baseline items-center sm:text-2xl w-3/4 mx-auto">
+					<div className="toggle-time text-gray-700 font-bold text-xl flex justify-between align-baseline items-center sm:text-2xl w-3/4 mx-auto lg:text-4xl">
 						<svg
-							className="left-arrow transition duration-50  transform cursor-pointer hover:scale-125"
+							className="left-arrow transition duration-50  transform cursor-pointer hover:scale-125 lg:scale-150"
 							onClick={decrementDataIndex}
 							width="26"
 							height="32"
@@ -159,7 +142,7 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 							.unix(data.dt)
 							.format(timelyDataType === 'daily' ? 'dddd' : 'hA')}
 						<svg
-							className="right-arrow transition duration-50 cursor-pointer transform hover:scale-125"
+							className="right-arrow transition duration-50 cursor-pointer transform hover:scale-125 lg:scale-150"
 							onClick={incrementDataIndex}
 							width="26"
 							height="32"
