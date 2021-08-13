@@ -9,7 +9,7 @@ import {
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
-function AppNav() {
+function AppNav({ coderContactToggler }) {
 	const { AppData, dispatch } = useContext(AppContext);
 
 	const weatherDataIsLocal = (() => {
@@ -95,7 +95,9 @@ function AppNav() {
 					{AppData.unitSystem}
 				</li>{' '}
 				{/* Developer Contact */}
-				<li className="nav-item">Coder</li>{' '}
+				<li className="nav-item" onClick={coderContactToggler}>
+					Coder
+				</li>{' '}
 			</ul>{' '}
 		</nav>
 	);
