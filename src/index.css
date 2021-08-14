@@ -1,13 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.container {
-	width: 85%;
-	/* @apply my-0 mx-auto; */
-}
 
 .data-toggler {
 	@apply py-1 px-4 border border-green-300 text-green-200 rounded-full text-xs;
@@ -27,4 +23,36 @@
 
 .social-icon {
 	@apply transition duration-75 ease-in-out transform scale-175 hover:text-gray-100;
+}
+
+/* CUSTOM CLASSES */
+
+.container {
+	width: 85%;
+	/* @apply my-0 mx-auto; */
+}
+
+.text-font {
+	font-family: 'Quicksand';
+	font-weight: 600;
+}
+.text-font-light {
+	font-family: 'Quicksand';
+	font-weight: 400;
+}
+.text-font-bold {
+	font-family: 'Quicksand';
+	font-weight: 700;
+}
+
+.orange {
+	color: #ec6e4c;
+}
+
+.num-font {
+	font-family: 'Roboto';
+}
+
+.timely-data-display::-webkit-scrollbar {
+	display: none;
 }

@@ -5,7 +5,6 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
-import { faCopy } from '@fortawesome/free-solid-svg-icons';
 
 function AuthorContact({ authorContactToggler }) {
 	const authorImgUrl = 'https://cdn.wallpapersafari.com/45/18/L62TrB.jpg';

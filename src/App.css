@@ -11,28 +11,3 @@ body {
 	overflow-x: hidden;
 	font-family: Arial, Helvetica, sans-serif;
 }
-
-.text-font {
-	font-family: 'Quicksand';
-	font-weight: 600;
-}
-.text-font-light {
-	font-family: 'Quicksand';
-	font-weight: 400;
-}
-.text-font-bold {
-	font-family: 'Quicksand';
-	font-weight: 700;
-}
-
-.orange {
-	color: #ec6e4c;
-}
-
-.num-font {
-	font-family: 'Montserrat';
-}
-
-.timely-data-display::-webkit-scrollbar {
-	display: none;
-}

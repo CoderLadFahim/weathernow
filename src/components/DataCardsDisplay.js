@@ -51,7 +51,7 @@ function DataCardsDisplay({ dataToDisplay: mainData, additionalClasses }) {
 					/>
 
 					<div className="data-info absolute left-12 sm:static lg:pt-6">
-						<h1 className="data num-font font-bold text-blue-400 text-sm sm:text-2xl">
+						<h1 className="data num-font font-bold text-indigo-500 text-sm sm:text-2xl">
 							{data.cardData}
 						</h1>
 						<h2 className="data-label text-gray-400 font-bold text-xs sm:text-xl">
