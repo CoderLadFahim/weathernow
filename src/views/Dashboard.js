@@ -64,7 +64,7 @@ function Dashboard() {
 	}, [AppData.unitSystem, AppData.activeCoordsForData]);
 
 	return (
-		<section className="text-gray-100 bg-gray-700 h-screen pt-6 sm:pt-20  shadow text-font-light">
+		<section className="text-gray-100 bg-gray-800 h-screen pt-6 sm:pt-20  shadow text-font-light">
 			<AppNav authorContactToggler={toggleAuthorContact} />
 			{showAuthorContact ? (
 				<AuthorContact authorContactToggler={toggleAuthorContact} />
