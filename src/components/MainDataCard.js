@@ -3,7 +3,7 @@ import DataCardsDisplay from './DataCardsDisplay.js';
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
-function MainDataCard({ locationTimezone, mainData }) {
+function MainDataCard({ locationTimezone, mainData, dataLocalBool }) {
 	const {
 		AppData: { unitSystem },
 	} = useContext(AppContext);
@@ -13,6 +13,8 @@ function MainDataCard({ locationTimezone, mainData }) {
 	const currentTime =
 		mainData && moment.unix(mainData.dt).format('h:mm A, dddd');
 
+	console.dir(currentTime);
+
 	return (
 		<section className="main-data-card container flex flex-col justify-evenly w-1/2 h-1/2 xs:h-3/5 bg-gray-200 text-gray-800 rounded-2xl sm:rounded-3xl px-5 py-3 relative lg:rounded-3xl lg:justify-between lg:h-2/5 lg:flex-row lg:bg-transparent lg:px-0 lg:items-center">
 			<div className="flex mb-4 sm:justify-evenly lg:bg-gray-200 lg:rounded-2xl lg:h-4/5 lg:relative lg:w-1/2 lg:block">
@@ -20,9 +22,12 @@ function MainDataCard({ locationTimezone, mainData }) {
 					<h1 className="location-timezone font-bold text-gray-600 relative text-xs xs:text-sm sm:text-base lg:text-lg">
 						{locationTimezone}
 					</h1>
-					<h2 className="time text-blue-400 font-bold text-sm xs:text-base sm:text-lg lg:text-xl">
-						{currentTime}
-					</h2>
+
+					{dataLocalBool && (
+						<h2 className="time text-blue-400 font-bold text-sm xs:text-base sm:text-lg lg:text-xl">
+							{currentTime}
+						</h2>
+					)}
 
 					<h1 className="font-extrabold text-xl xs:text-2xl orange  mb-1 capitalize lg:text-2xl">
 						{weatherDescription}

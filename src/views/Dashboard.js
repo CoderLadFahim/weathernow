@@ -16,6 +16,10 @@ function Dashboard() {
 	const { AppData, dispatch } = useContext(AppContext);
 	const [dataIndexToShow, setDataIndexToShow] = useState(null);
 	const [showAuthorContact, setShowAuthorContact] = useState(false);
+	// Used by MainDataCard to hide the time if data is not local, set from AppNav
+	const [dataIsLocal, setDataIsLocal] = useState(null);
+
+	const updateDataStatus = (dataLocalBool) => setDataIsLocal(dataLocalBool);
 
 	const toggleAuthorContact = () =>
 		setShowAuthorContact((prevState) => !prevState);
@@ -65,7 +69,10 @@ function Dashboard() {
 
 	return (
 		<section className="text-gray-100 bg-gray-800 h-screen pt-6 sm:pt-20  shadow text-font-light">
-			<AppNav authorContactToggler={toggleAuthorContact} />
+			<AppNav
+				authorContactToggler={toggleAuthorContact}
+				dataStatusUpdater={updateDataStatus}
+			/>
 			{showAuthorContact ? (
 				<AuthorContact authorContactToggler={toggleAuthorContact} />
 			) : (
@@ -84,6 +91,7 @@ function Dashboard() {
 							: AppData.searchedLocationName
 					}
 					mainData={AppData.weatherDataToShow.current}
+					dataLocalBool={dataIsLocal}
 				/>
 			)}
 			{dataIndexToShow !== null ? (

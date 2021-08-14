@@ -9,7 +9,7 @@ import {
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
-function AppNav({ authorContactToggler }) {
+function AppNav({ authorContactToggler, dataStatusUpdater }) {
 	const { AppData, dispatch } = useContext(AppContext);
 
 	const weatherDataIsLocal = (() => {
@@ -26,6 +26,9 @@ function AppNav({ authorContactToggler }) {
 
 		return null;
 	})();
+
+	// sending the data is local boolean to dashboard to be sent to MainDataCard
+	dataStatusUpdater(weatherDataIsLocal);
 
 	const toggleLocalLocationData = () => {
 		// setting the active weather data coords to localCoords to render local weather data
