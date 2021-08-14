@@ -53,6 +53,6 @@
 	font-family: 'Roboto';
 }
 
-.timely-data-display::-webkit-scrollbar {
-	display: none;
-}
+/* .timely-data-display::-webkit-scrollbar { */
+/* 	display: none; */
+/* } */
