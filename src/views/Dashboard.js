@@ -102,21 +102,30 @@ function Dashboard() {
 			) : (
 				''
 			)}
-			<TimelyDataToggler
-				timeTypeToggler={dispatchTimeType}
-				activeTimeType={AppData.timelyDataType}
-			/>
+			{dataIsLocal ? (
+				<>
+					<TimelyDataToggler
+						timeTypeToggler={dispatchTimeType}
+						activeTimeType={AppData.timelyDataType}
+					/>
 
-			<div className="timely-data-display container overflow-x-scroll mb-5 flex space-x-3">
-				{timelyData &&
-					timelyData.map((data, i) => (
-						<TimelyDataCard
-							dataIndexSetter={() => setDataIndexToShow(i)}
-							timelyWeatherData={data}
-							key={i}
-						/>
-					))}
-			</div>
+					<div className="timely-data-display container overflow-x-scroll mb-5 flex space-x-3">
+						{timelyData &&
+							timelyData.map((data, i) => (
+								<TimelyDataCard
+									dataIndexSetter={() => setDataIndexToShow(i)}
+									timelyWeatherData={data}
+									key={i}
+								/>
+							))}
+					</div>
+				</>
+			) : (
+				<h1 className="w-4/5 text-center container mt-24">
+					Timely data not available for foreign locations <br />
+					<span className="text-xs text-red-400">(fix it you moron)</span>
+				</h1>
+			)}
 		</section>
 	);
 }

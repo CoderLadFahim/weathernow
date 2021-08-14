@@ -13,8 +13,6 @@ function MainDataCard({ locationTimezone, mainData, dataLocalBool }) {
 	const currentTime =
 		mainData && moment.unix(mainData.dt).format('h:mm A, dddd');
 
-	console.dir(currentTime);
-
 	return (
 		<section className="main-data-card container flex flex-col justify-evenly w-1/2 h-1/2 xs:h-3/5 bg-gray-200 text-gray-800 rounded-2xl sm:rounded-3xl px-5 py-3 relative lg:rounded-3xl lg:justify-between lg:h-2/5 lg:flex-row lg:bg-transparent lg:px-0 lg:items-center">
 			<div className="flex mb-4 sm:justify-evenly lg:bg-gray-200 lg:rounded-2xl lg:h-4/5 lg:relative lg:w-1/2 lg:block">
