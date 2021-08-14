@@ -36,22 +36,12 @@ function TimelyDataCard({ timelyWeatherData, dataIndexSetter }) {
 					<>
 						<p className="celsius text-green-400">
 							{tempInC}
-							<span
-								className="text-gray-500"
-								style={{ fontSize: '0.5rem' }}
-							>
-								°C
-							</span>
+							°C
 						</p>
 
 						<p className="fahrenheit text-blue-400 ">
 							{tempInF}
-							<span
-								className="text-gray-500"
-								style={{ fontSize: '0.5rem' }}
-							>
-								°F
-							</span>
+							°F
 						</p>
 					</>
 				) : (
