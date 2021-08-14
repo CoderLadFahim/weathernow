@@ -56,7 +56,7 @@ function AppNav({ authorContactToggler }) {
 		});
 
 	return (
-		<nav className="app-nav shadow-inner md:shadow text-font-bold capitalize bg-gray-900 flex items-center content-between fixed left-0 right-0 h-12 bottom-0 md:top-0 2xl:h-14">
+		<nav className="app-nav shadow-inner md:shadow text-font-bold capitalize bg-gray-700 flex items-center content-between fixed left-0 right-0 h-12 bottom-0 md:top-0 2xl:h-14">
 			<div className="app-logo w-0 h-full items-center justify-center hidden md:flex md:w-1/2 text-center">
 				<FontAwesomeIcon icon={faCloud} className="mr-2" />
 				<h1 className="inline text-lg">

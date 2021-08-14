@@ -24,7 +24,7 @@ function MainDataCard({ locationTimezone, mainData }) {
 						{currentTime}
 					</h2>
 
-					<h1 className="font-extrabold text-xl xs:text-2xl mb-1 capitalize lg:text-2xl">
+					<h1 className="font-extrabold text-xl xs:text-2xl orange  mb-1 capitalize lg:text-2xl">
 						{weatherDescription}
 					</h1>
 					<h1 className="temperature num-font text-6xl xs:text-7xl sm:text-8xl font-bold relative">
@@ -36,7 +36,7 @@ function MainDataCard({ locationTimezone, mainData }) {
 							{temperature}
 						</span>
 
-						<span className="temp-unit text-xs text-gray-600 absolute top-2 lg:text-sm top-3">
+						<span className="temp-unit text-xs text-gray-600 absolute lg:text-sm top-2">
 							°{unitSystem === 'metric' ? 'C' : 'F'}
 						</span>
 					</h1>
@@ -44,7 +44,7 @@ function MainDataCard({ locationTimezone, mainData }) {
 				{mainData && (
 					<img
 						src={`http://openweathermap.org/img/wn/${mainData.weather[0].icon}@2x.png`}
-						className="w-32 absolute xs:w-44 sm:w-52 right-0 sm:static lg:w-48 lg:absolute lg:top-36 right-4 transform scale-150"
+						className="w-32 absolute xs:w-44 sm:w-52 right-0 sm:static lg:w-48 lg:absolute lg:top-36 right-4 transform scale-125"
 						alt="weather icon"
 					/>
 				)}
