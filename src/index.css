@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 .data-toggler {
-	@apply py-1 px-4 border border-green-300 text-green-200 rounded-full text-xs;
+	@apply py-1 px-4 border border-green-300 text-green-200 rounded-full text-xs sm:text-sm;
 }
 
 .active {
