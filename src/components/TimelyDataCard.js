@@ -17,7 +17,7 @@ function TimelyDataCard({ timelyWeatherData, dataIndexSetter }) {
 	return (
 		<div
 			onClick={dataIndexSetter}
-			className="timely-data-card cursor-pointer w-24 h-40 bg-gray-200 px-6 py-2 rounded-2xl flex shadow flex-col items-center justify-between text-center sm:w-28 sm:h-48 sm:rounded-3xl"
+			className="timely-data-card shadow cursor-pointer w-24 h-40 bg-gray-200 px-6 py-2 rounded-2xl flex shadow flex-col items-center justify-between text-center sm:w-28 sm:h-48 sm:rounded-3xl"
 		>
 			<h1 className="time text-gray-500 text-sm">
 				{moment.unix(dt).format(timelyDataType === 'daily' ? 'dddd' : 'hA')}
@@ -39,7 +39,7 @@ function TimelyDataCard({ timelyWeatherData, dataIndexSetter }) {
 							°C
 						</p>
 
-						<p className="fahrenheit text-blue-400 ">
+						<p className="fahrenheit text-blue-400 order-1">
 							{tempInF}
 							°F
 						</p>

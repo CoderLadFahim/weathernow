@@ -5,6 +5,7 @@ import AuthorContact from '../components/AuthorContact';
 
 import TimelyDataToggler from '../components/TimelyDataToggler';
 import TimelyDataCard from '../components/TimelyDataCard';
+import TimelyDataCarousel from '../components/TimelyDataCarousel';
 import DetailedTimelyDataDisplay from '../components/DetailedTimelyDataDisplay';
 
 import { useContext, useEffect, useState } from 'react';
@@ -20,7 +21,6 @@ function Dashboard() {
 	const [dataIsLocal, setDataIsLocal] = useState(null);
 
 	const updateDataStatus = (dataLocalBool) => setDataIsLocal(dataLocalBool);
-
 	const toggleAuthorContact = () =>
 		setShowAuthorContact((prevState) => !prevState);
 
@@ -73,10 +73,9 @@ function Dashboard() {
 				authorContactToggler={toggleAuthorContact}
 				dataStatusUpdater={updateDataStatus}
 			/>
-			{showAuthorContact ? (
+
+			{showAuthorContact && (
 				<AuthorContact authorContactToggler={toggleAuthorContact} />
-			) : (
-				''
 			)}
 
 			{AppData.userSearchingLocation && <LocationSearch />}
@@ -94,6 +93,7 @@ function Dashboard() {
 					dataLocalBool={dataIsLocal}
 				/>
 			)}
+
 			{dataIndexToShow !== null ? (
 				<DetailedTimelyDataDisplay
 					hideDataDisplay={() => setDataIndexToShow(null)}
@@ -102,6 +102,7 @@ function Dashboard() {
 			) : (
 				''
 			)}
+
 			{dataIsLocal ? (
 				<>
 					<TimelyDataToggler
@@ -109,16 +110,10 @@ function Dashboard() {
 						activeTimeType={AppData.timelyDataType}
 					/>
 
-					<div className="timely-data-display container overflow-x-scroll mb-5 flex space-x-3">
-						{timelyData &&
-							timelyData.map((data, i) => (
-								<TimelyDataCard
-									dataIndexSetter={() => setDataIndexToShow(i)}
-									timelyWeatherData={data}
-									key={i}
-								/>
-							))}
-					</div>
+					<TimelyDataCarousel
+						dataIndexSetter={setDataIndexToShow}
+						timelyData={timelyData}
+					/>
 				</>
 			) : (
 				<h1 className="w-4/5 text-center container mt-24">

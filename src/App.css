@@ -11,3 +11,44 @@ body {
 	overflow-x: hidden;
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+.timely-data-display::-webkit-scrollbar {
+	display: none;
+}
+
+.swiper-container .swiper-button-disabled {
+	display: none;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+	width: 40px !important;
+	height: 40px !important;
+	padding: 0;
+	border: 1px solid white !important;
+	background-color: white;
+	border-radius: 50%;
+	position: relative;
+	opacity: 0.7;
+	transition: 100ms;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+	opacity: 1;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+	/* position: absolute; */
+	top: 50%;
+	left: 50%;
+	transform: scale(50%);
+}
+
+@media only screen and (min-width: 1280px) {
+	.container .swiper-container {
+		width: 50%;
+		margin-left: 0;
+	}
+}
