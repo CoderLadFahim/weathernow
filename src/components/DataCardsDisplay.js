@@ -8,7 +8,7 @@ import {
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
-function DataCardsDisplay({ dataToDisplay: mainData, additionalClasses }) {
+function DataCardsDisplay({ dataToDisplay: mainData }) {
 	const {
 		AppData,
 		// AppData: {
@@ -43,14 +43,14 @@ function DataCardsDisplay({ dataToDisplay: mainData, additionalClasses }) {
 			{cardsDataDisplay.map((data, i) => (
 				<div
 					key={i}
-					className={`data-card bg-gray-100 py-8 sm:py-10 px-3 rounded-xl sm:rounded-2xl flex items-center justify-evenly relative lg:flex-1 lg:py-8 lg:items-center lg:text-center lg:transform-none lg:px-6 ${additionalClasses}`}
+					className={`data-card bg-gray-100 px-3 py-3 sm:py-8 rounded-xl sm:rounded-2xl flex items-center justify-evenly lg:flex-1 lg:items-center lg:text-center lg:transform-none lg:px-6`}
 				>
 					<FontAwesomeIcon
 						icon={data.icon}
-						className="data-icon block text-gray-500 absolute left-5 transform scale-125 sm:scale-200 sm:static"
+						className="data-icon block text-gray-500 transform scale-125 sm:scale-200 sm:static"
 					/>
 
-					<div className="data-info absolute left-12 sm:static lg:pt-6">
+					<div className="data-info sm:static lg:pt-6 text-center">
 						<h1 className="data num-font font-bold text-indigo-500 text-sm sm:text-2xl">
 							{data.cardData}
 						</h1>
