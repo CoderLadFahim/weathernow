@@ -12,6 +12,10 @@ module.exports = {
 			xs: '414px',
 			...defaultTheme.screens,
 		},
+		fontSize: {
+			xxs: '16px',
+			...defaultTheme.fontSize,
+		},
 		scale: {
 			175: '2',
 			200: '2.5',
