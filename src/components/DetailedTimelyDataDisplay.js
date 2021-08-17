@@ -13,10 +13,15 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 	const [timelyDataIndex, setTimelyDataIndex] = useState(dataIndex);
 
 	const {
-		AppData: { weatherDataToShow, unitSystem },
+		AppData: {
+			weatherDataToShow,
+			unitSystem,
+			timelyDataType: contextTimeType,
+		},
 	} = useContext(AppContext);
 
-	const [timelyDataType, setTimelyDataType] = useState('hourly');
+	// setting the local TimeType to be the context's default initially
+	const [timelyDataType, setTimelyDataType] = useState(contextTimeType);
 
 	const data = weatherDataToShow[timelyDataType][timelyDataIndex];
 	const [tempInF, tempInC] = useTemp(data.temp, unitSystem);
@@ -28,9 +33,10 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 	const btnBlue = '#3B82F6';
 	const btnGreen = '#34D399';
 
+	// this function only updates the local time type
 	const updateLocalTimelyDataType = (newType) => {
 		setTimelyDataType(newType);
-		// setting the data index to 0 to avoid undefined error on line 21
+		// setting the data index to 0 to avoid undefined error on line 24
 		setTimelyDataIndex(0);
 	};
 

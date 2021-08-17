@@ -22,8 +22,6 @@ function TimelyDataCarousel({ timelyData, dataIndexSetter }) {
 
 	// calcualting the approriate slide count for horizontal screen size
 	const slidesPerView = (() => {
-		const innerWidth = window.innerWidth;
-
 		if (innerWidth >= 1536) return 5;
 		if (innerWidth >= 1280) return 4;
 		if (innerWidth >= 1024) return 7;
