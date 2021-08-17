@@ -16,7 +16,7 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 		AppData: { weatherDataToShow, unitSystem },
 	} = useContext(AppContext);
 
-	const [timelyDataType, setTimelyDataType] = useState('hourly');
+	const [timelyDataType, setTimelyDataType] = useState('daily');
 
 	const data = weatherDataToShow[timelyDataType][timelyDataIndex];
 	const [tempInF, tempInC] = useTemp(data.temp, unitSystem);
