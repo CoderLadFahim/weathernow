@@ -39,11 +39,11 @@ function DataCardsDisplay({ dataToDisplay: mainData }) {
 	];
 
 	return (
-		<div className="data-card-display grid grid-cols-2 grid-rows-2 gap-4 sm:gap-5 md:gap-6 md:flex">
+		<div className="data-card-display grid grid-cols-2 grid-rows-2 gap-4 sm:gap-5 md:gap-6 md:flex lg:grid lg:w-5/12">
 			{cardsDataDisplay.map((data, i) => (
 				<div
 					key={i}
-					className={`data-card bg-gray-100 px-3 py-3 sm:py-8 rounded-xl sm:rounded-2xl flex items-center justify-evenly lg:flex-1 lg:items-center lg:text-center lg:transform-none lg:px-6  md:h-44 md:w-1/3 justify-between md:flex-col md:py-0`}
+					className={`data-card bg-gray-100 px-3 py-3 sm:py-8 rounded-xl sm:rounded-2xl flex items-center justify-evenly lg:flex-1 lg:items-center lg:text-center lg:transform-none lg:px-6 md:h-44 md:w-1/3 justify-between md:flex-col md:py-0 lg:px-20 items-center`}
 				>
 					<FontAwesomeIcon
 						icon={data.icon}
