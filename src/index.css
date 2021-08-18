@@ -25,14 +25,6 @@
 	@apply transition duration-75 ease-in-out transform scale-175 hover:text-gray-100;
 }
 
-/* .swiper-button-prev::after { */
-/* 	@apply text-green-500 transform scale-50 -left-0; */
-/* } */
-
-/* .swiper-button-next::after { */
-/* 	@apply text-blue-500 transform scale-50 -right-0; */
-/* } */
-
 /* CUSTOM CLASSES */
 
 .container {

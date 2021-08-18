@@ -8,7 +8,7 @@ import {
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
-function DataCardsDisplay({ dataToDisplay: mainData, additionalClasses }) {
+function DataCardsDisplay({ dataToDisplay: mainData }) {
 	const {
 		AppData,
 		// AppData: {
@@ -39,22 +39,22 @@ function DataCardsDisplay({ dataToDisplay: mainData, additionalClasses }) {
 	];
 
 	return (
-		<div className="data-card-display grid grid-cols-2 grid-rows-2 gap-4 sm:gap-5 md:gap-6">
+		<div className="data-card-display grid grid-cols-2 grid-rows-2 gap-4 sm:gap-5 md:gap-6 md:flex lg:grid lg:w-5/12 border border-1 border-green-700">
 			{cardsDataDisplay.map((data, i) => (
 				<div
 					key={i}
-					className={`data-card bg-gray-100 py-8 sm:py-10 px-3 rounded-xl sm:rounded-2xl flex items-center justify-evenly relative lg:flex-1 lg:py-8 lg:items-center lg:text-center lg:transform-none lg:px-6 ${additionalClasses}`}
+					className={`data-card bg-gray-100 px-3 py-3 sm:py-8 rounded-xl sm:rounded-2xl flex items-center justify-evenly lg:flex-1 lg:items-center lg:text-center lg:transform-none lg:px-6 md:h-44 md:w-1/3 justify-between md:flex-col md:py-0 lg:px-20 items-center`}
 				>
 					<FontAwesomeIcon
 						icon={data.icon}
-						className="data-icon block text-gray-500 absolute left-5 transform scale-125 sm:scale-200 sm:static"
+						className="data-icon block text-gray-500 transform scale-125 sm:scale-200 sm:static"
 					/>
 
-					<div className="data-info absolute left-12 sm:static lg:pt-6">
+					<div className="data-info sm:static text-right">
 						<h1 className="data num-font font-bold text-indigo-500 text-sm sm:text-2xl">
 							{data.cardData}
 						</h1>
-						<h2 className="data-label text-gray-400 font-bold text-xs sm:text-xl">
+						<h2 className="data-label text-gray-400 font-bold text-xs sm:text-xl md:text-xxs">
 							{data.dataLabel}
 						</h2>
 					</div>
