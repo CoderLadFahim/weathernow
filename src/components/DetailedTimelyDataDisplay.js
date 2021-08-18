@@ -118,12 +118,9 @@ function DetailedTimelyDataDisplay({ dataIndex, hideDataDisplay }) {
 					</h2>
 
 					{/* DATA CARD DISPLAY */}
-					<div className="cards-display lg:w-3/4 lg:mx-auto">
-						<DataCardDisplay
-							dataToDisplay={data}
-							additionalClasses={``}
-						/>
-					</div>
+					{/* <div className="cards-display lg:w-3/4 lg:mx-auto"> */}
+					<DataCardDisplay dataToDisplay={data} additionalClasses={``} />
+					{/* </div> */}
 
 					{/* TIME TOGGLER */}
 					<div className="toggle-time text-gray-700 font-bold text-xl flex justify-between align-baseline items-center sm:text-2xl w-3/4 mx-auto lg:text-4xl">
