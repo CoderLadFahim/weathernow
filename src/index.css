@@ -33,7 +33,7 @@
 }
 
 .container .swiper-container {
-	@apply rounded-3xl;
+	@apply rounded-2xl sm:rounded-3xl;
 }
 
 .text-font {
