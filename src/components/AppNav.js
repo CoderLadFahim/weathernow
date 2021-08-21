@@ -58,31 +58,34 @@ function AppNav({ authorContactToggler, dataStatusUpdater }) {
 		});
 
 	return (
-		<nav className="app-nav shadow-inner md:shadow text-font-bold capitalize bg-gray-700 flex justify-center fixed left-0 right-0 h-12 bottom-0 md:top-0 2xl:h-14 md:w-1/3 md:rounded-2xl md:overflow-hidden md:left-1/2 md:transform  md:-translate-x-1/2 md:mt-3">
+		<nav className="app-nav shadow-inner md:shadow text-font-bold capitalize bg-gray-700 flex justify-center fixed left-0 right-0 h-12 bottom-0 md:top-0 2xl:h-14 md:w-1/2 md:rounded-2xl md:overflow-hidden md:left-1/2 md:transform md:-translate-x-1/2 md:mt-3">
 			<ul className="w-full h-full flex items-center justify-evenly">
 				{/* Local weather toggler */}
-				<li
-					className={`nav-item ${
-						weatherDataIsLocal ? 'active' : 'border-blue-400'
-					}`}
-					onClick={toggleLocalLocationData}
-				>
-					<FontAwesomeIcon className="mr-2" icon={faMapMarkerAlt} />
-					Local
-				</li>
+				{!weatherDataIsLocal && (
+					<li
+						className="nav-item hover:bg-blue-400 hover:text-white  text-blue-400"
+						onClick={toggleLocalLocationData}
+					>
+						<FontAwesomeIcon className="mr-2" icon={faMapMarkerAlt} />
+						<span className="text-base">Local Weather</span>
+					</li>
+				)}
 				{/* Search Location  */}
 				<li
-					className="nav-item bg-purple-400"
+					className="nav-item hover:bg-purple-400 hover:text-gray-100 text-purple-400 flex"
 					onClick={toggleLocationSearch}
 				>
-					<FontAwesomeIcon className="mr-2" icon={faSearch} />
+					<span className="text-base">
+						<FontAwesomeIcon className="mr-2" icon={faSearch} />
+						Search
+					</span>
 				</li>
 				{/*  Unit System Toggle  */}
 				<li
 					className={`nav-item  ${
 						AppData.unitSystem === 'metric'
-							? 'bg-green-400'
-							: 'bg-yellow-500'
+							? 'hover:bg-green-400 hover:text-white text-green-400'
+							: 'hover:bg-yellow-400 hover:text-white text-yellow-400'
 					}`}
 					onClick={switchUnitSystem}
 				>
@@ -96,7 +99,7 @@ function AppNav({ authorContactToggler, dataStatusUpdater }) {
 				</li>{' '}
 				{/* Developer Contact */}
 				<li
-					className="nav-item bg-indigo-400 text-gray-100"
+					className="nav-item hover:bg-indigo-400 hover:text-gray-100 text-indigo-300"
 					onClick={authorContactToggler}
 				>
 					Author
