@@ -58,16 +58,16 @@ function AppNav({ authorContactToggler, dataStatusUpdater }) {
 		});
 
 	return (
-		<nav className="app-nav shadow-inner md:shadow text-font-bold capitalize bg-gray-700 flex justify-center fixed left-0 right-0 h-12 bottom-0 md:top-0 2xl:h-14 md:w-1/2 md:rounded-2xl md:overflow-hidden md:left-1/2 md:transform md:-translate-x-1/2 md:mt-3">
+		<nav className="app-nav shadow-inner md:shadow text-font-bold capitalize bg-gray-700 flex justify-center fixed left-0 right-0 h-12 bottom-0 md:top-0 2xl:h-14 md:w-1/2 xl:3/5 md:rounded-2xl md:overflow-hidden md:left-1/2 md:transform md:-translate-x-1/2 md:mt-3">
 			<ul className="w-full h-full flex items-center justify-evenly">
 				{/* Local weather toggler */}
-				{!weatherDataIsLocal && (
+				{weatherDataIsLocal === false && (
 					<li
 						className="nav-item hover:bg-blue-400 hover:text-white  text-blue-400"
 						onClick={toggleLocalLocationData}
 					>
 						<FontAwesomeIcon className="mr-2" icon={faMapMarkerAlt} />
-						<span className="text-base">Local Weather</span>
+						<span className="text-base">Local</span>
 					</li>
 				)}
 				{/* Search Location  */}
