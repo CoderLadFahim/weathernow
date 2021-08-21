@@ -18,7 +18,7 @@
 }
 
 .nav-item {
-	@apply w-1/4 h-full flex items-center justify-center text-center text-base md:text-lg cursor-pointer transition md:flex-1;
+	@apply w-1/4 h-full flex items-center justify-center text-center text-base md:text-lg cursor-pointer transition flex-1;
 }
 
 .social-icon {

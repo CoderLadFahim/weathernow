@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-	faMapMarkerAlt,
+	faArrowLeft,
 	faSearch,
 	faWeight,
 	faBalanceScale,
@@ -63,16 +63,16 @@ function AppNav({ authorContactToggler, dataStatusUpdater }) {
 				{/* Local weather toggler */}
 				{weatherDataIsLocal === false && (
 					<li
-						className="nav-item hover:bg-blue-400 hover:text-white  text-blue-400"
+						className="nav-item hover:bg-blue-400 hover:text-white text-gray-100"
 						onClick={toggleLocalLocationData}
 					>
-						<FontAwesomeIcon className="mr-2" icon={faMapMarkerAlt} />
+						<FontAwesomeIcon className="mr-2" icon={faArrowLeft} />
 						<span className="text-base">Local</span>
 					</li>
 				)}
 				{/* Search Location  */}
 				<li
-					className="nav-item hover:bg-purple-400 hover:text-gray-100 text-purple-400 flex"
+					className="nav-item hover:bg-purple-300 hover:text-gray-100 text-purple-300 flex"
 					onClick={toggleLocationSearch}
 				>
 					<span className="text-base">
