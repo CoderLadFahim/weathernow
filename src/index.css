@@ -10,7 +10,7 @@
 }
 
 .active {
-	@apply font-bold;
+	@apply bg-blue-400 font-bold;
 }
 
 .active-timeType {
@@ -18,7 +18,7 @@
 }
 
 .nav-item {
-	@apply w-1/4 h-full flex items-center justify-center text-center text-sm md:text-lg cursor-pointer hover:bg-gray-600 transition;
+	@apply w-1/4 h-full flex items-center justify-center text-center text-sm md:text-lg cursor-pointer transition;
 }
 
 .social-icon {

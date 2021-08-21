@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faMapMarkerAlt,
 	faSearch,
-	faCloud,
 	faWeight,
 	faBalanceScale,
 } from '@fortawesome/free-solid-svg-icons';
@@ -59,11 +58,13 @@ function AppNav({ authorContactToggler, dataStatusUpdater }) {
 		});
 
 	return (
-		<nav className="app-nav shadow-inner md:shadow text-font-bold capitalize bg-gray-700 flex justify-center fixed left-0 right-0 h-12 bottom-0 md:top-0 2xl:h-14">
-			<ul className="w-3/4 h-full flex items-center justify-evenly">
+		<nav className="app-nav shadow-inner md:shadow text-font-bold capitalize bg-gray-700 flex justify-center fixed left-0 right-0 h-12 bottom-0 md:top-0 2xl:h-14 md:w-1/3 md:rounded-2xl md:overflow-hidden md:left-1/2 md:transform  md:-translate-x-1/2 md:mt-3">
+			<ul className="w-full h-full flex items-center justify-evenly">
 				{/* Local weather toggler */}
 				<li
-					className={`nav-item ${weatherDataIsLocal ? 'active' : ''}`}
+					className={`nav-item ${
+						weatherDataIsLocal ? 'active' : 'border-blue-400'
+					}`}
 					onClick={toggleLocalLocationData}
 				>
 					<FontAwesomeIcon className="mr-2" icon={faMapMarkerAlt} />
@@ -71,7 +72,7 @@ function AppNav({ authorContactToggler, dataStatusUpdater }) {
 				</li>
 				{/* Search Location  */}
 				<li
-					className="nav-item text-purple-300"
+					className="nav-item bg-purple-400"
 					onClick={toggleLocationSearch}
 				>
 					<FontAwesomeIcon className="mr-2" icon={faSearch} />
@@ -80,8 +81,8 @@ function AppNav({ authorContactToggler, dataStatusUpdater }) {
 				<li
 					className={`nav-item  ${
 						AppData.unitSystem === 'metric'
-							? 'text-green-400 border-green-600'
-							: 'text-blue-400 border-blue-600'
+							? 'bg-green-400'
+							: 'bg-yellow-500'
 					}`}
 					onClick={switchUnitSystem}
 				>
@@ -95,7 +96,7 @@ function AppNav({ authorContactToggler, dataStatusUpdater }) {
 				</li>{' '}
 				{/* Developer Contact */}
 				<li
-					className="nav-item text-gray-100"
+					className="nav-item bg-indigo-400 text-gray-100"
 					onClick={authorContactToggler}
 				>
 					Author

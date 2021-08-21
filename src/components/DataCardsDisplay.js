@@ -39,7 +39,7 @@ function DataCardsDisplay({ dataToDisplay: mainData }) {
 	];
 
 	return (
-		<div className="data-card-display grid grid-cols-2 grid-rows-2 gap-4 sm:gap-5 md:gap-6 md:flex lg:grid lg:w-5/12 border border-1 border-green-700">
+		<div className="data-card-display grid grid-cols-2 grid-rows-2 gap-4 sm:gap-5 md:gap-6 md:flex lg:grid lg:w-5/12 border border-1 border-green-700 xl:hidden">
 			{cardsDataDisplay.map((data, i) => (
 				<div
 					key={i}
