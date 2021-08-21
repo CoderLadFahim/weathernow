@@ -59,15 +59,8 @@ function AppNav({ authorContactToggler, dataStatusUpdater }) {
 		});
 
 	return (
-		<nav className="app-nav shadow-inner md:shadow text-font-bold capitalize bg-gray-700 flex items-center content-between fixed left-0 right-0 h-12 bottom-0 md:top-0 2xl:h-14">
-			<div className="app-logo w-0 h-full items-center justify-center hidden md:flex md:w-1/2 text-center">
-				<FontAwesomeIcon icon={faCloud} className="mr-2" />
-				<h1 className="inline text-lg">
-					<span className="text-green-400">Weather</span>
-					<span className="text-blue-400">Now</span>
-				</h1>
-			</div>
-			<ul className="w-full h-full flex items-center justify-around md:flex-1">
+		<nav className="app-nav shadow-inner md:shadow text-font-bold capitalize bg-gray-700 flex justify-center fixed left-0 right-0 h-12 bottom-0 md:top-0 2xl:h-14">
+			<ul className="w-3/4 h-full flex items-center justify-evenly">
 				{/* Local weather toggler */}
 				<li
 					className={`nav-item ${weatherDataIsLocal ? 'active' : ''}`}
@@ -77,7 +70,10 @@ function AppNav({ authorContactToggler, dataStatusUpdater }) {
 					Local
 				</li>
 				{/* Search Location  */}
-				<li className="nav-item" onClick={toggleLocationSearch}>
+				<li
+					className="nav-item text-purple-300"
+					onClick={toggleLocationSearch}
+				>
 					<FontAwesomeIcon className="mr-2" icon={faSearch} />
 				</li>
 				{/*  Unit System Toggle  */}
@@ -85,7 +81,7 @@ function AppNav({ authorContactToggler, dataStatusUpdater }) {
 					className={`nav-item  ${
 						AppData.unitSystem === 'metric'
 							? 'text-green-400 border-green-600'
-							: 'text-yellow-400 border-yellow-600'
+							: 'text-blue-400 border-blue-600'
 					}`}
 					onClick={switchUnitSystem}
 				>
@@ -98,7 +94,10 @@ function AppNav({ authorContactToggler, dataStatusUpdater }) {
 					{AppData.unitSystem}
 				</li>{' '}
 				{/* Developer Contact */}
-				<li className="nav-item" onClick={authorContactToggler}>
+				<li
+					className="nav-item text-gray-100"
+					onClick={authorContactToggler}
+				>
 					Author
 				</li>{' '}
 			</ul>{' '}
