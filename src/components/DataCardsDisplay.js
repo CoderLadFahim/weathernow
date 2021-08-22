@@ -8,7 +8,7 @@ import {
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
-function DataCardsDisplay({ dataToDisplay: mainData }) {
+function DataCardsDisplay({ dataToDisplay: mainData, applyDashboardClasses }) {
 	const {
 		AppData,
 		// AppData: {
@@ -38,8 +38,17 @@ function DataCardsDisplay({ dataToDisplay: mainData }) {
 		{ icon: faCloud, cardData: cloudsPercentage, dataLabel: 'Clouds' },
 	];
 
+	const dashboardClassesOver1024 =
+		'lg:border lg:border-blue-500 lg:h-3/4 lg:w-2/5';
+
 	return (
-		<div className="data-card-display grid grid-cols-2 grid-rows-2 gap-4 sm:gap-5 md:gap-6 lg:border lg:border-blue-500">
+		<div
+			className={`data-card-display grid grid-cols-2 grid-rows-2 gap-4 sm:gap-5 md:gap-6 ${
+				window.innerWidth >= 1024 && applyDashboardClasses
+					? dashboardClassesOver1024
+					: ''
+			} `}
+		>
 			{cardsDataDisplay.map((data, i) => (
 				<div
 					key={i}

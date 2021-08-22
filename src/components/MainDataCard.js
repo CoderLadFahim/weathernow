@@ -52,7 +52,10 @@ function MainDataCard({ locationTimezone, mainData, dataLocalBool }) {
 					/>
 				)}
 			</div>
-			<DataCardsDisplay dataToDisplay={mainData} />
+			<DataCardsDisplay
+				dataToDisplay={mainData}
+				applyDashboardClasses={true}
+			/>
 		</section>
 	);
 }
