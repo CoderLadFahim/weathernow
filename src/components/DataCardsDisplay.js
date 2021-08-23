@@ -9,12 +9,7 @@ import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
 
 function DataCardsDisplay({ dataToDisplay: mainData, applyDashboardClasses }) {
-	const {
-		AppData,
-		// AppData: {
-		// 	weatherDataToShow: { current: mainData },
-		// },
-	} = useContext(AppContext);
+	const { AppData } = useContext(AppContext);
 
 	const windSpeed = mainData
 		? mainData.wind_speed +
